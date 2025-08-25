@@ -1,19 +1,22 @@
 extends CharacterBody2D
-
 class_name Player
 
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.5
+@export var max_hp: int = 5   # max health
+var current_hp: int
 
 var can_attack: bool = true
-
-# --- Current attack type (default = basic)
 var current_attack: String = "basic"
 
-# Input mapping (make sure you set these in Project Settings > Input Map)
-# "move_up", "move_down", "move_left", "move_right"
-# "attack" -> set to Right Mouse Button
-# "pickup" -> optional (usually just body_entered signal)
+signal health_changed(new_hp: int)  # notify UI when HP updates
+signal player_died
+
+func _ready() -> void:
+	current_hp = max_hp
+	emit_signal("health_changed", current_hp)
+
+
 func _process(delta: float) -> void:
 	handle_movement(delta)
 
@@ -21,6 +24,7 @@ func _process(delta: float) -> void:
 		perform_attack()
 
 
+# ---------------- Movement ----------------
 func handle_movement(delta: float) -> void:
 	var input_dir = Vector2.ZERO
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -31,7 +35,7 @@ func handle_movement(delta: float) -> void:
 	move_and_slide()
 
 
-# --- Attack handling
+# ---------------- Attacks ----------------
 func perform_attack() -> void:
 	can_attack = false
 
@@ -50,18 +54,36 @@ func perform_attack() -> void:
 
 
 func basic_attack() -> void:
-	print("Basic Attack: Swing cookie staff")
+	print("Basic Attack")
 
 
 func fire_attack() -> void:
-	print("🔥 Fire Cookie Attack: Fireball launched!")
+	print("🔥 Fireball!")
 
 
 func ice_attack() -> void:
-	print("❄ Ice Cookie Attack: Freeze blast!")
+	print("❄ Ice Blast!")
 
 
-# --- Called when colliding with a cookie pickup
+# ---------------- Damage & HP ----------------
+func take_damage(amount: int = 1) -> void:
+	current_hp -= amount
+	current_hp = clamp(current_hp, 0, max_hp)
+	emit_signal("health_changed", current_hp)
+
+	print("Player took damage! HP = %d" % current_hp)
+
+	if current_hp <= 0:
+		die()
+
+
+func die() -> void:
+	print("💀 Player died")
+	emit_signal("player_died")
+	queue_free()  # remove player (or play animation first)
+
+
+# ---------------- Cookie Pickup ----------------
 func pickup_cookie(cookie_type: String) -> void:
 	current_attack = cookie_type
 	print("Picked up cookie! Attack changed to: %s" % cookie_type)
