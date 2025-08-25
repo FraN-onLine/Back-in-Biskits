@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://n8utlsd5y7ci"]
+
+[ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
+[ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="2_ae2e2"]
+
+[node name="Area1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_bmh1r")]
+position = Vector2(90, 69)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 90.0
+offset_top = 69.0
+offset_right = 130.0
+offset_bottom = 109.0
+
+[node name="Cookie" parent="." instance=ExtResource("2_ae2e2")]
+position = Vector2(43, 89)
