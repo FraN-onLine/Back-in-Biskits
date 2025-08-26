@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
+
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.5
 @export var max_hp: int = 5   # max health
@@ -10,8 +11,11 @@ var current_hp: int
 var can_attack: bool = true
 var current_attack: String = "basic"
 
+@onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
+
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
+
 
 func _ready() -> void:
 	current_hp = max_hp
@@ -34,6 +38,21 @@ func handle_movement(delta: float) -> void:
 
 	velocity = input_dir * speed
 	move_and_slide()
+
+	# --- Animation handling ---
+	if input_dir == Vector2.ZERO:
+		# Idle
+		if anim.animation != "idle":
+			anim.play("idle")
+	else:
+		# Walking
+		if anim.animation != "walk":
+			anim.play("walk")
+
+		# Flip horizontally if moving right
+		if input_dir.x != 0:
+			anim.flip_h = input_dir.x > 0
+
 
 
 # ---------------- Attacks ----------------
