@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://csckbsgbye3fq"]
+
+[ext_resource type="Script" uid="uid://cbpwxi4uetuyp" path="res://Pickup/Cookie Spawner/cookie_spawner.gd" id="1_aq23u"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="2_tmnhi"]
+[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="3_dr2bd"]
+[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="4_nviv1"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="5_cvjbs"]
+[ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="6_8q6w2"]
+
+[node name="CookieSpawner" type="Node2D"]
+script = ExtResource("1_aq23u")
+possible_cookies = Array[ExtResource("2_tmnhi")]([ExtResource("3_dr2bd"), ExtResource("4_nviv1"), ExtResource("5_cvjbs")])
+cookie_scene = ExtResource("6_8q6w2")
+spawn_interval = 8.0
+max_active_cookies = 5
+
+[node name="Spawnpoint1" type="Marker2D" parent="."]
+position = Vector2(1, 2)
+
+[node name="Spawnpoint2" type="Marker2D" parent="."]
+position = Vector2(-5, 8)
+
+[node name="Spawnpoint3" type="Marker2D" parent="."]
+position = Vector2(7, 6)

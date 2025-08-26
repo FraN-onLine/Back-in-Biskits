@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=7 format=3 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="2_ae2e2"]
 [ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="3_e5usc"]
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="3_v2evy"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="4_01mxt"]
+[ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
 
 [node name="Area1" type="Node2D"]
 
@@ -23,3 +24,17 @@ position = Vector2(13, 44)
 cookie = ExtResource("4_01mxt")
 
 [node name="UI" parent="." instance=ExtResource("3_v2evy")]
+
+[node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
+position = Vector2(11, 94)
+
+[node name="Spawnpoint1" parent="CookieSpawner" index="0"]
+position = Vector2(26, -55)
+
+[node name="Spawnpoint2" parent="CookieSpawner" index="1"]
+position = Vector2(26, -27)
+
+[node name="Spawnpoint3" parent="CookieSpawner" index="2"]
+position = Vector2(60, -58)
+
+[editable path="CookieSpawner"]
