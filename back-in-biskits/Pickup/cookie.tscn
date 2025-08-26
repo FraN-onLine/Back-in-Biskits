@@ -1,19 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch61q6045g2b4"]
+[gd_scene load_steps=6 format=3 uid="uid://ch61q6045g2b4"]
 
 [ext_resource type="Script" uid="uid://cxn78lm5g2kw6" path="res://Pickup/cookie.gd" id="1_cxbth"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/oreo.tres" id="2_8di3b"]
+[ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="3_o2g6g"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c63e7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8di3b"]
+atlas = ExtResource("3_o2g6g")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c63e7"]
-radius = 3.0
+radius = 8.0
 
 [node name="Cookie" type="Area2D"]
 script = ExtResource("1_cxbth")
+cookie = ExtResource("2_8di3b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(3.5, 3.5)
-texture = SubResource("PlaceholderTexture2D_c63e7")
+scale = Vector2(0.5625, 0.53125)
+texture = SubResource("AtlasTexture_8di3b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_c63e7")

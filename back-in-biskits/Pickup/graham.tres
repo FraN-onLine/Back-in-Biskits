@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Cookie" load_steps=3 format=3 uid="uid://c0jkuoimbflll"]
+
+[ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="1_cwrm3"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/cookieresource.gd" id="1_qyrmj"]
+
+[resource]
+script = ExtResource("1_qyrmj")
+cookie_type = "graham"
+cookie_name = "Graham"
+atlas_texture = ExtResource("1_cwrm3")
+min_potency = 2
+metadata/_custom_type_script = "uid://dq108u8j1agm8"
