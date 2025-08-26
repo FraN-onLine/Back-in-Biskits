@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
+var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.5
 @export var max_hp: int = 5   # max health
@@ -88,40 +89,8 @@ func pickup_cookie(cookie_type: String) -> void:
 	current_attack = cookie_type
 	print("Picked up cookie! Attack changed to: %s" % cookie_type)
 	
+
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D) -> void:
-	# Container for popup
-	var popup = Node2D.new()
-	popup.position = Vector2(0, -40)   # directly above player's head
-	add_child(popup)
-
-	# Icon (small, centered)
-	var icon = Sprite2D.new()
-	icon.texture = icon_tex
-	icon.centered = true
-	icon.scale = Vector2(0.5, 0.5)   # shrink to 30%
-	icon.position = Vector2(0, -12)  # just above text
-	popup.add_child(icon)
-
-	# Label (centered under icon)
-	var label = Label.new()
-	label.text = display_name
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.position = Vector2(0, 8)
-
-	# Load your Silkscreen font
-	var font = preload("res://Assets/Fonts/Silkscreen-Regular.ttf")
-	label.add_theme_font_override("font", font)
-	label.add_theme_font_size_override("font_size", 10)
-
-	popup.add_child(label)
-
-	# --- Tween the WHOLE popup ---
-	popup.modulate.a = 1.0
-	var tween = popup.create_tween()
-	tween.tween_property(popup, "position:y", popup.position.y - 20, 1.0) \
-		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	tween.tween_property(popup, "modulate:a", 0.0, 1.0)  # fade entire popup together
-
-	await tween.finished
-	popup.queue_free()
+	var popup = PopupScene.instantiate()
+	add_child(popup)  # attach popup to player so it follows them
+	popup.setup(display_name, icon_tex)

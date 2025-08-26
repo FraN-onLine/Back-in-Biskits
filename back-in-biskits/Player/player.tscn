@@ -15,6 +15,6 @@ shape = SubResource("CapsuleShape2D_hvfyp")
 zoom = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -9)
-scale = Vector2(1.28906, 1.40625)
+position = Vector2(-1, -2)
+scale = Vector2(0.923828, 0.90625)
 texture = ExtResource("2_4ntmi")

@@ -4,6 +4,7 @@ var cookie_type: String = "basic_cookie"
 var cookie_name: String = "Basic Cookie"
 var atlas_texture: Texture2D
 var icon_texture: Texture2D
+var pickup_message: String = "Item Obtained"
 
 @export var frame_w: int = 32
 @export var frame_h: int = 32
@@ -27,6 +28,7 @@ func _ready() -> void:
 		cookie_name = cookie.cookie_name
 		icon_texture = cookie.icon_texture
 		min_potency = cookie.min_potency
+		pickup_message = cookie.pickup_message
 		sprite.region_rect = Rect2(0, 0,frame_w, frame_h)
 	if atlas_texture:
 		sprite.texture = atlas_texture
@@ -66,6 +68,6 @@ func _on_body_entered(body: Node) -> void:
 		display_icon = at
 
 	if body.has_method("show_cookie_pickup"):
-		body.show_cookie_pickup(cookie_type, display_icon)
+		body.show_cookie_pickup(pickup_message, display_icon)
 
 	queue_free()

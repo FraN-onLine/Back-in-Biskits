@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ch61q6045g2b4"]
 
 [ext_resource type="Script" uid="uid://cxn78lm5g2kw6" path="res://Pickup/cookie.gd" id="1_cxbth"]
-[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/oreo.tres" id="2_8di3b"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="2_8di3b"]
 [ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="3_o2g6g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8di3b"]
