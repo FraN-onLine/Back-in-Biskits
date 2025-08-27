@@ -66,8 +66,10 @@ use_texture_padding = false
 2:2/0 = 0
 0:2/0 = 0
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 30.0364, 25.7198, -8, 8, -4.94612, 18.8852, -23.4716, 21.4032)
 
 [sub_resource type="TileSet" id="TileSet_kpacr"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_8hgsk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_01mxt"]
@@ -150,7 +152,6 @@ sources/2 = SubResource("TileSetAtlasSource_68mb3")
 [node name="Area1" type="Node2D"]
 
 [node name="TextureRect" type="ColorRect" parent="."]
-visible = false
 z_index = -2
 offset_left = -615.0
 offset_top = -339.0
@@ -165,8 +166,9 @@ tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAD//wAAAAAAAAAAAAADAP//AAAAAAA
 tile_set = SubResource("TileSet_t85wl")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
-scale = Vector2(2.60994, 2.35315)
-tile_map_data = PackedByteArray("AAACAPv/AAAAAAAAAAA=")
+position = Vector2(42, -17)
+scale = Vector2(1.64405, 1.7613)
+tile_map_data = PackedByteArray("AAACAPv/AAAAAAAAAAD9//z/AAAAAAAAAAAHAPz/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kpacr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." groups=["walls"]]
