@@ -1,29 +1,181 @@
-[gd_scene load_steps=9 format=3 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=16 format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
-[ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="2_ae2e2"]
-[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="3_e5usc"]
+[ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
+[ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_kpacr"]
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="3_v2evy"]
-[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="4_01mxt"]
+[ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
-[ext_resource type="PackedScene" uid="uid://cetajpset4ndr" path="res://Bosses/Boss1/standard_projectile.tscn" id="8_kpacr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
+texture = ExtResource("3_kpacr")
+texture_region_size = Vector2i(64, 64)
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.9342, -5.64474, 2.82237, -7.33816, 15.8053, 2.82237, 17.4987, 19.1921, -13.5474, 19.7566, -25.9658, 16.9342, -27.0947, 11.2895)
+
+[sub_resource type="TileSet" id="TileSet_t85wl"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_kpacr")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hgsk"]
+texture = ExtResource("2_8hgsk")
+texture_region_size = Vector2i(124, 124)
+use_texture_padding = false
+3:2/0 = 0
+4:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+0:2/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kpacr"]
+sources/0 = SubResource("TileSetAtlasSource_8hgsk")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_01mxt"]
+texture = ExtResource("5_e5usc")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -12.108, -12.5859, -12.108, -12.5859, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -12.108, -16, -12.5859, -16, -12.5859)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, 12.108, 16, 12.108, -12.5859, -16, -12.5859, -16, -16)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, -12.108, -16, -12.5859, 16, -12.5859, 16)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, 12.108, 16, 12.5859, -16, 12.5859, -16)
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, -12.108, -16, -12.108, 12.5859, 16, 12.5859, 16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12.108, 16, 12.5859, 16, 12.5859)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12.108, 12.5859, 12.108, 12.5859, -16, 16, -16)
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t85wl"]
+texture = ExtResource("2_8hgsk")
+texture_region_size = Vector2i(41, 41)
+0:0/0 = 0
+1:0/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+1:2/0 = 0
+0:1/0 = 0
+2:0/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68mb3"]
+texture = ExtResource("3_kpacr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8hgsk"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_01mxt")
+sources/1 = SubResource("TileSetAtlasSource_t85wl")
+sources/2 = SubResource("TileSetAtlasSource_68mb3")
 
 [node name="Area1" type="Node2D"]
 
+[node name="TextureRect" type="ColorRect" parent="."]
+visible = false
+z_index = -2
+offset_left = -615.0
+offset_top = -339.0
+offset_right = 827.0
+offset_bottom = 517.0
+color = Color(0.694946, 0.453596, 0.272048, 1)
+
+[node name="TileMapLayer3" type="TileMapLayer" parent="." groups=["walls"]]
+position = Vector2(46, 26)
+scale = Vector2(0.616117, 0.673306)
+tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAD//wAAAAAAAAAAAAADAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_t85wl")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+scale = Vector2(2.60994, 2.35315)
+tile_map_data = PackedByteArray("AAACAPv/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_kpacr")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["walls"]]
+z_index = -1
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAADAP7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAAGAP7/AAABAAAAAAAHAP7/AAABAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAEAAAAIAAAAAAACAAEAAAAIAAEAAAACAAEAAAAIAAIAAAACAAEAAAAIAAMAAAACAAEAAAAIAAQAAAACAAEAAAAIAAUAAAACAAIAAAAHAAUAAAABAAIAAAAGAAUAAAABAAIAAAAFAAUAAAABAAIAAAAEAAUAAAABAAIAAAADAAUAAAABAAIAAAACAAUAAAABAAIAAAABAAUAAAABAAIAAAAAAAUAAAABAAIAAAD//wUAAAABAAIAAAD+/wUAAAAAAAIAAAD+////AAAAAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAD+/wQAAAAAAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAD//wQAAAABAAEAAAAAAAQAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAEAAIAAAABAAEAAAADAAMAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAFAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAAAAAAABAAEAAAAHAP//AAABAAEAAAAHAAQAAAABAAEAAAAGAAIAAAABAAEAAAAGAAEAAAABAAEAAAAGAAAAAAABAAEAAAAGAP//AAABAAEAAAAFAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_8hgsk")
+
 [node name="Player" parent="." instance=ExtResource("1_bmh1r")]
 position = Vector2(90, 69)
-
-[node name="Cookie" parent="." instance=ExtResource("2_ae2e2")]
-position = Vector2(43, 89)
-
-[node name="Cookie2" parent="." instance=ExtResource("2_ae2e2")]
-position = Vector2(93, 6)
-cookie = ExtResource("3_e5usc")
-
-[node name="Cookie3" parent="." instance=ExtResource("2_ae2e2")]
-position = Vector2(13, 44)
-cookie = ExtResource("4_01mxt")
 
 [node name="UI" parent="." instance=ExtResource("3_v2evy")]
 
@@ -31,18 +183,21 @@ cookie = ExtResource("4_01mxt")
 position = Vector2(11, 94)
 
 [node name="Spawnpoint1" parent="CookieSpawner" index="0"]
-position = Vector2(26, -55)
+position = Vector2(-26, -55)
 
 [node name="Spawnpoint2" parent="CookieSpawner" index="1"]
-position = Vector2(26, -27)
+position = Vector2(12, 33)
 
 [node name="Spawnpoint3" parent="CookieSpawner" index="2"]
-position = Vector2(60, -58)
+position = Vector2(197, 36)
+
+[node name="Spawnpoint4" type="Marker2D" parent="CookieSpawner"]
+position = Vector2(102, -51)
+
+[node name="Spawnpoint5" type="Marker2D" parent="CookieSpawner"]
+position = Vector2(237, -80)
 
 [node name="Boss 1" parent="." instance=ExtResource("7_8hgsk")]
 position = Vector2(85, -16)
-
-[node name="standard_projectile" parent="." instance=ExtResource("8_kpacr")]
-position = Vector2(158, 34)
 
 [editable path="CookieSpawner"]

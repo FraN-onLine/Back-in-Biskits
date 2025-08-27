@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cetajpset4ndr"]
+[gd_scene load_steps=5 format=3 uid="uid://cetajpset4ndr"]
 
 [ext_resource type="Script" uid="uid://blp6xev7qbuw0" path="res://Bosses/Boss1/projectile.gd" id="1_gvji7"]
+[ext_resource type="Texture2D" uid="uid://m3x7jjpkywdg" path="res://Assets/Bosses/Cat Boss/blue_fish(1).png" id="2_b60xd"]
 [ext_resource type="Texture2D" uid="uid://cwss11nuoc1ss" path="res://Assets/Bosses/Cat Boss/red_fish(2).png" id="2_o676r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a2pgr"]
+radius = 6.0
 
 [node name="standard_projectile" type="Area2D"]
 script = ExtResource("1_gvji7")
+homing_texture = ExtResource("2_b60xd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 3)

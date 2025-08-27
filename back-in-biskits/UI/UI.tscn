@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://vhtdtq0n3sxq"]
+[gd_scene load_steps=7 format=3 uid="uid://vhtdtq0n3sxq"]
 
 [ext_resource type="Script" uid="uid://8esoo8esqsnn" path="res://UI/ui.gd" id="1_6dd3c"]
 [ext_resource type="Texture2D" uid="uid://b878bsp32bc4q" path="res://Assets/UI Elements/Heart.png" id="2_dhe1o"]
+[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_q0uhn"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -61,3 +62,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_e707p")
 }
 autoplay = "new_animationmove"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 552.0
+offset_right = 137.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("3_q0uhn")
+text = "Potency: "

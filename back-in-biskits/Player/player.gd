@@ -85,12 +85,11 @@ func ice_attack() -> void:
 
 # ---------------- Damage & HP ----------------
 func take_damage(amount: int = 1) -> void:
-	current_hp -= amount
-	current_hp = clamp(current_hp, 0, max_hp)
-	emit_signal("health_changed", current_hp)
-
+	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
+	await get_tree().create_timer(0.1).timeout
+	$Sprite2D.modulate = Color(1, 1, 1)
 	print("Player took damage! HP = %d" % current_hp)
-	Global.HP -= 1
+	Global.lives -= amount
 	if current_hp <= 0:
 		die()
 
