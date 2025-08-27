@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cucwq4ajkous0"]
+[gd_scene load_steps=9 format=3 uid="uid://cucwq4ajkous0"]
 
 [ext_resource type="Script" uid="uid://dlnht23ihoofs" path="res://Bosses/Boss1/boss_1.gd" id="1_4w332"]
 [ext_resource type="Texture2D" uid="uid://bc5ib50v3otc0" path="res://Assets/Bosses/Cat Boss/cat_cookie(1).png" id="1_rp1qc"]
+[ext_resource type="PackedScene" uid="uid://cetajpset4ndr" path="res://Bosses/Boss1/standard_projectile.tscn" id="2_1qqme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w332"]
 atlas = ExtResource("1_rp1qc")
@@ -42,10 +43,11 @@ radius = 26.0768
 
 [node name="Boss 1" type="CharacterBody2D"]
 script = ExtResource("1_4w332")
+projectile = ExtResource("2_1qqme")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rcd67")
-animation = &"new_animation"
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppuc")

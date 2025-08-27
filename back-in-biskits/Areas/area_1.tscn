@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=9 format=3 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="2_ae2e2"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="3_v2evy"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="4_01mxt"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
+[ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
+[ext_resource type="PackedScene" uid="uid://cetajpset4ndr" path="res://Bosses/Boss1/standard_projectile.tscn" id="8_kpacr"]
 
 [node name="Area1" type="Node2D"]
 
@@ -36,5 +38,11 @@ position = Vector2(26, -27)
 
 [node name="Spawnpoint3" parent="CookieSpawner" index="2"]
 position = Vector2(60, -58)
+
+[node name="Boss 1" parent="." instance=ExtResource("7_8hgsk")]
+position = Vector2(85, -16)
+
+[node name="standard_projectile" parent="." instance=ExtResource("8_kpacr")]
+position = Vector2(158, 34)
 
 [editable path="CookieSpawner"]

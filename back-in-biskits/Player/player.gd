@@ -90,7 +90,7 @@ func take_damage(amount: int = 1) -> void:
 	emit_signal("health_changed", current_hp)
 
 	print("Player took damage! HP = %d" % current_hp)
-
+	Global.HP -= 1
 	if current_hp <= 0:
 		die()
 
