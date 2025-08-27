@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Cookie" load_steps=4 format=3 uid="uid://cnh3iholrbh03"]
+
+[ext_resource type="Texture2D" uid="uid://277kxoep2ysh" path="res://Assets/Cookies/CookieCat-Sheet.png" id="1_hdub7"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="1_ltq5h"]
+[ext_resource type="Texture2D" uid="uid://nnnugna72kp1" path="res://Assets/Cookies/Bubble.png" id="2_6ar2k"]
+
+[resource]
+script = ExtResource("1_ltq5h")
+cookie_type = "cookie_cat"
+cookie_name = "Cookie Cat"
+atlas_texture = ExtResource("1_hdub7")
+icon_texture = ExtResource("2_6ar2k")
+min_potency = 3
+pickup_message = "Shield Active"
+metadata/_custom_type_script = "uid://dq108u8j1agm8"

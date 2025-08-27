@@ -60,21 +60,19 @@ func perform_attack() -> void:
 	can_attack = false
 
 	match current_attack:
-		"basic":
-			basic_attack()
+		"lion_cracker":
+			sword_attack()
 		"fire_cookie":
 			fire_attack()
 		"ice_cookie":
 			ice_attack()
-		_:
-			basic_attack()
 
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
 
 
-func basic_attack() -> void:
-	print("Basic Attack")
+func sword_attack() -> void:
+	print("Slash")
 
 
 func fire_attack() -> void:
@@ -107,6 +105,13 @@ func die() -> void:
 func pickup_cookie(cookie_type: String) -> void:
 	current_attack = cookie_type
 	print("Picked up cookie! Attack changed to: %s" % cookie_type)
+	match cookie_type:
+		"lion_cracker":
+			pass
+		"fire_cookie":
+			anim.modulate = Color(1, 0.5, 0.5)  # light red
+		"ice_cookie":
+			anim.modulate = Color(0.5, 0.8, 1)  # light blue
 	
 
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D) -> void:

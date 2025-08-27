@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cucwq4ajkous0"]
+
+[ext_resource type="Script" uid="uid://dlnht23ihoofs" path="res://Bosses/Boss1/boss_1.gd" id="1_4w332"]
+[ext_resource type="Texture2D" uid="uid://bc5ib50v3otc0" path="res://Assets/Bosses/Cat Boss/cat_cookie(1).png" id="1_rp1qc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w332"]
+atlas = ExtResource("1_rp1qc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qqme"]
+atlas = ExtResource("1_rp1qc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j63d"]
+atlas = ExtResource("1_rp1qc")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rcd67"]
+animations = [{
+"frames": [{
+"duration": 1.8,
+"texture": SubResource("AtlasTexture_4w332")
+}, {
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_1qqme")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_4j63d")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wppuc"]
+radius = 26.0768
+
+[node name="Boss 1" type="CharacterBody2D"]
+script = ExtResource("1_4w332")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rcd67")
+animation = &"new_animation"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wppuc")

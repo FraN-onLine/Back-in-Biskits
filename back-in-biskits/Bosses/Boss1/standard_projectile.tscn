@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://cetajpset4ndr"]
+
+[node name="standard_projectile" type="Node2D"]
