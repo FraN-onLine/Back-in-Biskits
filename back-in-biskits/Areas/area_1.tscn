@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=19 format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
 [ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="8_68mb3"]
+[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_68mb3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
 texture = ExtResource("3_kpacr")
@@ -113,7 +114,7 @@ position = Vector2(115, 180)
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("8_68mb3")])
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("8_68mb3"), ExtResource("9_68mb3")])
 spawn_interval = 4.5
 
 [node name="Spawnpoint1" parent="CookieSpawner" index="0"]

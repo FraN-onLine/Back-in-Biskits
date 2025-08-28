@@ -1,15 +1,11 @@
-# In LionCrackerSword script
-extends Node2D  # or whatever node type it is
+extends Area2D
 
-func _ready():
-	visible = false  # Start hidden
 
-func perform_swing(potency: int):
-	print("Performing swing with potency: ", potency)
-	visible = true
-	# Add your attack logic here
-	# Play animation, detect enemies, etc.
-	
-	# Hide after a short time
-	await get_tree().create_timer(0.5).timeout
-	visible = false
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass

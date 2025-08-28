@@ -11,6 +11,7 @@ var current_attack: String = "basic"
 var cookie_potency = 1
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
+@onready var swordanim = $AnimatedSprite2D
 
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
@@ -62,10 +63,6 @@ func perform_attack() -> void:
 			sword_attack()
 		"graham":
 			graham_attack()
-		"fire_cookie":
-			fire_attack()
-		"ice_cookie":
-			ice_attack()
 
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
@@ -94,30 +91,15 @@ func die() -> void:
 
 
 func sword_attack() -> void:
-	print("Sword attack called!")  # Debug line
-	var sword = $LionCrackerSword  # Reference to child node
-	if sword:
-		print("Sword node found!")  # Debug line
-		if sword.has_method("perform_swing"):
-			print("perform_swing method found!")  # Debug line
-			sword.perform_swing(cookie_potency)
-		else:
-			print("perform_swing method NOT found!")  # Debug line
-	else:
-		print("Sword node NOT found!")  # Debug line
-		
-#func spawn_sword(pos: Vector2, dir: Vector2, dmg: float) -> void:
-	#var sword = lion_cracker_sword.instantiate()
-	#get_tree().current_scene.add_child(sword)
-	#sword.init(pos, dir, dmg)
-
-
-func fire_attack() -> void:
-	print("🔥 Fireball!")
-
-
-func ice_attack() -> void:
-	print("❄ Ice Blast!")
+	var sword = $LionCrackerSword
+	swordanim.visible = true
+	sword.monitoring = true
+	sword.visible = true
+	swordanim.play("attack")
+	await anim.animation_finished
+	sword.monitoring = false
+	sword.visible = false
+	swordanim.visible = false
 	
 func graham_attack() -> void:
 	if not graham_bullet: return
