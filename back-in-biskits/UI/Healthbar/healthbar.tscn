@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2hxhom57jt5v"]
+
+[ext_resource type="Texture2D" uid="uid://bv5ekjo0jxik7" path="res://Assets/UI Elements/Healthbar-Enemy-Sheet.png" id="1_cgcvx"]
+[ext_resource type="Script" uid="uid://cuq1j5r4jjhuw" path="res://UI/Healthbar/Healthbar.gd" id="2_h5p2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gccij"]
+atlas = ExtResource("1_cgcvx")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfxlc"]
+atlas = ExtResource("1_cgcvx")
+region = Rect2(96, 0, 96, 32)
+
+[node name="Healthbar" type="TextureProgressBar"]
+z_index = 1
+offset_right = 56.0
+offset_bottom = 21.0
+max_value = 500.0
+value = 92.0
+nine_patch_stretch = true
+texture_under = SubResource("AtlasTexture_gccij")
+texture_progress = SubResource("AtlasTexture_tfxlc")
+script = ExtResource("2_h5p2b")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

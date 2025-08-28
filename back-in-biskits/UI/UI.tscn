@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://vhtdtq0n3sxq"]
+[gd_scene load_steps=9 format=3 uid="uid://vhtdtq0n3sxq"]
 
 [ext_resource type="Script" uid="uid://8esoo8esqsnn" path="res://UI/ui.gd" id="1_6dd3c"]
 [ext_resource type="Texture2D" uid="uid://b878bsp32bc4q" path="res://Assets/UI Elements/Heart.png" id="2_dhe1o"]
+[ext_resource type="Texture2D" uid="uid://d11mswhg6i6xj" path="res://Assets/UI Elements/Potency-Indicator.png" id="3_e707p"]
 [ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_q0uhn"]
+[ext_resource type="PackedScene" uid="uid://c2hxhom57jt5v" path="res://UI/Healthbar/healthbar.tscn" id="5_f1fl4"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -17,6 +19,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(15, 574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PotencyRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 508)]
 }
 
 [sub_resource type="Animation" id="Animation_dhe1o"]
@@ -33,6 +47,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(15, 574), Vector2(15, 563)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PotencyRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 508), Vector2(16, 493)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e707p"]
@@ -57,6 +83,19 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_dhe1o")
 stretch_mode = 1
 
+[node name="PotencyRect" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -140.0
+offset_right = 48.0
+offset_bottom = -108.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+texture = ExtResource("3_e707p")
+stretch_mode = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_e707p")
@@ -65,8 +104,22 @@ autoplay = "new_animationmove"
 
 [node name="Label" type="Label" parent="."]
 offset_left = 23.0
-offset_top = 552.0
+offset_top = 470.0
 offset_right = 137.0
-offset_bottom = 575.0
+offset_bottom = 493.0
 theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "Potency: "
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 744.0
+offset_top = 106.0
+offset_right = 1130.0
+offset_bottom = 129.0
+theme_override_fonts/font = ExtResource("3_q0uhn")
+text = "CALICO-COOKIE CAT (PLACEHOLDER)"
+
+[node name="Healthbar" parent="." instance=ExtResource("5_f1fl4")]
+offset_left = 751.0
+offset_top = 13.0
+offset_right = 1136.0
+offset_bottom = 100.0

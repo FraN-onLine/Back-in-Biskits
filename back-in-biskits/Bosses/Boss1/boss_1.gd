@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name CookieBoss
 
 @export var speed: float = 120.0
-@export var max_hp: int = 300
+@export var max_hp: int = 360
 var current_hp: int
 @export var projectile: PackedScene
+var radial_used: bool = false
 
 @export var attack_interval: float = 2.0   # seconds between attacks
 var attack_timer: Timer
@@ -14,11 +15,13 @@ var rng := RandomNumberGenerator.new()
 
 var hover_target: Vector2
 var hover_update_timer: float = 0.0
-
+var healthbar: Node
 signal boss_died
 
 
 func _ready() -> void:
+	healthbar = $"../UI".get_node("Healthbar")
+	healthbar.init_health(max_hp)
 	current_hp = max_hp
 	player = get_tree().get_first_node_in_group("player")
 
@@ -72,7 +75,7 @@ func _set_new_hover_target() -> void:
 
 # ---------------- Attacks ----------------
 func _on_attack_timeout() -> void:
-	if current_hp > 100:
+	if current_hp > 180:
 		# Randomly choose projectile type
 		if rng.randi_range(0, 1) == 0:
 			shoot_standard()
@@ -80,7 +83,8 @@ func _on_attack_timeout() -> void:
 			shoot_homing()
 	else:
 		# Still does normal attacks, but also radial burst at 100 hp
-		if current_hp == 100:
+		if radial_used == false:
+			radial_used = true
 			radial_burst()
 		else:
 			shoot_standard()
@@ -106,15 +110,17 @@ func radial_burst() -> void:
 	for i in range(count):
 		var angle = (TAU / count) * i
 		var dir = Vector2.RIGHT.rotated(angle)
-		var proj = projectile.new()
-		proj.init(global_position, dir, 220, 1, false)
+		var proj = projectile.instantiate()
 		get_tree().current_scene.add_child(proj)
+		proj.init(global_position, dir, 220, 1, false)
+		
 
 
 # ---------------- Damage ----------------
 func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
+	healthbar.set_health(current_hp)
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)

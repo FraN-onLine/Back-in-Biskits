@@ -33,16 +33,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd0kd"]
-size = Vector2(6, 8.5)
+size = Vector2(8, 8.5)
 
 [node name="graham_bullet" type="Area2D"]
 script = ExtResource("1_re13g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
-scale = Vector2(0.375, 0.375)
+scale = Vector2(0.40625, 0.40625)
 sprite_frames = SubResource("SpriteFrames_wqw5p")
-frame_progress = 0.873333
+frame_progress = 0.581593
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2.25)

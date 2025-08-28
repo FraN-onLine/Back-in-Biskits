@@ -14,5 +14,7 @@ func _process(delta: float) -> void:
 	timer += delta
 	if timer >= 10.0:
 		timer = 0.0
-		if potency <= 5:
+		if potency < 3:
 			potency += 1
+		elif potency == 3:
+			lives -= 1

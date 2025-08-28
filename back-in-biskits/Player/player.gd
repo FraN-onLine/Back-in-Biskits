@@ -10,6 +10,7 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 
 var can_attack: bool = true
 var current_attack: String = "basic"
+var cookie_potency = 1
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
 
@@ -110,7 +111,7 @@ func graham_attack() -> void:
 
 	var mouse_pos = get_global_mouse_position()
 	var base_dir = (mouse_pos - global_position).normalized()
-	var potency = Global.potency
+	var potency = cookie_potency
 
 	match potency:
 		1:
@@ -118,7 +119,7 @@ func graham_attack() -> void:
 		2:
 			# front + back
 			_spawn_graham(global_position, base_dir, 12.5)
-			_spawn_graham(global_position, -base_dir, 12.5)
+			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(30)), 12.5)
 		_:
 			# potency 3+
 			_spawn_graham(global_position, base_dir, 15.0)
@@ -134,17 +135,14 @@ func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
 # ---------------- Cookie Pickup ----------------
 func pickup_cookie(cookie_type: String) -> void:
 	current_attack = cookie_type
-	print("Picked up cookie! Attack changed to: %s" % cookie_type)
-	match cookie_type:
-		"lion_cracker":
-			pass
-		"fire_cookie":
-			anim.modulate = Color(1, 0.5, 0.5)  # light red
-		"ice_cookie":
-			anim.modulate = Color(0.5, 0.8, 1)  # light blue
-	
+	print("Picked up cookie! Attack changed to: %s: %d" % [cookie_type, cookie_potency])
+	cookie_potency = Global.potency
+	await get_tree().create_timer(0.1).timeout
+	if Global.potency > 1:
+		Global.potency -= 1
 
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D) -> void:
+	display_name = display_name + " %d" % Global.potency
 	var popup = PopupScene.instantiate()
 	add_child(popup)  # attach popup to player so it follows them
 	popup.setup(display_name, icon_tex)

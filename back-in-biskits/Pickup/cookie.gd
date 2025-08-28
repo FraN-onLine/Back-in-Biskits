@@ -59,6 +59,7 @@ func _update_sprite_region() -> void:
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("pickup_cookie"):
 		body.pickup_cookie(cookie_type)
+		queue_free()
 
 	var display_icon = icon_texture
 	if display_icon == null and atlas_texture:
@@ -70,4 +71,4 @@ func _on_body_entered(body: Node) -> void:
 	if body.has_method("show_cookie_pickup"):
 		body.show_cookie_pickup(pickup_message, display_icon)
 
-	queue_free()
+	
