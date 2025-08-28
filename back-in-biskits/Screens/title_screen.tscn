@@ -94,14 +94,19 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 76.0
-offset_top = 108.0
-offset_right = -209.0
-offset_bottom = -424.0
-scale = Vector2(1.20026, 1.00207)
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 280.0
+offset_bottom = -402.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.825941, 1.00207)
 theme_override_fonts/font = ExtResource("2_28co4")
 theme_override_font_sizes/font_size = 90
-text = "BACK IN BISKITS"
+text = "BACK IN BISKITS
+(HIGH QUALITY TITLE CARD)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect" type="ColorRect" parent="."]
 z_index = -1
@@ -110,3 +115,4 @@ offset_right = 1186.0
 offset_bottom = 665.0
 mouse_filter = 2
 color = Color(0.680275, 0.53353, 0.452245, 1)
+metadata/_edit_lock_ = true
