@@ -111,12 +111,12 @@ theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "Potency: "
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 744.0
-offset_top = 106.0
-offset_right = 1130.0
-offset_bottom = 129.0
+offset_left = 912.0
+offset_top = 105.0
+offset_right = 1298.0
+offset_bottom = 128.0
 theme_override_fonts/font = ExtResource("3_q0uhn")
-text = "CALICO-COOKIE CAT (PLACEHOLDER)"
+text = "CALICO-COOKIE CAT "
 
 [node name="Healthbar" parent="." instance=ExtResource("5_f1fl4")]
 offset_left = 751.0

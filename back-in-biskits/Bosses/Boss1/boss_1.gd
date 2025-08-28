@@ -101,7 +101,7 @@ func shoot_standard() -> void:
 func shoot_homing() -> void:
 	var proj = projectile.instantiate()
 	get_tree().current_scene.add_child(proj)
-	proj.init(global_position, Vector2.ZERO, 176, 1, true) # homing
+	proj.init(global_position, Vector2.ZERO, 184, 1, true) # homing
 	
 
 

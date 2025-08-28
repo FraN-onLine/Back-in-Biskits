@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 		blink = false
 	if Global.potency == 3 and Global.timer >= 9.5:
 		$PotencyRect.modulate = Color(1, 1, 1)
-		
+	if Global.lives == 0:
+		$TextureRect.visible = false
 		
 	

@@ -4,11 +4,12 @@ class_name Player
 var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 
 @export var speed: float = 200.0
-@export var attack_cooldown: float = 0.5
+@export var attack_cooldown: float = 0.6
 @export var graham_bullet: PackedScene
 var can_attack: bool = true
 var current_attack: String = "basic"
 var cookie_potency = 1
+var dead = false
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
 @onready var swordanim = $AnimatedSprite2D
@@ -30,6 +31,7 @@ func _process(delta: float) -> void:
 
 # ---------------- Movement ----------------
 func handle_movement(delta: float) -> void:
+	if dead: return
 	var input_dir = Vector2.ZERO
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -51,7 +53,11 @@ func handle_movement(delta: float) -> void:
 		# Flip horizontally if moving right
 		if input_dir.x != 0:
 			anim.flip_h = input_dir.x > 0
-
+			swordanim.flip_h = input_dir.x > 0
+		var shape = $LionCrackerSword/CollisionShape2D
+		var pos = shape.position
+		pos.x = abs(pos.x) * (-1 if input_dir.x < 0 else 1)
+		shape.position = pos
 
 
 # ---------------- Attacks ----------------
@@ -84,19 +90,23 @@ func take_damage(amount: int = 1) -> void:
 func die() -> void:
 	print("💀 Player died")
 	emit_signal("player_died")
-	queue_free()  # remove player (or play animation first)
+	anim.modulate = Color(1, 0.5, 0.5)
+	dead = true
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://Screens/title_screen.tscn")
 
 
 # -------------- Various Attacks ----------------
 
 
 func sword_attack() -> void:
+	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20
 	var sword = $LionCrackerSword
 	swordanim.visible = true
 	sword.monitoring = true
 	sword.visible = true
 	swordanim.play("attack")
-	await anim.animation_finished
+	await swordanim.animation_finished
 	sword.monitoring = false
 	sword.visible = false
 	swordanim.visible = false
@@ -110,14 +120,14 @@ func graham_attack() -> void:
 
 	match potency:
 		1:
-			_spawn_graham(global_position, base_dir, 10.0)
+			_spawn_graham(global_position, base_dir, 7.5)
 		2:
 			# front + back
-			_spawn_graham(global_position, base_dir, 12.5)
+			_spawn_graham(global_position, base_dir, 10)
 			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(30)), 12.5)
 		_:
 			# potency 3+
-			_spawn_graham(global_position, base_dir, 15.0)
+			_spawn_graham(global_position, base_dir, 12.5)
 			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(30)), 15.0)
 			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(-30)), 15.0)
 

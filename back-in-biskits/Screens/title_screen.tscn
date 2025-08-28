@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6l777w1uox7m"]
+
+[ext_resource type="Script" uid="uid://cquel1gyflwcr" path="res://Screens/title_screen.gd" id="1_curwl"]
+[ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_28co4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dc4i4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_curwl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -177.5
+offset_right = 162.0
+offset_bottom = 177.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer1" type="Control" parent="VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Start Game"
+
+[node name="InstructionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Instruction
+"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Settings
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Quit Game"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+volume_db = 24.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = -2
+position = Vector2(597.5, 400.5)
+scale = Vector2(0.250208, 0.251563)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 108.0
+offset_right = -209.0
+offset_bottom = -424.0
+scale = Vector2(1.20026, 1.00207)
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 90
+text = "BACK IN BISKITS"
+
+[node name="TextureRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 1186.0
+offset_bottom = 665.0
+mouse_filter = 2
+color = Color(0.680275, 0.53353, 0.452245, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=43 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
@@ -212,54 +212,6 @@ region = Rect2(448, 0, 64, 64)
 atlas = ExtResource("4_gwnis")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c6x0f"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jp1hh"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qs4pp"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(192, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iyprq"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(256, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f4lon"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(320, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ynux"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(384, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d30e8"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(448, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6pogt"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie76m"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dy65m"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_maysp"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
-atlas = ExtResource("4_gwnis")
-region = Rect2(256, 128, 64, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_8viyr"]
 animations = [{
 "frames": [{
@@ -301,42 +253,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j2n6q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c6x0f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jp1hh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qs4pp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iyprq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f4lon")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ynux")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d30e8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6pogt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ie76m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dy65m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_maysp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1l10g")
 }],
 "loop": false,
 "name": &"attack",
@@ -346,7 +262,7 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_gwnis"]
 script/source = "extends Area2D
 
-@export var damage: int = 1
+@export var damage: int = 20
 
 func _ready():
 	monitoring = false
@@ -359,7 +275,7 @@ func _on_body_entered(body):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rl0i"]
-size = Vector2(38, 50.5)
+size = Vector2(38, 35.25)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")
@@ -376,7 +292,7 @@ position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
 animation = &"walk"
-frame_progress = 0.932785
+frame_progress = 0.0704291
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -384,7 +300,7 @@ position = Vector2(-6, 1)
 scale = Vector2(0.640625, 0.75)
 sprite_frames = SubResource("SpriteFrames_8viyr")
 animation = &"attack"
-frame = 24
+frame = 12
 frame_progress = 1.0
 
 [node name="LionCrackerSword" type="Area2D" parent="."]
@@ -392,6 +308,6 @@ modulate = Color(1, 1, 1, 0)
 script = SubResource("GDScript_gwnis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword"]
-position = Vector2(-25, -11)
+position = Vector2(-25, -3.375)
 shape = SubResource("RectangleShape2D_6rl0i")
 debug_color = Color(0.745312, 0.378077, 0.693413, 0.42)

@@ -24,7 +24,7 @@ func spawn_cookie() -> void:
 		return
 
 	# Filter cookies based on Global.Potency
-	var valid = []
+	var valid: Array[Cookie] = []
 	for c in possible_cookies:
 		if Global.potency >= c.min_potency:
 			valid.append(c)
@@ -32,23 +32,38 @@ func spawn_cookie() -> void:
 	if valid.is_empty():
 		return
 
-	# Pick a random cookie resource
-	var chosen: Cookie = valid.pick_random()
-
 	# Instance a CookiePickup scene
 	var cookie = cookie_scene.instantiate()
-	cookie.cookie = chosen   # assign resource to cookie
-	add_child(cookie)
+	cookie.cookie = valid.pick_random()
 
-	# Pick a random spawn point (Marker2D child)
+	# Get spawn points (Marker2Ds)
 	var spawn_points = get_children().filter(func(n): return n is Marker2D)
 	if spawn_points.is_empty():
 		cookie.queue_free()
 		return
 
-	var spot: Marker2D = spawn_points.pick_random()
-	cookie.global_position = spot.global_position
+	# Shuffle spawn points so it tries random ones until it finds a free spot
+	spawn_points.shuffle()
 
-	# Track active cookies
-	_active_cookies.append(cookie)
-	cookie.tree_exited.connect(func(): _active_cookies.erase(cookie))
+	var placed := false
+	for spot in spawn_points:
+		var spot_pos: Vector2 = spot.global_position
+		var too_close := false
+
+		for existing in _active_cookies:
+			if existing.global_position.distance_to(spot_pos) < 10:
+				too_close = true
+				break
+
+		if not too_close:
+			# Found a free spot → place cookie here
+			add_child(cookie)
+			cookie.global_position = spot_pos
+			_active_cookies.append(cookie)
+			cookie.tree_exited.connect(func(): _active_cookies.erase(cookie))
+			placed = true
+			break
+
+	# If no spot was valid, discard the cookie
+	if not placed:
+		cookie.queue_free()
