@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=26 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://cyeyap1gpibg8" path="res://Player/Weapons/graham_bullet.tscn" id="2_btcbx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
 
@@ -160,12 +161,13 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")
+graham_bullet = ExtResource("2_btcbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hvfyp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(3.5, 3.5)
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)

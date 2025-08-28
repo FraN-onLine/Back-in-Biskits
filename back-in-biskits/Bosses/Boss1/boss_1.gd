@@ -115,7 +115,9 @@ func radial_burst() -> void:
 func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
-
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
+	await get_tree().create_timer(0.1).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 	if current_hp <= 0:
 		die()
 

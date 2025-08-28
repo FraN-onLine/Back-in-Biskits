@@ -19,10 +19,15 @@ config/icon="res://icon.svg"
 
 Global="*res://Globals/global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 player=""
 walls=""
+enemy=""
 
 [input]
 

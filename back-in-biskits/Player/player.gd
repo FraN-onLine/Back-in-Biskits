@@ -5,8 +5,8 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.5
-@export var max_hp: int = 5   # max health
-var current_hp: int
+@export var graham_bullet: PackedScene
+
 
 var can_attack: bool = true
 var current_attack: String = "basic"
@@ -18,8 +18,7 @@ signal player_died
 
 
 func _ready() -> void:
-	current_hp = max_hp
-	emit_signal("health_changed", current_hp)
+	Global.lives = 5
 
 
 func _process(delta: float) -> void:
@@ -62,6 +61,8 @@ func perform_attack() -> void:
 	match current_attack:
 		"lion_cracker":
 			sword_attack()
+		"graham":
+			graham_attack()
 		"fire_cookie":
 			fire_attack()
 		"ice_cookie":
@@ -69,6 +70,28 @@ func perform_attack() -> void:
 
 	await get_tree().create_timer(attack_cooldown).timeout
 	can_attack = true
+
+
+
+
+# ---------------- Damage & HP ----------------
+func take_damage(amount: int = 1) -> void:
+	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
+	await get_tree().create_timer(0.1).timeout
+	$Sprite2D.modulate = Color(1, 1, 1)
+	print("Player took damage! HP = %d" % Global.lives)
+	Global.lives -= amount
+	if Global.lives <= 0:
+		die()
+
+
+func die() -> void:
+	print("💀 Player died")
+	emit_signal("player_died")
+	queue_free()  # remove player (or play animation first)
+
+
+# -------------- Various Attacks ----------------
 
 
 func sword_attack() -> void:
@@ -81,23 +104,31 @@ func fire_attack() -> void:
 
 func ice_attack() -> void:
 	print("❄ Ice Blast!")
+	
+func graham_attack() -> void:
+	if not graham_bullet: return
 
+	var mouse_pos = get_global_mouse_position()
+	var base_dir = (mouse_pos - global_position).normalized()
+	var potency = Global.potency
 
-# ---------------- Damage & HP ----------------
-func take_damage(amount: int = 1) -> void:
-	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
-	await get_tree().create_timer(0.1).timeout
-	$Sprite2D.modulate = Color(1, 1, 1)
-	print("Player took damage! HP = %d" % current_hp)
-	Global.lives -= amount
-	if current_hp <= 0:
-		die()
+	match potency:
+		1:
+			_spawn_graham(global_position, base_dir, 10.0)
+		2:
+			# front + back
+			_spawn_graham(global_position, base_dir, 12.5)
+			_spawn_graham(global_position, -base_dir, 12.5)
+		_:
+			# potency 3+
+			_spawn_graham(global_position, base_dir, 15.0)
+			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(30)), 15.0)
+			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(-30)), 15.0)
 
-
-func die() -> void:
-	print("💀 Player died")
-	emit_signal("player_died")
-	queue_free()  # remove player (or play animation first)
+func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
+	var b = graham_bullet.instantiate()
+	get_tree().current_scene.add_child(b)
+	b.init(pos, dir, dmg)
 
 
 # ---------------- Cookie Pickup ----------------

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Cookie" load_steps=4 format=3 uid="uid://b0p6lil6cwypp"]
+
+[ext_resource type="Texture2D" uid="uid://d0lkxrl5ego7l" path="res://Assets/Cookies/PistachioCookie-Sheet.png" id="1_iigw6"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="1_rrtbv"]
+[ext_resource type="Texture2D" uid="uid://by7hygdo56agm" path="res://Assets/Cookies/Hammer.png" id="2_du4f5"]
+
+[resource]
+script = ExtResource("1_rrtbv")
+cookie_type = "pistachio_cookie"
+cookie_name = "Pistachio Cookie"
+atlas_texture = ExtResource("1_iigw6")
+icon_texture = ExtResource("2_du4f5")
+min_potency = 2
+pickup_message = "Hammer Strike"
+metadata/_custom_type_script = "uid://dq108u8j1agm8"
