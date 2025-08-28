@@ -6,8 +6,6 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.5
 @export var graham_bullet: PackedScene
-
-
 var can_attack: bool = true
 var current_attack: String = "basic"
 var cookie_potency = 1
@@ -96,7 +94,22 @@ func die() -> void:
 
 
 func sword_attack() -> void:
-	print("Slash")
+	print("Sword attack called!")  # Debug line
+	var sword = $LionCrackerSword  # Reference to child node
+	if sword:
+		print("Sword node found!")  # Debug line
+		if sword.has_method("perform_swing"):
+			print("perform_swing method found!")  # Debug line
+			sword.perform_swing(cookie_potency)
+		else:
+			print("perform_swing method NOT found!")  # Debug line
+	else:
+		print("Sword node NOT found!")  # Debug line
+		
+#func spawn_sword(pos: Vector2, dir: Vector2, dmg: float) -> void:
+	#var sword = lion_cracker_sword.instantiate()
+	#get_tree().current_scene.add_child(sword)
+	#sword.init(pos, dir, dmg)
 
 
 func fire_attack() -> void:

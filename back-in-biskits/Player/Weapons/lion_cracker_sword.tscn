@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3unwvvnpwkv2"]
+
+[ext_resource type="Texture2D" uid="uid://dnkrwt0b3kkrk" path="res://Assets/Player/Sword Attack.png" id="2_wg27y"]
+
+[sub_resource type="GDScript" id="GDScript_7g88t"]
+script/source = "extends Area2D
+class_name LionCrackerSword
+
+var damage: float = 25.0
+var swing_duration: float = 0.4
+var swing_range: float = 80.0
+var swing_arc: float = PI/2  # 90 degree arc
+var base_direction: Vector2
+
+func _ready() -> void:
+	# Connect collision signal
+	body_entered.connect(_on_body_entered)
+
+func init(start_pos: Vector2, dir: Vector2, dmg: float) -> void:
+	global_position = start_pos
+	base_direction = dir.normalized()
+	damage = dmg
+	
+	# Position the sword slightly in front of player
+	global_position += base_direction * 30
+	
+	# Start the swing animation
+	swing()
+
+func swing() -> void:
+	# Start angle (to the left of target direction)
+	var start_angle = base_direction.angle() - swing_arc/2
+	# End angle (to the right of target direction) 
+	var end_angle = base_direction.angle() + swing_arc/2
+	
+	rotation = start_angle
+	
+	# Animate the swing
+	var tween = create_tween()
+	tween.tween_property(self, \"rotation\", end_angle, swing_duration)
+	tween.tween_callback(func(): queue_free())  # Remove after swing
+
+func _on_body_entered(body: Node) -> void:
+	if body.is_in_group(\"enemy\"):
+		if body.has_method(\"take_damage\"):
+			body.take_damage(damage)
+	# Note: Sword doesn't destroy on hit, can hit multiple enemies
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg27y"]
+atlas = ExtResource("2_wg27y")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utkh8"]
+atlas = ExtResource("2_wg27y")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as8vq"]
+atlas = ExtResource("2_wg27y")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe5o5"]
+atlas = ExtResource("2_wg27y")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nx36k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg27y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utkh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as8vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe5o5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ng378"]
+radius = 28.0
+height = 56.0
+
+[node name="LionCrackerSword" type="Area2D"]
+script = SubResource("GDScript_7g88t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nx36k")
+frame_progress = 0.710471
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_ng378")

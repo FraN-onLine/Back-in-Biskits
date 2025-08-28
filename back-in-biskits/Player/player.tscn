@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=34 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://cyeyap1gpibg8" path="res://Player/Weapons/graham_bullet.tscn" id="2_btcbx"]
+[ext_resource type="Texture2D" uid="uid://dnkrwt0b3kkrk" path="res://Assets/Player/Sword Attack.png" id="4_gwnis"]
+[ext_resource type="Script" uid="uid://br6f220nl5lu" path="res://Player/lion_cracker_sword.gd" id="4_k53q1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
 
@@ -159,6 +161,45 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hshwv"]
+atlas = ExtResource("4_gwnis")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjlu"]
+atlas = ExtResource("4_gwnis")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mwp6"]
+atlas = ExtResource("4_gwnis")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qemgg"]
+atlas = ExtResource("4_gwnis")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8viyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hshwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpjlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mwp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qemgg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm0op"]
+size = Vector2(21.5, 32.75)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")
 graham_bullet = ExtResource("2_btcbx")
@@ -175,3 +216,17 @@ scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
 animation = &"walk"
 frame_progress = 0.388392
+
+[node name="LionCrackerSword" type="Area2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+script = ExtResource("4_k53q1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LionCrackerSword"]
+position = Vector2(-8, -2)
+scale = Vector2(0.640625, 0.75)
+sprite_frames = SubResource("SpriteFrames_8viyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword"]
+position = Vector2(-18.25, -1)
+shape = SubResource("RectangleShape2D_sm0op")
+disabled = true
