@@ -1,6 +1,7 @@
 extends Node
 
 var lives = 5
+var shield = 0
 var potency = 1
 var timer = 0.0
 

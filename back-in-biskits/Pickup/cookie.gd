@@ -30,6 +30,7 @@ func _ready() -> void:
 		min_potency = cookie.min_potency
 		pickup_message = cookie.pickup_message
 		sprite.region_rect = Rect2(0, 0,frame_w, frame_h)
+		
 	if atlas_texture:
 		sprite.texture = atlas_texture
 		sprite.region_enabled = true
@@ -58,7 +59,7 @@ func _update_sprite_region() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("pickup_cookie"):
-		body.pickup_cookie(cookie_type)
+		body.pickup_cookie(cookie_type, cookie.attack_cooldown)
 		queue_free()
 
 	var display_icon = icon_texture
@@ -69,6 +70,6 @@ func _on_body_entered(body: Node) -> void:
 		display_icon = at
 
 	if body.has_method("show_cookie_pickup"):
-		body.show_cookie_pickup(pickup_message, display_icon)
+		body.show_cookie_pickup(pickup_message, display_icon, min_potency)
 
 	

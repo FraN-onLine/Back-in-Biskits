@@ -1,11 +1,85 @@
-[gd_scene load_steps=43 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=64 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://cyeyap1gpibg8" path="res://Player/Weapons/graham_bullet.tscn" id="2_btcbx"]
+[ext_resource type="Texture2D" uid="uid://2rsoh08rb8ft" path="res://Assets/Player/Death Animation.png" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://cplcdpcmasd5f" path="res://Assets/Player/Sword Attack.png" id="4_gwnis"]
+[ext_resource type="Texture2D" uid="uid://dn1wgo4yf3vf5" path="res://Assets/Player/Shield.png" id="6_fhl08"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6x0f"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jp1hh"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs4pp"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyprq"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4lon"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ynux"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d30e8"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pogt"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie76m"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dy65m"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_maysp"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l10g"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rl0i"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x5p2"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eb1q"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvbyc"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvnt1"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kmt7"]
+atlas = ExtResource("3_k53q1")
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_btcbx"]
 atlas = ExtResource("2_4ntmi")
@@ -91,6 +165,68 @@ region = Rect2(66, 132, 66, 66)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_c6x0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jp1hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs4pp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyprq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4lon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ynux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d30e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pogt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie76m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dy65m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_maysp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l10g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rl0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x5p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eb1q")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_wvbyc")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_gvnt1")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_1kmt7")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"dead",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_btcbx")
 }, {
 "duration": 1.0,
@@ -158,6 +294,11 @@ animations = [{
 "loop": true,
 "name": &"walk",
 "speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"yoyoattack",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hshwv"]
@@ -212,6 +353,10 @@ region = Rect2(448, 0, 64, 64)
 atlas = ExtResource("4_gwnis")
 region = Rect2(0, 64, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4i3b"]
+atlas = ExtResource("4_gwnis")
+region = Rect2(384, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8viyr"]
 animations = [{
 "frames": [{
@@ -257,6 +402,14 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 13.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4i3b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_gwnis"]
@@ -291,17 +444,15 @@ zoom = Vector2(3.5, 3.5)
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
-animation = &"walk"
-frame_progress = 0.0704291
+animation = &"dead"
+frame = 18
+frame_progress = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(-6, 1)
 scale = Vector2(0.640625, 0.75)
 sprite_frames = SubResource("SpriteFrames_8viyr")
-animation = &"attack"
-frame = 12
-frame_progress = 1.0
 
 [node name="LionCrackerSword" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -311,3 +462,8 @@ script = SubResource("GDScript_gwnis")
 position = Vector2(-25, -3.375)
 shape = SubResource("RectangleShape2D_6rl0i")
 debug_color = Color(0.745312, 0.378077, 0.693413, 0.42)
+
+[node name="Shield" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.694118)
+texture = ExtResource("6_fhl08")

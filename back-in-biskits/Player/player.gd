@@ -23,10 +23,16 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if dead: return
 	handle_movement(delta)
 
 	if Input.is_action_just_pressed("attack") and can_attack:
 		perform_attack()
+		
+	if current_attack == "lion_cracker":
+		swordanim.visible = true
+	else:
+		swordanim.visible = false
 
 
 # ---------------- Movement ----------------
@@ -52,6 +58,7 @@ func handle_movement(delta: float) -> void:
 
 		# Flip horizontally if moving right
 		if input_dir.x != 0:
+			$Shield.flip_h = input_dir.x > 0
 			anim.flip_h = input_dir.x > 0
 			swordanim.flip_h = input_dir.x > 0
 		var shape = $LionCrackerSword/CollisionShape2D
@@ -92,9 +99,12 @@ func take_damage(amount: int = 1) -> void:
 func die() -> void:
 	print("💀 Player died")
 	emit_signal("player_died")
-	anim.modulate = Color(1, 0.5, 0.5)
+	anim.play("dead")
 	dead = true
-	await get_tree().create_timer(1.0).timeout
+	$AnimatedSprite2D.visible = false
+	await anim.animation_finished
+	#wait 0.5 sec then go to title screen
+	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Screens/title_screen.tscn")
 
 
@@ -104,14 +114,12 @@ func die() -> void:
 func sword_attack() -> void: #this is the revamped sword att
 	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20 #set damage based on potency, its math
 	var sword = $LionCrackerSword #on attack it will be vis and monitoring
-	swordanim.visible = true
 	sword.monitoring = true
 	sword.visible = true
 	swordanim.play("attack")
 	await swordanim.animation_finished
 	sword.monitoring = false
-	sword.visible = false
-	swordanim.visible = false
+	swordanim.play("default")
 	
 func graham_attack() -> void:
 	if not graham_bullet: return
@@ -154,25 +162,30 @@ func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
 func yoyo_attack():
 	pass
 	#ye, but get creative
-# ---------------- Cookie Pickup ----------------
-func pickup_cookie(cookie_type: String) -> void:
-	if Global.potency == 0: return
+# ---------------- Cookies Pickup ----------------
+func pickup_cookie(cookie_type: String, atkcd) -> void:
+	if Global.potency == 0: 
+		current_attack = "void"
+		return
+	if cookie_type == "cookie_cat":
+		Global.shield = Global.potency - 1
 	current_attack = cookie_type
+	attack_cooldown = atkcd
 	print("Picked up cookie! Attack changed to: %s: %d" % [cookie_type, cookie_potency])
 	cookie_potency = Global.potency
 	await get_tree().create_timer(0.1).timeout
 	if Global.potency > 0:
 		Global.potency -= 1
 
-func show_cookie_pickup(display_name: String, icon_tex: Texture2D) -> void:
+func show_cookie_pickup(display_name: String, icon_tex: Texture2D, min_potency) -> void:
 	if Global.potency == 0:
 		display_name = "Cookie Void"
 	else:
-		display_name = display_name + " %d" % Global.potency
+		display_name = display_name + " %d" % ((Global.potency - ((min_potency if min_potency > 1 else 1)) + 1))
 	var popup = PopupScene.instantiate()
 	add_child(popup)  # attach popup to player so it follows them
 	popup.setup(display_name, icon_tex)
 
 
 
-#no, this one too
+#no, this one too, this is how i manage github + godot so well

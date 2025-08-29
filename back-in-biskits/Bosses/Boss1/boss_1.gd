@@ -82,13 +82,14 @@ func _on_attack_timeout() -> void:
 		else:
 			shoot_homing()
 	else:
+		attack_interval = 1.5 #faster attacks
 		# Still does normal attacks, but also radial burst at 100 hp
 		if radial_used == false:
 			radial_used = true
 			radial_burst()
 		else:
 			shoot_standard()
-		if current_hp < 101 and current_hp > 80:
+		if current_hp < 101 and current_hp > 50:
 			radial_used = false
 
 func shoot_standard() -> void:

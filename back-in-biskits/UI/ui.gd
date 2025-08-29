@@ -23,3 +23,38 @@ func _process(delta: float) -> void:
 		# so dont eat too much or else ull suffer doing nothing
 		
 	
+#ok push ko 9:50, by then everything should be done na necessary for yall to build on
+#bosses 2-4
+#UI
+#title screen, death screen, proceed to next stage on boss defeat
+#sound effects
+#weapons
+#lots and lots of weapons and polish
+#lol copilot thinks thats it
+#and maybe a main menu (copilot said so) these are srs, i want a movie adaptation, til tutorial screen pero like prototype,
+# maybe tutorial stage kung gusto niyo, yes meron per boss lang nacode ko so....
+# oh and wait i forgot what i was gonna say, ah yes layout niyo yung stages 3-4 w/ tilemaps (Tilemap Layer btw not TileMap) ginamit kasi sa raniag
+# nowp, ask reign and cass, reign, ask reign, ok thats it, ss mo til vr mode (copilot said so)
+#and a pause menu (copilot said so)
+#and a credits screen (copilot said so)
+#and a tutorial screen (copilot said so)
+#and a settings menu (copilot said so)
+#and a high score screen (copilot said so)
+#and a level select screen (copilot said so)
+#and a save/load system (copilot said so)
+#and a multiplayer mode (copilot said so)
+#and a level editor (copilot said so)
+#and a modding API (copilot said so)
+#and a steam workshop integration (copilot said so)
+#and a VR mode (copilot said so)
+#and a mobile port (copilot said so)
+#and a console port (copilot said so)
+#and a sequel (copilot said so)
+#and a prequel (copilot said so)
+#and a spin-off (copilot said so)
+#and a movie adaptation (copilot said so)
+#and a TV series adaptation (copilot said so)
+#and a comic book adaptation (copilot said so)
+#and a novel adaptation (copilot said so)
+#and a board game adaptation (copilot said so)
+#and a card game adaptation (copilot said so)
