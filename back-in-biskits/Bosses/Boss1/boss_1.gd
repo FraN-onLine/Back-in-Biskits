@@ -7,7 +7,7 @@ var current_hp: int
 @export var projectile: PackedScene
 var radial_used: bool = false
 
-@export var attack_interval: float = 2.0   # seconds between attacks
+@export var attack_interval: float = 2.0 # seconds between attacks
 var attack_timer: Timer
 
 var player: Node2D
@@ -20,6 +20,8 @@ signal boss_died
 
 
 func _ready() -> void:
+	# Add this boss to the bosses group for waypoint tracking
+	add_to_group("bosses")
 	healthbar = $"../UI".get_node("Healthbar")
 	healthbar.init_health(max_hp)
 	current_hp = max_hp
@@ -68,9 +70,7 @@ func _set_new_hover_target() -> void:
 	# Keep consistent offset above player for a while
 	var offset = Vector2(rng.randf_range(-80, 80), -100)
 	hover_target = player.global_position + offset
-	hover_update_timer = 1.5   # update every 1.5s
-
-
+	hover_update_timer = 1.5 # update every 1.5s
 
 
 # ---------------- Attacks ----------------
@@ -82,7 +82,7 @@ func _on_attack_timeout() -> void:
 		else:
 			shoot_homing()
 	else:
-		attack_interval = 1.5 #faster attacks
+		attack_interval = 1.5 # faster attacks
 		# Still does normal attacks, but also radial burst at 100 hp
 		if radial_used == false:
 			radial_used = true
@@ -99,13 +99,11 @@ func shoot_standard() -> void:
 	proj.init(global_position, dir, 210, 1, false) # speed, damage, not homing
 	
 
-
 func shoot_homing() -> void:
 	var proj = projectile.instantiate()
 	get_tree().current_scene.add_child(proj)
 	proj.init(global_position, Vector2.ZERO, 184, 1, true) # homing
 	
-
 
 func radial_burst() -> void:
 	var count = 16
@@ -117,13 +115,12 @@ func radial_burst() -> void:
 		proj.init(global_position, dir, 220, 1, false)
 		
 
-
 # ---------------- Damage ----------------
 func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
 	healthbar.set_health(current_hp)
-	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5) # flash red
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 	if current_hp <= 0:

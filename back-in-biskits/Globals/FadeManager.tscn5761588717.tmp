@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://6vh3jr2yorhg"]
+
+[sub_resource type="GDScript" id="GDScript_rihmp"]
+script/source = "extends CanvasLayer
+
+@onready var fade_rect = $FadeRect
+@onready var anim = $AnimationPlayer
+
+func fade_out_then_change_scene(scene_path):
+	anim.play(\"fade_out\")
+	anim.animation_finished.connect(
+		func(anim_name):
+			if anim_name == \"fade_out\":
+				get_tree().change_scene_to_file(\"res://Areas/tutorial.tscn\")
+				anim.play(\"fade_in\")
+	)
+"
+
+[sub_resource type="Animation" id="Animation_x7vv7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_864w8"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.133333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2nt6h"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.882353)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8dr7"]
+_data = {
+&"RESET": SubResource("Animation_x7vv7"),
+&"fade_in": SubResource("Animation_864w8"),
+&"fade_out": SubResource("Animation_2nt6h")
+}
+
+[node name="FadeManager" type="CanvasLayer"]
+script = SubResource("GDScript_rihmp")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_d8dr7")
+}

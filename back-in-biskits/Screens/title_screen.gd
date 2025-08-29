@@ -13,10 +13,9 @@ func _ready():
 	quit_button.pressed.connect(_on_quit_pressed)
 
 func _on_start_pressed():
-	# Load the main game scene
-	get_tree().change_scene_to_file("res://Areas/area_1.tscn")
 	Global.potency = 1
 	Global.timer = 0
+	FadeManager.fade_out_then_change_scene("res://Areas/tutorial.tscn")
 
 func _on_instructions_pressed():
 	# Show instructions dialog
