@@ -1,29 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2hxhom57jt5v"]
+[gd_scene load_steps=7 format=3 uid="uid://c2hxhom57jt5v"]
 
-[ext_resource type="Texture2D" uid="uid://bv5ekjo0jxik7" path="res://Assets/UI Elements/Healthbar-Enemy-Sheet.png" id="1_cgcvx"]
+[ext_resource type="Texture2D" uid="uid://bnlggf6ex5x8v" path="res://Assets/UI Elements/mc-hp2.png" id="1_cgcvx"]
 [ext_resource type="Script" uid="uid://cuq1j5r4jjhuw" path="res://UI/Healthbar/Healthbar.gd" id="2_h5p2b"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gccij"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5p2b"]
 atlas = ExtResource("1_cgcvx")
-region = Rect2(0, 0, 96, 32)
+region = Rect2(148, 44, 42, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfxlc"]
 atlas = ExtResource("1_cgcvx")
-region = Rect2(96, 0, 96, 32)
+region = Rect2(20, 12, 42, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojfqp"]
+atlas = ExtResource("1_cgcvx")
+region = Rect2(64, 8, 20, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgcvx"]
+atlas = ExtResource("1_cgcvx")
+region = Rect2(190, 44, 2, 8)
 
 [node name="Healthbar" type="TextureProgressBar"]
 z_index = 1
-offset_right = 56.0
-offset_bottom = 21.0
+offset_left = 25.0
+offset_right = 72.0
+offset_bottom = 18.0
 max_value = 500.0
 value = 92.0
 nine_patch_stretch = true
-texture_under = SubResource("AtlasTexture_gccij")
+texture_under = SubResource("AtlasTexture_h5p2b")
 texture_progress = SubResource("AtlasTexture_tfxlc")
 script = ExtResource("2_h5p2b")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-14, 8.625)
+scale = Vector2(1.4, 2.29688)
+texture = SubResource("AtlasTexture_ojfqp")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(48, 9)
+scale = Vector2(1.4, 2.25)
+texture = SubResource("AtlasTexture_cgcvx")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

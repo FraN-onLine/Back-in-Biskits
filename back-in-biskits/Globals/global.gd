@@ -13,7 +13,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	timer += delta
-	if timer >= 10.0:
+	if timer >= 6.5:
 		timer = 0.0
 		if potency < 3:
 			potency += 1

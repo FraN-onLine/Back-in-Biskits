@@ -33,6 +33,14 @@ func _process(delta: float) -> void:
 		swordanim.visible = true
 	else:
 		swordanim.visible = false
+		
+	if Global.shield >= 1:
+		$Shield.visible = true
+	else:
+		$Shield.visible = false
+		
+	if Global.lives <= 0:
+		die()
 
 
 # ---------------- Movement ----------------
@@ -87,13 +95,18 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 
 # ---------------- Damage & HP ----------------
 func take_damage(amount: int = 1) -> void:
+	if Global.shield >= 1:
+		Global.shield -= 1
+		#make shield more transparent
+		$Shield.modulate = Color(1, 1, 1, 0.3)
+		await get_tree().create_timer(0.1).timeout
+		$Shield.modulate = Color(1, 1, 1, 1)
+		return
 	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color(1, 1, 1)
 	print("Player took damage! HP = %d" % Global.lives)
 	Global.lives -= amount
-	if Global.lives <= 0:
-		die()
 
 
 func die() -> void:
@@ -180,6 +193,8 @@ func pickup_cookie(cookie_type: String, atkcd) -> void:
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D, min_potency) -> void:
 	if Global.potency == 0:
 		display_name = "Cookie Void"
+	elif Global.potency < min_potency:
+		display_name = "Cookie Potent only at >=%d" % min_potency
 	else:
 		display_name = display_name + " %d" % ((Global.potency - ((min_potency if min_potency > 1 else 1)) + 1))
 	var popup = PopupScene.instantiate()
