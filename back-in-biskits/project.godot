@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 player=""
 walls=""
 enemy=""
+boss=""
 
 [input]
 

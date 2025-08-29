@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=67 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
@@ -430,6 +430,44 @@ func _on_body_entered(body):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rl0i"]
 size = Vector2(38, 35.25)
 
+[sub_resource type="Animation" id="Animation_fhl08"]
+resource_name = "new_animation"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2)]
+}
+
+[sub_resource type="Animation" id="Animation_vtle1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_od3ui"]
+_data = {
+&"RESET": SubResource("Animation_vtle1"),
+&"new_animation": SubResource("Animation_fhl08")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")
 graham_bullet = ExtResource("2_btcbx")
@@ -444,9 +482,8 @@ zoom = Vector2(3.5, 3.5)
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
-animation = &"dead"
-frame = 18
-frame_progress = 1.0
+animation = &"walk"
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -464,6 +501,11 @@ shape = SubResource("RectangleShape2D_6rl0i")
 debug_color = Color(0.745312, 0.378077, 0.693413, 0.42)
 
 [node name="Shield" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0.694118)
 texture = ExtResource("6_fhl08")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
+libraries = {
+&"": SubResource("AnimationLibrary_od3ui")
+}
+autoplay = "new_animation"

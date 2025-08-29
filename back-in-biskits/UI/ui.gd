@@ -2,6 +2,8 @@ extends CanvasLayer
 var blink = false
 
 func _process(delta: float) -> void:
+	var boss = get_tree().get_first_node_in_group("boss")
+	$HPLabel.text = "HP: " + str(boss.current_hp) + "/" + str(boss.max_hp)
 	$TextureRect.size.x = Global.lives * 32
 	$Label.text = "Potency: " + str(Global.potency)
 	$PotencyRect.size.x = Global.potency * 32
