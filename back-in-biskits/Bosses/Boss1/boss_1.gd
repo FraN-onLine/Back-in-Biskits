@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name CookieBoss
 
 @export var speed: float = 120.0
-@export var max_hp: int = 360
+@export var max_hp: int = 500
 var current_hp: int
 @export var projectile: PackedScene
 var radial_used: bool = false
@@ -75,7 +75,7 @@ func _set_new_hover_target() -> void:
 
 # ---------------- Attacks ----------------
 func _on_attack_timeout() -> void:
-	if current_hp > 180:
+	if current_hp > 250:
 		# Randomly choose projectile type
 		if rng.randi_range(0, 1) == 0:
 			shoot_standard()
@@ -88,7 +88,8 @@ func _on_attack_timeout() -> void:
 			radial_burst()
 		else:
 			shoot_standard()
-
+		if current_hp < 101 and current_hp > 80:
+			radial_used = false
 
 func shoot_standard() -> void:
 	var dir = (player.global_position - global_position).normalized()

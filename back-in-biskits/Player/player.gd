@@ -61,17 +61,19 @@ func handle_movement(delta: float) -> void:
 
 
 # ---------------- Attacks ----------------
-func perform_attack() -> void:
+func perform_attack() -> void: #when mouse clicked read cookie type
 	can_attack = false
-
-	match current_attack:
+#i pupush ko to w comments later btw
+	match current_attack: #depends on what was picked up last
 		"lion_cracker":
 			sword_attack()
 		"graham":
 			graham_attack()
+		"macaroon":
+			yoyo_attack()
 
-	await get_tree().create_timer(attack_cooldown).timeout
-	can_attack = true
+	await get_tree().create_timer(attack_cooldown).timeout #attack cooldown
+	can_attack = true #so u can attack obv...
 
 
 
@@ -99,9 +101,9 @@ func die() -> void:
 # -------------- Various Attacks ----------------
 
 
-func sword_attack() -> void:
-	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20
-	var sword = $LionCrackerSword
+func sword_attack() -> void: #this is the revamped sword att
+	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20 #set damage based on potency, its math
+	var sword = $LionCrackerSword #on attack it will be vis and monitoring
 	swordanim.visible = true
 	sword.monitoring = true
 	sword.visible = true
@@ -113,16 +115,27 @@ func sword_attack() -> void:
 	
 func graham_attack() -> void:
 	if not graham_bullet: return
-
-	var mouse_pos = get_global_mouse_position()
+	#await is to wait for an event to finish, e.g. animation or timer
+	var mouse_pos = get_global_mouse_position() #get where cursor was
 	var base_dir = (mouse_pos - global_position).normalized()
 	var potency = cookie_potency
 
+	#potency is a word that means how strong something is
+	#the longer you dont eat, the food becomes more potent
+	#more powerful
+	#too potent it will hurt you
+	#eat -= 1 potency
+	#bcuz u less hungry
+	#yes thats potency, not hunger
+	#potency is a term for medicine lols
+	#because yknow if u take meds its more potent if u fuckin sck af and refuses to take shit from doctors
+	#shoot based on potency
 	match potency:
+		#amt based on potency, 1 2 3 shots
 		1:
 			_spawn_graham(global_position, base_dir, 7.5)
 		2:
-			# front + back
+			# front + 30 deg
 			_spawn_graham(global_position, base_dir, 10)
 			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(30)), 12.5)
 		_:
@@ -132,22 +145,34 @@ func graham_attack() -> void:
 			_spawn_graham(global_position, base_dir.rotated(deg_to_rad(-30)), 15.0)
 
 func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
-	var b = graham_bullet.instantiate()
+	#yeah instance, this is the only scene that requires an external scene, bullets are independent of player
+	var b = graham_bullet.instantiate() #make new copy of scene, BULLET
 	get_tree().current_scene.add_child(b)
 	b.init(pos, dir, dmg)
+	#btw this is inefficient...
 
-
+func yoyo_attack():
+	pass
+	#ye, but get creative
 # ---------------- Cookie Pickup ----------------
 func pickup_cookie(cookie_type: String) -> void:
+	if Global.potency == 0: return
 	current_attack = cookie_type
 	print("Picked up cookie! Attack changed to: %s: %d" % [cookie_type, cookie_potency])
 	cookie_potency = Global.potency
 	await get_tree().create_timer(0.1).timeout
-	if Global.potency > 1:
+	if Global.potency > 0:
 		Global.potency -= 1
 
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D) -> void:
-	display_name = display_name + " %d" % Global.potency
+	if Global.potency == 0:
+		display_name = "Cookie Void"
+	else:
+		display_name = display_name + " %d" % Global.potency
 	var popup = PopupScene.instantiate()
 	add_child(popup)  # attach popup to player so it follows them
 	popup.setup(display_name, icon_tex)
+
+
+
+#no, this one too

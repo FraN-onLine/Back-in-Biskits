@@ -6,7 +6,7 @@ var damage: float = 10.0
 var direction: Vector2
 
 func _ready() -> void:
-	var sprite: Sprite2D = $Sprite2Da
+	var sprite: Sprite2D = $Sprite2D
 
 func init(start_pos: Vector2, dir: Vector2, dmg: float) -> void:
 	global_position = start_pos

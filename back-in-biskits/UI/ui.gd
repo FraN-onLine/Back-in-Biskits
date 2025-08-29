@@ -15,5 +15,11 @@ func _process(delta: float) -> void:
 		$PotencyRect.modulate = Color(1, 1, 1)
 	if Global.lives == 0:
 		$TextureRect.visible = false
+	if Global.potency == 0:
+		$PotencyRect.visible = false
+	else:
+		$PotencyRect.visible = true
+		#btw potency can reach 0, 0 potency means all buffs are null and void
+		# so dont eat too much or else ull suffer doing nothing
 		
 	

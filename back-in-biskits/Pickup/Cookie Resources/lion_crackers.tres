@@ -10,6 +10,6 @@ cookie_type = "lion_cracker"
 cookie_name = "Lion Cracker"
 atlas_texture = ExtResource("1_45dxa")
 icon_texture = ExtResource("2_rr4tc")
-min_potency = 1
+min_potency = 0
 pickup_message = "Sword Slash"
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

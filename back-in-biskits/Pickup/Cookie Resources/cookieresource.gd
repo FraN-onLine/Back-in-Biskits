@@ -7,3 +7,5 @@ class_name Cookie
 @export var icon_texture: Texture2D                # for popup
 @export var min_potency: int = 1                    # minimum effect strength
 @export var pickup_message: String = "Item Obtained"
+
+#yah

@@ -10,6 +10,6 @@ cookie_type = "oreo"
 cookie_name = "Oreo"
 atlas_texture = ExtResource("1_6ak3u")
 icon_texture = ExtResource("2_d0otd")
-min_potency = 3
+min_potency = 0
 pickup_message = "Bull Charge"
 metadata/_custom_type_script = "uid://dq108u8j1agm8"
