@@ -32,3 +32,4 @@ func _on_body_entered_p3(body):
 
 func _on_skip_button_pressed():
 	FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+	Global.stage = 1

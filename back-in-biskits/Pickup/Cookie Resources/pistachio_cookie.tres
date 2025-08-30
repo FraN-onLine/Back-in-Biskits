@@ -12,5 +12,5 @@ atlas_texture = ExtResource("1_iigw6")
 icon_texture = ExtResource("2_du4f5")
 min_potency = 2
 pickup_message = "Hammer Strike"
-attack_cooldown = 0.0
+attack_cooldown = 0.8
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

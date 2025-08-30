@@ -13,9 +13,15 @@ var current_attack: String = "basic"
 var cookie_potency = 1
 var dead = false
 var is_attacking = false
+var dashing := false
+var dash_velocity := Vector2.ZERO
+@export var dash_speed := 280.0
+@export var dash_distance := 150
+
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
 @onready var swordanim = $AnimatedSprite2D
+@onready var rushanim = $RushEffect
 
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
@@ -49,6 +55,16 @@ func _process(delta: float) -> void:
 # ---------------- Movement ----------------
 func handle_movement(delta: float) -> void:
 	if dead: return
+	
+	if dashing:
+		# Move with dash
+		var collision = move_and_collide(dash_velocity * delta)
+		if collision:
+			end_dash()
+		return
+	
+	
+	
 	var input_dir = Vector2.ZERO
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -70,6 +86,7 @@ func handle_movement(delta: float) -> void:
 		# Flip horizontally if moving right
 		if input_dir.x != 0:
 			$Shield.flip_h = input_dir.x > 0
+			rushanim.flip_h = input_dir.x > 0
 			anim.flip_h = input_dir.x > 0
 			swordanim.flip_h = input_dir.x > 0
 		var shape = $LionCrackerSword/CollisionShape2D
@@ -91,6 +108,8 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 			yoyo_attack()
 		"pistachio_cookie":
 			hammer_attack()
+		"oreo":
+			oreo_rush()
 
 	await get_tree().create_timer(attack_cooldown).timeout #attack cooldown
 	can_attack = true #so u can attack obv...
@@ -215,8 +234,42 @@ func yoyo_attack() -> void:
 	is_attacking = false
 	anim.play("idle")
 
-	
-	#ye, but get creative
+func oreo_rush() -> void:
+	if dashing or is_attacking: 
+		return
+
+	is_attacking = true
+	dashing = true
+	anim.play("idle")
+	rushanim.visible = true
+	rushanim.play("rush")
+
+	var mouse_pos = get_global_mouse_position()
+	var dir = (mouse_pos - global_position).normalized()
+	dash_velocity = dir * dash_speed
+	anim.flip_h = dash_velocity.x > 0
+	rushanim.flip_h = dash_velocity.x > 0
+
+	await anim.animation_finished
+	if dashing: # only if not stopped by collision
+		end_dash()
+
+func end_dash() -> void:
+	rushanim.visible = false
+	dashing = false
+	is_attacking = false
+	velocity = Vector2.ZERO
+	anim.play("idle")
+
+	# Spawn shockwave
+	if shockwave_scene:
+		var shock = shockwave_scene.instantiate()
+		get_tree().current_scene.add_child(shock)
+		shock.oreoshockwave = true
+		shock.cookie_potency = cookie_potency
+		shock.global_position = global_position
+
+
 # ---------------- Cookies Pickup ----------------
 func pickup_cookie(cookie_type: String, atkcd, min_potency) -> void:
 	if Global.potency == 0 or Global.potency < min_potency: 
@@ -224,6 +277,7 @@ func pickup_cookie(cookie_type: String, atkcd, min_potency) -> void:
 		return
 	if cookie_type == "cookie_cat":
 		Global.shield = Global.potency - 1
+		await get_tree().create_timer(0.1).timeout
 		if Global.potency > 0:
 			Global.potency -= 1
 		return

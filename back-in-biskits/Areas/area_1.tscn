@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="12_2actb"]
-[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="12_4ceto"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
 texture = ExtResource("3_kpacr")
@@ -116,8 +116,8 @@ yoyoatk_scene = ExtResource("5_64tec")
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_4ceto")])
-spawn_interval = 4.5
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("14_jhh8q")])
+spawn_interval = 4.0
 max_active_cookies = 4
 
 [node name="Spawnpoint1" parent="CookieSpawner" index="0"]

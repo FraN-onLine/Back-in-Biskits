@@ -11,6 +11,8 @@ func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://Screens/title_screen.tscn")
 
 func _on_retry_pressed():
+	Global.potency = 1
+	Global.timer = 0
 	match Global.stage:
 		1:
 			get_tree().change_scene_to_file("res://Areas/area_1.tscn")

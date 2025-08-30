@@ -109,6 +109,5 @@ func _process(delta: float) -> void:
 		
 		var vector_to_target: Vector2 = target_global_position - target_display_position
 		target_display_rotation = vector_to_target.angle() - PI * 0.5
-		
 	global_position = lerp(global_position, target_display_position, delta * smoothing_speed)
 	rotation = lerp(rotation, target_display_rotation, delta * smoothing_speed)
