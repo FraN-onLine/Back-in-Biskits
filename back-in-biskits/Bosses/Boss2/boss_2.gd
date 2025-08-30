@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name CandyQueen
 
+var boss_name = "Candy Connosieur"
 @export var max_hp: int = 750
 var hp: int = max_hp
 
@@ -18,9 +19,10 @@ var player: Node2D = null
 var phase: int = 1
 var alive: bool = true
 
-@onready var teleport_markers: Array[Marker2D] = get_tree().get_nodes_in_group("candyqueen_teleports")
+@onready var teleport_markers: Array[Node]
 
 func _ready() -> void:
+	teleport_markers = get_tree().get_nodes_in_group("candyqueen_teleports")
 	player = get_tree().get_first_node_in_group("player")
 	start_phase_1()
 
