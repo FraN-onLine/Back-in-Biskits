@@ -6,10 +6,12 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.6
 @export var graham_bullet: PackedScene
+@export var shockwave_scene: PackedScene
 var can_attack: bool = true
 var current_attack: String = "basic"
 var cookie_potency = 1
 var dead = false
+var is_attacking = false
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
 @onready var swordanim = $AnimatedSprite2D
@@ -57,11 +59,11 @@ func handle_movement(delta: float) -> void:
 	# --- Animation handling ---
 	if input_dir == Vector2.ZERO:
 		# Idle
-		if anim.animation != "idle":
+		if anim.animation != "idle" and is_attacking == false:
 			anim.play("idle")
 	else:
 		# Walking
-		if anim.animation != "walk":
+		if anim.animation != "walk" and is_attacking == false:
 			anim.play("walk")
 
 		# Flip horizontally if moving right
@@ -86,6 +88,8 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 			graham_attack()
 		"macaroon":
 			yoyo_attack()
+		"pistachio_cookie":
+			hammer_attack()
 
 	await get_tree().create_timer(attack_cooldown).timeout #attack cooldown
 	can_attack = true #so u can attack obv...
@@ -171,6 +175,26 @@ func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
 	get_tree().current_scene.add_child(b)
 	b.init(pos, dir, dmg)
 	#btw this is inefficient...
+	
+func hammer_attack() -> void:
+	# Freeze player movement
+	speed = 0
+	is_attacking = true
+	anim.play("hammersmash")
+	# Wait until animation hits the "slam" frame
+	await anim.animation_finished
+
+	# Spawn shockwave at player position
+	if shockwave_scene:
+		var shock = shockwave_scene.instantiate()
+		get_tree().current_scene.add_child(shock)
+		shock.cookie_potency = cookie_potency
+		shock.global_position = global_position
+
+	# Restore movement
+	is_attacking = false
+	speed = 200
+
 
 func yoyo_attack():
 	pass

@@ -64,7 +64,7 @@ animations = [{
 "duration": 1.8,
 "texture": SubResource("AtlasTexture_up3q7")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 6.0
 }, {
@@ -91,7 +91,8 @@ projectile = ExtResource("2_1qqme")
 sprite_frames = SubResource("SpriteFrames_rcd67")
 animation = &"death"
 autoplay = "default"
-frame_progress = 0.369234
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppuc")

@@ -6,6 +6,7 @@ class_name CookieBoss
 var current_hp: int
 @export var projectile: PackedScene
 var radial_used: bool = false
+var dead = false
 
 @export var attack_interval: float = 2.0 # seconds between attacks
 var attack_timer: Timer
@@ -40,7 +41,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if player == null:
+	if player == null or dead:
 		return
 
 	# Update hover target every 1.5 sec for smoother movement
@@ -94,6 +95,7 @@ func _on_attack_timeout() -> void:
 			radial_used = false
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("default")
+	
 func shoot_standard() -> void:
 	var dir = (player.global_position - global_position).normalized()
 	var proj = projectile.instantiate()
@@ -135,5 +137,5 @@ func die() -> void:
 	velocity = Vector2.ZERO
 	emit_signal("boss_died")
 	await $AnimatedSprite2D.animation_finished
-	#go to area 2
-	get_tree().change_scene_to_file("res://back-in-biskits/Levels/Area2/area_2.tscn")
+	dead = true
+	get_tree().change_scene_to_file("res://Areas/area_2.tscn")

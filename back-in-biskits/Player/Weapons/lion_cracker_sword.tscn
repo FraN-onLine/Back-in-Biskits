@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3unwvvnpwkv2"]
+[gd_scene load_steps=9 format=3 uid="uid://bdqxh7c5bw6d2"]
 
-[ext_resource type="Texture2D" uid="uid://dnkrwt0b3kkrk" path="res://Assets/Player/Sword Attack.png" id="2_wg27y"]
+[ext_resource type="Texture2D" uid="uid://cplcdpcmasd5f" path="res://Assets/Player/Sword Attack.png" id="2_wg27y"]
 
 [sub_resource type="GDScript" id="GDScript_7g88t"]
 script/source = "extends Area2D
