@@ -63,6 +63,4 @@ position = Vector2(63, 579)
 position = Vector2(107, 29)
 max_hp = null
 summon_interval = null
-attack_interval = null
-stomp_range = null
 barrage_shots = null

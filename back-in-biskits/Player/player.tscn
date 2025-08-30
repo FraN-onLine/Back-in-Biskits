@@ -74,7 +74,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"disappear",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -908,6 +908,8 @@ scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_pnkso")
 animation = &"disappear"
 autoplay = "idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)

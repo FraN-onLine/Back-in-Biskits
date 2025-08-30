@@ -160,7 +160,7 @@ func sword_attack() -> void: #this is the revamped sword att
 	await swordanim.animation_finished
 	sword.monitoring = false
 	swordanim.play("default")
-	orp.play("idle")
+	orb.play("idle")
 	
 func graham_attack() -> void:
 	if not graham_bullet: return
