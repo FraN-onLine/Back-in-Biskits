@@ -182,6 +182,8 @@ func pickup_cookie(cookie_type: String, atkcd) -> void:
 		return
 	if cookie_type == "cookie_cat":
 		Global.shield = Global.potency - 1
+		if Global.potency > 0:
+			Global.potency -= 1
 		return
 	current_attack = cookie_type
 	attack_cooldown = atkcd

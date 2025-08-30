@@ -1,13 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://cucwq4ajkous0"]
+[gd_scene load_steps=16 format=3 uid="uid://cucwq4ajkous0"]
 
 [ext_resource type="Script" uid="uid://dlnht23ihoofs" path="res://Bosses/Boss1/boss_1.gd" id="1_4w332"]
 [ext_resource type="Texture2D" uid="uid://bc5ib50v3otc0" path="res://Assets/Bosses/Cat Boss/cat_cookie(1).png" id="1_rp1qc"]
 [ext_resource type="PackedScene" uid="uid://cetajpset4ndr" path="res://Bosses/Boss1/standard_projectile.tscn" id="2_1qqme"]
 [ext_resource type="Texture2D" uid="uid://7jusydsxrpe8" path="res://Assets/Bosses/Cat Boss/cat_atk.png" id="3_4j63d"]
+[ext_resource type="Texture2D" uid="uid://dxkhpxfr60wtf" path="res://Assets/catc(1)-Sheet.png" id="4_rcd67"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcd67"]
 atlas = ExtResource("3_4j63d")
 region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wppuc"]
+atlas = ExtResource("4_rcd67")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6csjc"]
+atlas = ExtResource("4_rcd67")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06y17"]
+atlas = ExtResource("4_rcd67")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3eup"]
+atlas = ExtResource("4_rcd67")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up3q7"]
+atlas = ExtResource("4_rcd67")
+region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4w332"]
 atlas = ExtResource("1_rp1qc")
@@ -16,10 +37,6 @@ region = Rect2(0, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_1qqme"]
 atlas = ExtResource("1_rp1qc")
 region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4j63d"]
-atlas = ExtResource("1_rp1qc")
-region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rcd67"]
 animations = [{
@@ -32,6 +49,26 @@ animations = [{
 "speed": 1.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6csjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06y17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3eup")
+}, {
+"duration": 1.8,
+"texture": SubResource("AtlasTexture_up3q7")
+}],
+"loop": true,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
 "duration": 1.8,
 "texture": SubResource("AtlasTexture_4w332")
 }, {
@@ -40,14 +77,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 0.8,
-"texture": SubResource("AtlasTexture_4j63d")
-}],
-"loop": true,
-"name": &"new_animation",
 "speed": 1.0
 }]
 
@@ -60,8 +89,9 @@ projectile = ExtResource("2_1qqme")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rcd67")
-animation = &"attack"
+animation = &"death"
 autoplay = "default"
+frame_progress = 0.369234
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppuc")

@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name CookieBoss
 
 @export var speed: float = 120.0
-@export var max_hp: int = 500
+@export var max_hp: int = 400
 var current_hp: int
 @export var projectile: PackedScene
 var radial_used: bool = false
@@ -130,5 +130,10 @@ func take_damage(amount: int = 1) -> void:
 
 
 func die() -> void:
+	$AnimatedSprite2D.play("death")
+	$CollisionShape2D.disabled = true
+	velocity = Vector2.ZERO
 	emit_signal("boss_died")
-	queue_free()
+	await $AnimatedSprite2D.animation_finished
+	#go to area 2
+	get_tree().change_scene_to_file("res://back-in-biskits/Levels/Area2/area_2.tscn")

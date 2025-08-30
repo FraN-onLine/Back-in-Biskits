@@ -126,7 +126,7 @@ offset_left = 2078.0
 offset_top = 105.0
 offset_right = 2636.0
 offset_bottom = 180.0
-text = "Too much potency deals damage to you"
+text = "Too much potency deals damage to you if left unchecked"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(2941, 108)
