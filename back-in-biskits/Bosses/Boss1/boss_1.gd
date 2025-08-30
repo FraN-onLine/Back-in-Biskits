@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name CookieBoss
 
 @export var speed: float = 120.0
-@export var max_hp: int = 400
+@export var max_hp: int = 420
 var current_hp: int
 @export var projectile: PackedScene
+@export var damage_popup_scene: PackedScene
 var radial_used: bool = false
 var dead = false
 
@@ -124,6 +125,13 @@ func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
 	healthbar.set_health(current_hp)
+	
+	if damage_popup_scene:
+		var popup := damage_popup_scene.instantiate()
+		get_tree().current_scene.add_child(popup)
+		var jitter_x := randf_range(-6, 6)
+		popup.show_damage(amount, global_position + Vector2(jitter_x, -20))
+	
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5) # flash red
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)

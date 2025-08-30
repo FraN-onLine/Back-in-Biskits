@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cucwq4ajkous0"]
+[gd_scene load_steps=17 format=3 uid="uid://cucwq4ajkous0"]
 
 [ext_resource type="Script" uid="uid://dlnht23ihoofs" path="res://Bosses/Boss1/boss_1.gd" id="1_4w332"]
 [ext_resource type="Texture2D" uid="uid://bc5ib50v3otc0" path="res://Assets/Bosses/Cat Boss/cat_cookie(1).png" id="1_rp1qc"]
 [ext_resource type="PackedScene" uid="uid://cetajpset4ndr" path="res://Bosses/Boss1/standard_projectile.tscn" id="2_1qqme"]
 [ext_resource type="Texture2D" uid="uid://7jusydsxrpe8" path="res://Assets/Bosses/Cat Boss/cat_atk.png" id="3_4j63d"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="3_wppuc"]
 [ext_resource type="Texture2D" uid="uid://dxkhpxfr60wtf" path="res://Assets/catc(1)-Sheet.png" id="4_rcd67"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcd67"]
@@ -86,6 +87,7 @@ radius = 26.0768
 [node name="Boss 1" type="CharacterBody2D" groups=["boss", "enemy"]]
 script = ExtResource("1_4w332")
 projectile = ExtResource("2_1qqme")
+damage_popup_scene = ExtResource("3_wppuc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rcd67")

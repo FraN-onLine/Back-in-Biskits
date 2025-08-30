@@ -177,8 +177,8 @@ func _spawn_graham(pos: Vector2, dir: Vector2, dmg: float) -> void:
 	#btw this is inefficient...
 	
 func hammer_attack() -> void:
-	# Freeze player movement
-	speed = 0
+	# slow down
+	speed = 35
 	is_attacking = true
 	anim.play("hammersmash")
 	# Wait until animation hits the "slam" frame
@@ -200,8 +200,8 @@ func yoyo_attack():
 	pass
 	#ye, but get creative
 # ---------------- Cookies Pickup ----------------
-func pickup_cookie(cookie_type: String, atkcd) -> void:
-	if Global.potency == 0: 
+func pickup_cookie(cookie_type: String, atkcd, min_potency) -> void:
+	if Global.potency == 0 or Global.potency < min_potency: 
 		current_attack = "void"
 		return
 	if cookie_type == "cookie_cat":

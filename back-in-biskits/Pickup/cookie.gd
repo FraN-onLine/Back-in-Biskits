@@ -59,7 +59,7 @@ func _update_sprite_region() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("pickup_cookie"):
-		body.pickup_cookie(cookie_type, cookie.attack_cooldown)
+		body.pickup_cookie(cookie_type, cookie.attack_cooldown, cookie.min_potency)
 		queue_free()
 
 	var display_icon = icon_texture
