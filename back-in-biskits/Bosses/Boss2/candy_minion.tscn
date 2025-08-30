@@ -186,10 +186,10 @@ region = Rect2(8192, 2048, 2048, 2048)
 [sub_resource type="SpriteFrames" id="SpriteFrames_ktmgs"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.2,
 "texture": SubResource("AtlasTexture_vbki4")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_ktmgs")
 }, {
 "duration": 1.0,
@@ -210,13 +210,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_twqqa")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_yb7ru")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ivhuv")
 }, {
-"duration": 1.0,
+"duration": 0.8,
 "texture": SubResource("AtlasTexture_mrw25")
 }, {
 "duration": 1.0,
@@ -336,10 +336,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nrw2q"]
-radius = 19.0263
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv0fx"]
+radius = 7.0
+height = 22.0
 
-[node name="CandyMinion" type="CharacterBody2D"]
+[node name="CandyMinion" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_uv0fx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -347,6 +348,10 @@ position = Vector2(4, -3)
 scale = Vector2(0.0268555, 0.0273437)
 sprite_frames = SubResource("SpriteFrames_ktmgs")
 animation = &"attack"
+autoplay = "idle"
+frame = 22
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nrw2q")
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_uv0fx")

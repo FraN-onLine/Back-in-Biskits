@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://gmao1bw0xgpl"]
+[gd_scene load_steps=17 format=4 uid="uid://gmao1bw0xgpl"]
 
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="1_1g7pl"]
 [ext_resource type="Script" uid="uid://14xk0h1pf7us" path="res://Areas/tutorial.gd" id="1_c5plm"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="6_pximk"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="8_jw656"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_khkes"]
+[ext_resource type="PackedScene" uid="uid://b08k8j5al6y67" path="res://Bosses/Boss2/candy_minion.tscn" id="10_pximk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q01"]
 texture = ExtResource("1_1g7pl")
@@ -162,5 +163,8 @@ shape = SubResource("RectangleShape2D_c5plm")
 
 [node name="Cookie2" parent="." instance=ExtResource("8_jw656")]
 position = Vector2(1744, 183)
+
+[node name="CandyMinion" parent="." instance=ExtResource("10_pximk")]
+position = Vector2(230, 148)
 
 [connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_button_pressed"]
