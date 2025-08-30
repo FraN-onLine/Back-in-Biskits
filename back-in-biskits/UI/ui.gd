@@ -8,6 +8,7 @@ func _process(delta: float) -> void:
 		$Healthbar.visible = true
 		$HPLabel.visible = true
 		$HPLabel.text = "HP: " + str(boss.current_hp) + "/" + str(boss.max_hp)
+		$BossLabel.text = boss.boss_name
 	else:
 		$BossLabel.visible = false
 		$Healthbar.visible = false

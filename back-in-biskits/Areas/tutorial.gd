@@ -15,6 +15,7 @@ func _on_body_entered_end(body):
 	if body.name == "Player":
 		$UI.visible = false
 		FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+		Global.stage = 1
 	Global.potency = 1
 	
 func _on_body_entered_p0(body):

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name CookieBoss
 
+var boss_name = "Calico Cookie-Cat"
 @export var speed: float = 120.0
 @export var max_hp: int = 420
 var current_hp: int
@@ -146,4 +147,5 @@ func die() -> void:
 	emit_signal("boss_died")
 	await $AnimatedSprite2D.animation_finished
 	dead = true
+	Global.stage = 2
 	get_tree().change_scene_to_file("res://Areas/area_2.tscn")
