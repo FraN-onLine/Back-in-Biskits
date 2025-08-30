@@ -588,9 +588,8 @@ zoom = Vector2(3.5, 3.5)
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
-animation = &"hammersmash"
-frame = 13
-frame_progress = 1.0
+animation = &"walk"
+frame_progress = 0.625341
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -618,14 +617,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_od3ui")
 }
 autoplay = "new_animation"
-
-[node name="Shockwave" parent="." instance=ExtResource("3_od3ui")]
-visible = false
-
-[node name="AnimatedSprite2D" parent="Shockwave" index="0"]
-position = Vector2(-16, 6)
-
-[node name="CollisionShape2D" parent="Shockwave" index="1"]
-position = Vector2(-16, 15)
-
-[editable path="Shockwave"]
