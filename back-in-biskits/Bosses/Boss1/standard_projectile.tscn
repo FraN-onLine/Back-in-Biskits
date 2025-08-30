@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cetajpset4ndr"]
 
 [ext_resource type="Script" uid="uid://blp6xev7qbuw0" path="res://Bosses/Boss1/projectile.gd" id="1_gvji7"]
-[ext_resource type="Texture2D" uid="uid://m3x7jjpkywdg" path="res://Assets/Bosses/Cat Boss/blue_fish(1).png" id="2_b60xd"]
-[ext_resource type="Texture2D" uid="uid://cwss11nuoc1ss" path="res://Assets/Bosses/Cat Boss/red_fish(2).png" id="2_o676r"]
+[ext_resource type="Texture2D" uid="uid://ckvnfijaf3wua" path="res://Assets/Bosses/Cat Boss/blue_fish(2).png" id="2_b60xd"]
+[ext_resource type="Texture2D" uid="uid://bqk0v4wiyqtkn" path="res://Assets/Bosses/Cat Boss/red_fish(1).png" id="3_b60xd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a2pgr"]
 radius = 6.0
@@ -14,7 +14,7 @@ homing_texture = ExtResource("2_b60xd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, 3)
 scale = Vector2(0.65625, 0.625)
-texture = ExtResource("2_o676r")
+texture = ExtResource("3_b60xd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a2pgr")

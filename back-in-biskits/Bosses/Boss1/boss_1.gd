@@ -75,6 +75,7 @@ func _set_new_hover_target() -> void:
 
 # ---------------- Attacks ----------------
 func _on_attack_timeout() -> void:
+	$AnimatedSprite2D.play("attack")
 	if current_hp > 250:
 		# Randomly choose projectile type
 		if rng.randi_range(0, 1) == 0:
@@ -91,7 +92,8 @@ func _on_attack_timeout() -> void:
 			shoot_standard()
 		if current_hp < 101 and current_hp > 50:
 			radial_used = false
-
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("default")
 func shoot_standard() -> void:
 	var dir = (player.global_position - global_position).normalized()
 	var proj = projectile.instantiate()
