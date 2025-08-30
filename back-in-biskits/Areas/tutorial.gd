@@ -1,6 +1,7 @@
 extends Node2D
 
 var potset0 = false
+var potset3 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Area2D.body_entered.connect(_on_body_entered_end)
@@ -19,7 +20,7 @@ func _on_body_entered_p0(body):
 		potset0 = false
 	
 func _on_body_entered_p3(body):
-	if body.name == "Player" and potset0 == false:
-		Global.potency = 0
+	if body.name == "Player" and potset3 == false:
+		Global.potency = 3
 		Global.timer = 0
-		potset0 = false
+		potset3 = false
