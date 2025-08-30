@@ -22,6 +22,7 @@ var dash_velocity := Vector2.ZERO
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
 @onready var swordanim = $AnimatedSprite2D
 @onready var rushanim = $RushEffect
+@onready var orb = $Orb
 
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
@@ -89,6 +90,7 @@ func handle_movement(delta: float) -> void:
 			rushanim.flip_h = input_dir.x > 0
 			anim.flip_h = input_dir.x > 0
 			swordanim.flip_h = input_dir.x > 0
+			orb.flip_h = input_dir.x > 0
 		var shape = $LionCrackerSword/CollisionShape2D
 		var pos = shape.position
 		pos.x = abs(pos.x) * (-1 if input_dir.x < 0 else 1)
@@ -149,6 +151,7 @@ func die() -> void:
 
 
 func sword_attack() -> void: #this is the revamped sword att
+	orb.play("disappear")
 	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20 #set damage based on potency, its math
 	var sword = $LionCrackerSword #on attack it will be vis and monitoring
 	sword.monitoring = true
@@ -157,6 +160,7 @@ func sword_attack() -> void: #this is the revamped sword att
 	await swordanim.animation_finished
 	sword.monitoring = false
 	swordanim.play("default")
+	orp.play("idle")
 	
 func graham_attack() -> void:
 	if not graham_bullet: return
@@ -200,6 +204,7 @@ func hammer_attack() -> void:
 	# slow down
 	speed = 35
 	is_attacking = true
+	orb.play("disappear")
 	anim.play("hammersmash")
 	# Wait until animation hits the "slam" frame
 	await anim.animation_finished
@@ -214,6 +219,7 @@ func hammer_attack() -> void:
 	# Restore movement
 	is_attacking = false
 	speed = 200
+	anim.play("idle")
 
 
 func yoyo_attack() -> void:
@@ -221,6 +227,7 @@ func yoyo_attack() -> void:
 		return
 	
 	is_attacking = true
+	orb.plau("disappear")
 	anim.play("yoyoattack")
 	
 	if yoyoatk_scene:
@@ -233,6 +240,7 @@ func yoyo_attack() -> void:
 	
 	is_attacking = false
 	anim.play("idle")
+	orb.play("idle")
 
 func oreo_rush() -> void:
 	if dashing or is_attacking: 
@@ -243,12 +251,14 @@ func oreo_rush() -> void:
 	anim.play("idle")
 	rushanim.visible = true
 	rushanim.play("rush")
+	orb.play("disappear")
 
 	var mouse_pos = get_global_mouse_position()
 	var dir = (mouse_pos - global_position).normalized()
 	dash_velocity = dir * dash_speed
 	anim.flip_h = dash_velocity.x > 0
 	rushanim.flip_h = dash_velocity.x > 0
+	orb.flip_h = dash_velocity.x > 0
 
 	await anim.animation_finished
 	if dashing: # only if not stopped by collision
@@ -260,6 +270,7 @@ func end_dash() -> void:
 	is_attacking = false
 	velocity = Vector2.ZERO
 	anim.play("idle")
+	orb.play("idle")
 
 	# Spawn shockwave
 	if shockwave_scene:

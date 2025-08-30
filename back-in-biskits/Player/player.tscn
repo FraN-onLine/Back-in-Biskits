@@ -1,17 +1,98 @@
-[gd_scene load_steps=118 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=130 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
 [ext_resource type="PackedScene" uid="uid://cyeyap1gpibg8" path="res://Player/Weapons/graham_bullet.tscn" id="2_btcbx"]
 [ext_resource type="Texture2D" uid="uid://2rsoh08rb8ft" path="res://Assets/Player/Death Animation.png" id="3_k53q1"]
 [ext_resource type="PackedScene" uid="uid://bs8rl6t8b8vwu" path="res://Player/Weapons/shockwave.tscn" id="3_od3ui"]
+[ext_resource type="Texture2D" uid="uid://c0agt5konvg4l" path="res://Assets/Player/Floating Orb Animation(continuous).png" id="4_5htga"]
 [ext_resource type="Texture2D" uid="uid://cplcdpcmasd5f" path="res://Assets/Player/Sword Attack.png" id="4_gwnis"]
 [ext_resource type="Texture2D" uid="uid://8rg7357embtv" path="res://Assets/Player/Hammer Slam.png" id="4_vtle1"]
+[ext_resource type="Texture2D" uid="uid://b2lyqa633vmvc" path="res://Assets/Player/Intro Animation ORB (when a skil about to cast the orbs disappear).png" id="5_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://dn1wgo4yf3vf5" path="res://Assets/Player/Shield.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bfsycxe042gth" path="res://Assets/Player/Yoyo Basic Attack(Middle range type).png" id="7_00tjw"]
 [ext_resource type="Texture2D" uid="uid://d14nh0i1xoss" path="res://Assets/Player/Bull rush skill(put shockwave at the end).png" id="9_x3vf3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghd3c"]
+atlas = ExtResource("5_p5o4e")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tea4v"]
+atlas = ExtResource("5_p5o4e")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htm5v"]
+atlas = ExtResource("5_p5o4e")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5lso"]
+atlas = ExtResource("5_p5o4e")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgyuq"]
+atlas = ExtResource("5_p5o4e")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfstq"]
+atlas = ExtResource("4_5htga")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tklvp"]
+atlas = ExtResource("4_5htga")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gv7t5"]
+atlas = ExtResource("4_5htga")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhxpw"]
+atlas = ExtResource("4_5htga")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pnkso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghd3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tea4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htm5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5lso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgyuq")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"disappear",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfstq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tklvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gv7t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhxpw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6x0f"]
 atlas = ExtResource("3_k53q1")
@@ -821,12 +902,19 @@ shape = SubResource("CapsuleShape2D_hvfyp")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)
 
+[node name="Orb" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -2)
+scale = Vector2(0.923828, 0.90625)
+sprite_frames = SubResource("SpriteFrames_pnkso")
+animation = &"disappear"
+autoplay = "idle"
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
 animation = &"idle"
-frame_progress = 0.136909
+frame_progress = 0.464903
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
