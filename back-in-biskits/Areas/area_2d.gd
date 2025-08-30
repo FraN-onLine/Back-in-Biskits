@@ -6,3 +6,5 @@ func _ready():
 func _on_body_entered(body):
 	if body.name == "Player":
 		FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+	Global.potency = 1
+	

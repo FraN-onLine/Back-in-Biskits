@@ -3,7 +3,15 @@ var blink = false
 
 func _process(delta: float) -> void:
 	var boss = get_tree().get_first_node_in_group("boss")
-	$HPLabel.text = "HP: " + str(boss.current_hp) + "/" + str(boss.max_hp)
+	if boss:
+		$BossLabel.visible = true
+		$Healthbar.visible = true
+		$HPLabel.visible = true
+		$HPLabel.text = "HP: " + str(boss.current_hp) + "/" + str(boss.max_hp)
+	else:
+		$BossLabel.visible = false
+		$Healthbar.visible = false
+		$HPLabel.visible = false
 	$TextureRect.size.x = Global.lives * 32
 	$Label.text = "Potency: " + str(Global.potency)
 	$PotencyRect.size.x = Global.potency * 32
