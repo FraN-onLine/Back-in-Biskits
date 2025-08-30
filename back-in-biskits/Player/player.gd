@@ -7,6 +7,7 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var attack_cooldown: float = 0.6
 @export var graham_bullet: PackedScene
 @export var shockwave_scene: PackedScene
+@export var yoyoatk_scene: PackedScene
 var can_attack: bool = true
 var current_attack: String = "basic"
 var cookie_potency = 1
@@ -122,7 +123,7 @@ func die() -> void:
 	await anim.animation_finished
 	#wait 0.5 sec then go to title screen
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://Screens/title_screen.tscn")
+	get_tree().change_scene_to_file("res://Screens/death_screen.tscn")
 
 
 # -------------- Various Attacks ----------------
@@ -196,8 +197,25 @@ func hammer_attack() -> void:
 	speed = 200
 
 
-func yoyo_attack():
-	pass
+func yoyo_attack() -> void:
+	if is_attacking:
+		return
+	
+	is_attacking = true
+	anim.play("yoyoattack")
+	
+	if yoyoatk_scene:
+		var yoyo_skill = yoyoatk_scene.instantiate()
+		get_tree().current_scene.add_child(yoyo_skill)
+		yoyo_skill.cookie_potency = cookie_potency
+		yoyo_skill.global_position = global_position
+	
+	await anim.animation_finished
+	
+	is_attacking = false
+	anim.play("idle")
+
+	
 	#ye, but get creative
 # ---------------- Cookies Pickup ----------------
 func pickup_cookie(cookie_type: String, atkcd, min_potency) -> void:

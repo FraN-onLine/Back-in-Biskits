@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbycmc1usq8g"]
+
+[ext_resource type="Script" uid="uid://bh1ovk1x2hfmd" path="res://Screens/death_screen.gd" id="1_jcaqs"]
+
+[node name="death_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jcaqs")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 1.0
+offset_top = 59.0
+offset_right = 1.0
+offset_bottom = 114.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "You DED! WEAK ASS BITCH"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 1186.0
+offset_bottom = 665.0
+mouse_filter = 2
+color = Color(0.680275, 0.53353, 0.452245, 1)
+metadata/_edit_lock_ = true
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 407.0
+offset_right = 468.0
+offset_bottom = 495.0
+text = "Main Menu"
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 0
+offset_left = 705.0
+offset_top = 407.0
+offset_right = 960.0
+offset_bottom = 493.0
+text = "Retry
+"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
