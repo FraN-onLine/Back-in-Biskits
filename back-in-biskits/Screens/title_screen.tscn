@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6l777w1uox7m"]
+[gd_scene load_steps=11 format=3 uid="uid://b6l777w1uox7m"]
 
 [ext_resource type="Script" uid="uid://cquel1gyflwcr" path="res://Screens/title_screen.gd" id="1_curwl"]
+[ext_resource type="Script" uid="uid://bbigaishendx8" path="res://Screens/audio_control.gd" id="2_4muxt"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_28co4"]
+[ext_resource type="AudioStream" uid="uid://duka4r5we3o7t" path="res://Assets/Sounds/bgm.wav" id="2_cc463"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dc4i4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_28co4"]
+color = Color(1, 1, 1, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cc463"]
+color = Color(0, 0.153333, 0.92, 1)
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_4muxt"]
+color = Color(0, 0.153333, 0.92, 1)
+thickness = 4
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -19,6 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_curwl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,8 +92,65 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
 text = "Quit Game"
 
+[node name="SettingsPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.5
+offset_top = -131.0
+offset_right = 259.5
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="SettingsPanel"]
+offset_left = 214.5
+offset_top = 267.0
+offset_right = 302.5
+offset_bottom = 290.0
+size_flags_vertical = 3
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Back"
+
+[node name="AudioControl" type="HSlider" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 37.0
+offset_top = -92.0
+offset_right = -31.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_28co4")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_cc463")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4muxt")
+step = 0.05
+value = 1.0
+script = ExtResource("2_4muxt")
+audio_bus_name = "Music"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-volume_db = 24.0
+stream = ExtResource("2_cc463")
+autoplay = true
+bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -90,6 +162,7 @@ scale = Vector2(0.250208, 0.251563)
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -116,3 +189,6 @@ offset_bottom = 665.0
 mouse_filter = 2
 color = Color(0.680275, 0.53353, 0.452245, 1)
 metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="SettingsPanel/Back" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="SettingsPanel/AudioControl" to="SettingsPanel/AudioControl" method="_on_value_changed"]
