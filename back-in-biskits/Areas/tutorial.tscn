@@ -137,6 +137,13 @@ shape = SubResource("RectangleShape2D_qcivo")
 
 [node name="UI" parent="." instance=ExtResource("6_4t5x3")]
 
+[node name="SkipButton" type="Button" parent="UI"]
+offset_left = 1048.0
+offset_top = 20.0
+offset_right = 1130.0
+offset_bottom = 51.0
+text = "SKIP"
+
 [node name="Cookie" parent="." instance=ExtResource("8_jw656")]
 position = Vector2(449, 187)
 cookie = ExtResource("9_khkes")
@@ -155,3 +162,5 @@ shape = SubResource("RectangleShape2D_c5plm")
 
 [node name="Cookie2" parent="." instance=ExtResource("8_jw656")]
 position = Vector2(1744, 183)
+
+[connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_button_pressed"]
