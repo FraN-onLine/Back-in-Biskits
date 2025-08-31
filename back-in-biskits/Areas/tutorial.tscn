@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://gmao1bw0xgpl"]
+[gd_scene load_steps=17 format=4 uid="uid://gmao1bw0xgpl"]
 
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="1_1g7pl"]
 [ext_resource type="Script" uid="uid://14xk0h1pf7us" path="res://Areas/tutorial.gd" id="1_c5plm"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="4_qcivo"]
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="6_4t5x3"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="6_pximk"]
+[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="7_pximk"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="8_jw656"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_khkes"]
 
@@ -84,19 +85,21 @@ tile_set = SubResource("TileSet_8gp1h")
 position = Vector2(-55, 206)
 
 [node name="Label" type="Label" parent="."]
-offset_left = -64.0
-offset_top = 100.0
-offset_right = 60.0
-offset_bottom = 175.0
+offset_left = -81.0
+offset_top = 102.0
+offset_right = 117.0
+offset_bottom = 177.0
+theme_override_fonts/font = ExtResource("6_pximk")
 text = "W A S D - movement
 left click - attack
 "
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 349.0
-offset_top = 106.0
-offset_right = 569.0
-offset_bottom = 181.0
+offset_left = 303.0
+offset_top = 103.0
+offset_right = 599.0
+offset_bottom = 178.0
+theme_override_fonts/font = ExtResource("6_pximk")
 text = "Pick up cookies to get power"
 
 [node name="Label3" type="Label" parent="."]
@@ -108,10 +111,11 @@ theme_override_fonts/font = ExtResource("6_pximk")
 text = "Powers will scale of potency, which accumulates over time"
 
 [node name="Label4" type="Label" parent="."]
-offset_left = 920.0
-offset_top = 217.0
-offset_right = 1478.0
-offset_bottom = 292.0
+offset_left = 833.0
+offset_top = 220.0
+offset_right = 1391.0
+offset_bottom = 295.0
+theme_override_fonts/font = ExtResource("7_pximk")
 text = "Potency decreases when a cookie is picked up"
 
 [node name="Label5" type="Label" parent="."]
@@ -120,6 +124,14 @@ offset_top = 105.0
 offset_right = 2152.0
 offset_bottom = 180.0
 text = "If potency is 0, Cookie skills are void"
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 1740.0
+offset_top = 221.0
+offset_right = 2298.0
+offset_bottom = 296.0
+theme_override_fonts/font = ExtResource("6_pximk")
+text = "Higher Potency == New Cookies, Stronger Powers"
 
 [node name="Label6" type="Label" parent="."]
 offset_left = 2078.0

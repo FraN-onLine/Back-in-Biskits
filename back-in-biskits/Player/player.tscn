@@ -917,8 +917,9 @@ frame_progress = 1.0
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
-animation = &"idle"
-frame_progress = 0.464903
+animation = &"yoyoattack"
+frame = 13
+frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

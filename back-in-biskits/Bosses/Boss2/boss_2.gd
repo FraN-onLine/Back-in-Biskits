@@ -23,6 +23,7 @@ var healthbar : Node
 
 @onready var teleport_markers: Array[Node]
 @onready var spawn_points: Array[Node]
+@onready var barrage_markers: Array[Node]
 
 func _ready() -> void:
 	# Add this boss to the bosses group for waypoint tracking
@@ -32,6 +33,7 @@ func _ready() -> void:
 	current_hp = max_hp
 	teleport_markers = get_tree().get_nodes_in_group("candyqueen_teleport")
 	spawn_points = get_tree().get_nodes_in_group("candyqueen_minion")
+	barrage_markers = get_tree().get_nodes_in_group("candyqueen_barrage")
 	player = get_tree().get_first_node_in_group("player")
 	start_phase_1()
 
@@ -85,7 +87,6 @@ func teleport_loop() -> void:
 # ----------------- PHASE 2 -----------------
 func start_phase_2() -> void:
 	phase = 2
-	spawn_loop() # still summons minions
 	barrage_loop()
 
 
@@ -99,26 +100,29 @@ func barrage_loop() -> void:
 
 func barrage_attack() -> void:
 	print("🍬 Candy Queen candy barrage!")
-	if not projectile_scene:
+	if not projectile_scene or barrage_markers.is_empty():
 		return
 
 	for i in range(barrage_shots):
 		var projectile = projectile_scene.instantiate()
 		get_tree().current_scene.add_child(projectile)
 
-		# Random X position across the map width
-		var x_pos = randf_range(global_position.x - barrage_width/2, global_position.x + barrage_width/2)
-		projectile.global_position = Vector2(x_pos, global_position.y - 400) # spawn above screen
+		# Pick one of the 3 spawn markers
+		var spot: Marker2D = barrage_markers.pick_random()
+		projectile.global_position = spot.global_position
 
 		# Straight down
 		projectile.direction = Vector2.DOWN
 		projectile.speed = 250
 
-		# Random candy sprite
-		if barrage_textures.size() > 0 and projectile.has_node("Sprite2D"):
-			projectile.get_node("Sprite2D").texture = barrage_textures.pick_random()
+		# Assign random candy texture
+		if barrage_textures.size() > 0:
+			var tex = barrage_textures.pick_random()
+			if projectile.has_method("set_texture"):
+				projectile.set_texture(tex)
 
-		await get_tree().create_timer(0.15).timeout # staggered rain
+		await get_tree().create_timer(0.4).timeout  # stagger rain
+
 
 
 # ----------------- DAMAGE -----------------
@@ -147,7 +151,5 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	alive = false
-	$AnimatedSprite2D.play("death")
-	await $AnimatedSprite2D.animation_finished
-	queue_free()
-	print("Candy Queen defeated!")
+	Global.stage = 3
+	get_tree().change_scene_to_file("res://Areas/area_2.tscn")
