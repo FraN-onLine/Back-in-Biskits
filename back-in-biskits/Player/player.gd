@@ -24,6 +24,12 @@ var dash_velocity := Vector2.ZERO
 @onready var rushanim = $RushEffect
 @onready var orb = $Orb
 
+@onready var sword_sound = $AudioStreamPlayer
+@onready var hammer_sound = $AudioStreamPlayer2
+@onready var yoyo_sound = $AudioStreamPlayer3
+@onready var shield_sound = $AudioStreamPlayer4
+@onready var graham_sound = $AudioStreamPlayer5
+@onready var rush_sound = $AudioStreamPlayer6
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
 
@@ -46,6 +52,7 @@ func _process(delta: float) -> void:
 		
 	if Global.shield >= 1:
 		$Shield.visible = true
+		shield_sound.play()
 	else:
 		$Shield.visible = false
 		
@@ -158,12 +165,14 @@ func sword_attack() -> void: #this is the revamped sword att
 	sword.monitoring = true
 	sword.visible = true
 	swordanim.play("attack")
+	sword_sound.play()
 	await swordanim.animation_finished
 	sword.monitoring = false
 	swordanim.play("default")
 	orb.play("idle")
 	
 func graham_attack() -> void:
+	graham_sound.play()
 	if not graham_bullet: return
 	#await is to wait for an event to finish, e.g. animation or timer
 	var mouse_pos = get_global_mouse_position() #get where cursor was
@@ -208,6 +217,7 @@ func hammer_attack() -> void:
 	orb.play("disappear")
 	anim.play("hammersmash")
 	# Wait until animation hits the "slam" frame
+	hammer_sound.play()
 	await anim.animation_finished
 
 	# Spawn shockwave at player position
@@ -237,6 +247,7 @@ func yoyo_attack() -> void:
 		yoyo_skill.cookie_potency = cookie_potency
 		yoyo_skill.global_position = global_position
 	
+	yoyo_sound.play()
 	await anim.animation_finished
 	
 	is_attacking = false
@@ -245,6 +256,7 @@ func yoyo_attack() -> void:
 
 func oreo_rush() -> void:
 	if dashing or is_attacking: 
+		rush_sound.play()
 		return
 
 	is_attacking = true

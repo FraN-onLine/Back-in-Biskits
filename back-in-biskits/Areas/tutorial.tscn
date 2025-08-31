@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://gmao1bw0xgpl"]
+[gd_scene load_steps=25 format=4 uid="uid://gmao1bw0xgpl"]
 
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="1_1g7pl"]
 [ext_resource type="Script" uid="uid://14xk0h1pf7us" path="res://Areas/tutorial.gd" id="1_c5plm"]
@@ -9,7 +9,12 @@
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="6_pximk"]
 [ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="7_pximk"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="8_jw656"]
+[ext_resource type="Texture2D" uid="uid://b0ql7d1kirvko" path="res://Assets/Main Menu/button_rectangle_depth_flat.png" id="9_77gea"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_khkes"]
+[ext_resource type="Texture2D" uid="uid://ba76wp4u7b068" path="res://Assets/Main Menu/button_rectangle_depth_border.png" id="10_y5la3"]
+[ext_resource type="Texture2D" uid="uid://2rjibsfwdvns" path="res://Assets/Main Menu/button_rectangle_depth_gradient.png" id="11_ygrh2"]
+[ext_resource type="AudioStream" uid="uid://cy6k2ufyu8d34" path="res://Assets/Sounds/button.wav" id="12_y5la3"]
+[ext_resource type="AudioStream" uid="uid://chk2job1t4pik" path="res://Assets/Sounds/tutorial.wav" id="13_ygrh2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q01"]
 texture = ExtResource("1_1g7pl")
@@ -60,6 +65,15 @@ sources/2 = SubResource("TileSetAtlasSource_8eli6")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qcivo"]
 size = Vector2(337, 237)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eh6eq"]
+texture = ExtResource("9_77gea")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hs8cx"]
+texture = ExtResource("10_y5la3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vgv6"]
+texture = ExtResource("11_ygrh2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5plm"]
 size = Vector2(233, 366)
@@ -155,7 +169,21 @@ offset_left = 1048.0
 offset_top = 20.0
 offset_right = 1130.0
 offset_bottom = 51.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_eh6eq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_hs8cx")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3vgv6")
 text = "SKIP"
+
+[node name="buttonsounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_y5la3")
+volume_db = -20.0
+bus = &"SFX"
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ygrh2")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [node name="Cookie" parent="." instance=ExtResource("8_jw656")]
 position = Vector2(449, 187)

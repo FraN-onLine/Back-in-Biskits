@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=133 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dn1wgo4yf3vf5" path="res://Assets/Player/Shield.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bfsycxe042gth" path="res://Assets/Player/Yoyo Basic Attack(Middle range type).png" id="7_00tjw"]
 [ext_resource type="Texture2D" uid="uid://d14nh0i1xoss" path="res://Assets/Player/Bull rush skill(put shockwave at the end).png" id="9_x3vf3"]
+[ext_resource type="AudioStream" uid="uid://3iieode3f753" path="res://Assets/Sounds/sword.wav" id="14_gu6f8"]
+[ext_resource type="AudioStream" uid="uid://dn8wpri74g0ix" path="res://Assets/Sounds/yoyo.wav" id="15_dkpta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
 
@@ -920,7 +922,9 @@ frame_progress = 1.0
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
-animation = &"dead"
+animation = &"yoyoattack"
+frame = 13
+frame_progress = 1.0
 metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -957,3 +961,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_od3ui")
 }
 autoplay = "new_animation"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gu6f8")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_dkpta")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

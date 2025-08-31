@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cucwq4ajkous0"]
+[gd_scene load_steps=20 format=3 uid="uid://cucwq4ajkous0"]
 
 [ext_resource type="Script" uid="uid://dlnht23ihoofs" path="res://Bosses/Boss1/boss_1.gd" id="1_4w332"]
 [ext_resource type="Texture2D" uid="uid://bc5ib50v3otc0" path="res://Assets/Bosses/Cat Boss/cat_cookie(1).png" id="1_rp1qc"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://7jusydsxrpe8" path="res://Assets/Bosses/Cat Boss/cat_atk.png" id="3_4j63d"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="3_wppuc"]
 [ext_resource type="Texture2D" uid="uid://dxkhpxfr60wtf" path="res://Assets/catc(1)-Sheet.png" id="4_rcd67"]
+[ext_resource type="AudioStream" uid="uid://fd2rx8srwd00" path="res://Assets/Sounds/catblue.wav" id="7_v3eup"]
+[ext_resource type="AudioStream" uid="uid://crdk11nm5dq5i" path="res://Assets/Sounds/catred.wav" id="8_up3q7"]
+[ext_resource type="AudioStream" uid="uid://dla1uah5uf2u" path="res://Assets/Sounds/catcircle.wav" id="9_mwtqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcd67"]
 atlas = ExtResource("3_4j63d")
@@ -96,3 +99,15 @@ frame_progress = 0.340138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppuc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v3eup")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_up3q7")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mwtqu")
+bus = &"SFX"
