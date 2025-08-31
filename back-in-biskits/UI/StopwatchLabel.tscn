@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cogpojwh20ud7"]
+[gd_scene load_steps=0 format=3 uid="uid://cogpojwh20ud7"]
 
 [node name="StopwatchLabel" type="Label"]
 anchors_preset = 5

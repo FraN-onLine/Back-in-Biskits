@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c78dwws6u4pi5"]
+[gd_scene load_steps=26 format=4 uid="uid://d2rvpc750ns1a"]
 
 [ext_resource type="Texture2D" uid="uid://btrovvn0xng2j" path="res://Assets/Bosses/Cookie Mosnter Boss/Background.png" id="1_uu235"]
 [ext_resource type="Texture2D" uid="uid://0mghypx5ivgw" path="res://Assets/Bosses/Cookie Mosnter Boss/Table Platform.png" id="2_il3nm"]
@@ -1986,6 +1986,12 @@ texture = ExtResource("2_il3nm")
 [sub_resource type="TileSet" id="TileSet_ynhw7"]
 sources/0 = SubResource("TileSetAtlasSource_4co3w")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_il3nm"]
+size = Vector2(512.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23fs2"]
+size = Vector2(161.421, 20)
+
 [node name="Area3" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -2029,10 +2035,10 @@ max_active_cookies = 4
 position = Vector2(-144, 35)
 
 [node name="Spawnpoint2" parent="CookieSpawner" index="1"]
-position = Vector2(-213, 86)
+position = Vector2(-22, 39)
 
 [node name="Spawnpoint3" parent="CookieSpawner" index="2"]
-position = Vector2(-73, 73)
+position = Vector2(-81, 30)
 
 [node name="Spawnpoint4" type="Marker2D" parent="CookieSpawner"]
 position = Vector2(118, 33)
@@ -2041,11 +2047,29 @@ position = Vector2(118, 33)
 position = Vector2(29, 31)
 
 [node name="Spawnpoint6" type="Marker2D" parent="CookieSpawner"]
-position = Vector2(62, 80)
+position = Vector2(86, 47)
 
 [node name="Boss3" parent="." instance=ExtResource("13_il3nm")]
 z_index = -2
 position = Vector2(49, 343)
 scale = Vector2(0.387107, 0.387107)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" groups=["walls"]]
+position = Vector2(1.75, 214)
+shape = SubResource("RectangleShape2D_il3nm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" groups=["walls"]]
+position = Vector2(200.397, 151.926)
+rotation = -2.55281
+shape = SubResource("RectangleShape2D_23fs2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" groups=["walls"]]
+position = Vector2(-201, 153)
+rotation = -0.632175
+shape = SubResource("RectangleShape2D_23fs2")
 
 [editable path="CookieSpawner"]

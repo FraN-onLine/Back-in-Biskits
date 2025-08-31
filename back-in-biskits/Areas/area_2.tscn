@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_mq80c"]
 [ext_resource type="PackedScene" uid="uid://c3vr81s4mdl76" path="res://Bosses/Boss2/boss_2.tscn" id="3_mq80c"]
-[ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="5_5ch4h"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="5_5ch4h"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_ugiej"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="7_lykvi"]
 
