@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dunepp1pb2igq"]
+
+[ext_resource type="Script" uid="uid://dwqbhpgtbdkbb" path="res://Bosses/Boss2/candy_barrage.gd" id="1_fvhcw"]
+[ext_resource type="Texture2D" uid="uid://277kxoep2ysh" path="res://Assets/Cookies/CookieCat-Sheet.png" id="2_8hgm7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qmo0"]
+atlas = ExtResource("2_8hgm7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40lxu"]
+radius = 9.05539
+
+[node name="candy" type="Area2D"]
+script = ExtResource("1_fvhcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6qmo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_40lxu")
