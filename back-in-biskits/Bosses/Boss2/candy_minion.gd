@@ -25,7 +25,7 @@ func _ready() -> void:
 	attack_timer.autostart = true
 	add_child(attack_timer)
 	attack_timer.timeout.connect(_on_attack_timeout)
-	$animatedSprite2D.play("spawn")
+	$AnimatedSprite2D.play("spawn")
 	speed = 0
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("idle")
