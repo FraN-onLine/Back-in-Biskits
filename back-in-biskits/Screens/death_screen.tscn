@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbycmc1usq8g"]
+[gd_scene load_steps=4 format=3 uid="uid://dbycmc1usq8g"]
 
 [ext_resource type="Script" uid="uid://bh1ovk1x2hfmd" path="res://Screens/death_screen.gd" id="1_jcaqs"]
 [ext_resource type="Texture2D" uid="uid://c2ud5fy1gasn" path="res://Assets/Bosses/Cat Boss/Cat_Win.png" id="2_e3k05"]
+[ext_resource type="AudioStream" uid="uid://c5w5stxodaqjg" path="res://Assets/Sounds/death.wav" id="3_4v2tk"]
 
 [node name="death_screen" type="Control"]
 layout_mode = 3
@@ -53,6 +54,11 @@ vertical_alignment = 1
 position = Vector2(593, 178)
 scale = Vector2(3.02483, 3.02483)
 texture = ExtResource("2_e3k05")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4v2tk")
+volume_db = -20.0
+autoplay = true
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

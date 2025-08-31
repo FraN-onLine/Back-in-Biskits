@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name CookieBoss
 
 var boss_name = "Calico Cookie-Cat"
+@onready var blueatk = $AudioStreamPlayer 
+@onready var redatk = $AudioStreamPlayer2
+@onready var circleatk = $AudioStreamPlayer3
 @export var speed: float = 120.0
 @export var max_hp: int = 420
 var current_hp: int
@@ -102,12 +105,14 @@ func shoot_standard() -> void:
 	var dir = (player.global_position - global_position).normalized()
 	var proj = projectile.instantiate()
 	get_tree().current_scene.add_child(proj)
+	blueatk.play()
 	proj.init(global_position, dir, 210, 1, false) # speed, damage, not homing
 	
 
 func shoot_homing() -> void:
 	var proj = projectile.instantiate()
 	get_tree().current_scene.add_child(proj)
+	redatk.play()
 	proj.init(global_position, Vector2.ZERO, 184, 1, true) # homing
 	
 
@@ -118,6 +123,7 @@ func radial_burst() -> void:
 		var dir = Vector2.RIGHT.rotated(angle)
 		var proj = projectile.instantiate()
 		get_tree().current_scene.add_child(proj)
+		circleatk.play()
 		proj.init(global_position, dir, 220, 1, false)
 		
 

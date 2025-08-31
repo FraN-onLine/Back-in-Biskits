@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt2sey5iakuhg"]
+[gd_scene load_steps=9 format=3 uid="uid://bt2sey5iakuhg"]
 
 [ext_resource type="Script" uid="uid://bgpe8mldqaqhe" path="res://Screens/Cutscene/cutscene.gd" id="1_8jyr7"]
 [ext_resource type="Texture2D" uid="uid://bl72wot57dwct" path="res://Assets/Cutscene/Cutscene-final1.png" id="1_hd8e7"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://byia4bclkcqja" path="res://Assets/Cutscene/Cutscene-final3.png" id="4_ky3un"]
 [ext_resource type="Texture2D" uid="uid://c6egdnbisv0bl" path="res://Assets/Cutscene/Cutscene-final4.png" id="5_fcd4n"]
 [ext_resource type="Texture2D" uid="uid://dshtouwjiegcq" path="res://Assets/Cutscene/Cutscene-final5.png" id="6_ky3un"]
+[ext_resource type="AudioStream" uid="uid://cejihotp2aj76" path="res://Assets/Sounds/heroic-movie-film-music-286241.mp3" id="8_fcd4n"]
 
 [node name="Cutscene" type="CanvasLayer"]
 script = ExtResource("1_8jyr7")
@@ -32,3 +33,9 @@ theme_override_font_sizes/font_size = 20
 text = "with sword at hand, you took the final boss down"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_fcd4n")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var skip = $UI/SkipButton
+@onready var button_sound = $buttonsounds
 
 var potset0 = false
 var potset3 = false
@@ -31,7 +32,12 @@ func _on_body_entered_p3(body):
 		potset3 = false
 
 func _on_skip_button_pressed():
+<<<<<<< HEAD
+	button_sound.play()
+	FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+=======
 	FadeManager.fade_out_then_change_scene("res://Areas/area_3.tscn")
+>>>>>>> 2c9e3db6b7a3171570a50a897e323c6384e07a47
 	Global.stage = 1
 	Global.potency = 1
 	Global.timer = 0

@@ -8,6 +8,8 @@ class_name CandyMinion
 @export var attack_interval: float = 2.0
 @export var damage_popup_scene : PackedScene
 
+@onready var spawn_sound = $spawm
+@onready var atk_sound = $atk
 var hp: int
 var player: Node2D = null
 var alive: bool = true
@@ -27,6 +29,7 @@ func _ready() -> void:
 	attack_timer.timeout.connect(_on_attack_timeout)
 	$AnimatedSprite2D.play("spawn")
 	speed = 0
+	spawn_sound.play()
 	await $AnimatedSprite2D.animation_finished
 	$AnimatedSprite2D.play("idle")
 	speed = 80
@@ -52,6 +55,7 @@ func _on_attack_timeout() -> void:
 		print("💥 Minion AoE hit player!")
 		#wait 0.5 seconds to sync with animation
 		$AnimatedSprite2D.play("attack")
+		atk_sound.play()
 		await get_tree().create_timer(0.6).timeout
 		player.call("take_damage", aoe_damage)
 		await $AnimatedSprite2D.animation_finished

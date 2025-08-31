@@ -1,8 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://b08k8j5al6y67"]
+[gd_scene load_steps=53 format=3 uid="uid://b08k8j5al6y67"]
 
 [ext_resource type="Script" uid="uid://ceg3vd8ihqr4l" path="res://Bosses/Boss2/candy_minion.gd" id="1_uv0fx"]
 [ext_resource type="Texture2D" uid="uid://bio7kympy4tyl" path="res://Assets/Bosses/Cat Boss/received_1412002719865026.png" id="1_vbki4"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="2_murla"]
+[ext_resource type="AudioStream" uid="uid://cmkof53b8ftwx" path="res://Assets/Sounds/[91] WAV_91_splat 1.wav" id="4_pfujx"]
+[ext_resource type="AudioStream" uid="uid://di37tqevbbqcx" path="res://Assets/Sounds/Voicy_Barbarian king scream - Clash of Clans.mp3" id="5_3yxb8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbki4"]
 atlas = ExtResource("1_vbki4")
@@ -352,9 +354,18 @@ damage_popup_scene = ExtResource("2_murla")
 position = Vector2(4, -3)
 scale = Vector2(0.0268555, 0.0273437)
 sprite_frames = SubResource("SpriteFrames_ktmgs")
-animation = &"attack"
+animation = &"spawn"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_uv0fx")
+
+[node name="spawm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pfujx")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="atk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3yxb8")
+bus = &"SFX"

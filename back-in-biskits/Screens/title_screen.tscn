@@ -1,15 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6l777w1uox7m"]
+[gd_scene load_steps=20 format=3 uid="uid://b6l777w1uox7m"]
 
 [ext_resource type="Script" uid="uid://cquel1gyflwcr" path="res://Screens/title_screen.gd" id="1_curwl"]
 [ext_resource type="Script" path="res://Screens/audio_control.gd" id="2_4muxt"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_28co4"]
-[ext_resource type="AudioStream" uid="uid://duka4r5we3o7t" path="res://Assets/Sounds/bgm.wav" id="2_cc463"]
+[ext_resource type="Texture2D" uid="uid://b0ql7d1kirvko" path="res://Assets/Main Menu/button_rectangle_depth_flat.png" id="2_pn4sl"]
+[ext_resource type="Texture2D" uid="uid://ba76wp4u7b068" path="res://Assets/Main Menu/button_rectangle_depth_border.png" id="3_ao0oo"]
+[ext_resource type="Texture2D" uid="uid://2rjibsfwdvns" path="res://Assets/Main Menu/button_rectangle_depth_gradient.png" id="4_os6h4"]
+[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="6_ao0oo"]
+[ext_resource type="AudioStream" uid="uid://63kq32wvdot8" path="res://Assets/Sounds/Project_0.wav" id="7_pn4sl"]
+[ext_resource type="AudioStream" uid="uid://cy6k2ufyu8d34" path="res://Assets/Sounds/button.wav" id="9_os6h4"]
+[ext_resource type="Texture2D" uid="uid://d3au64nhlxfsc" path="res://Assets/Untitled31_20250831142232.jpg" id="10_ch080"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ch080"]
+texture = ExtResource("2_pn4sl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ckho"]
+texture = ExtResource("3_ao0oo")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_feh30"]
+texture = ExtResource("4_os6h4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3yumr"]
+texture = ExtResource("2_pn4sl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dc4i4"]
+texture = ExtResource("3_ao0oo")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e54dn"]
+texture = ExtResource("4_os6h4")
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_28co4"]
 color = Color(1, 1, 1, 1)
@@ -32,6 +50,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_curwl")
 
+[node name="Untitled3120250831142232" type="Sprite2D" parent="."]
+position = Vector2(576.5, 323)
+scale = Vector2(0.29974, 0.297222)
+texture = ExtResource("10_ch080")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -39,10 +62,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -162.0
-offset_top = -177.5
-offset_right = 162.0
-offset_bottom = 177.5
+offset_left = -85.0
+offset_top = 21.0
+offset_right = 85.0
+offset_bottom = 283.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -60,14 +83,18 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
-theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_ch080")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ckho")
+theme_override_styles/normal = SubResource("StyleBoxTexture_feh30")
 text = "Start Game"
 
 [node name="InstructionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
@@ -77,6 +104,8 @@ text = "Instruction
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
@@ -86,12 +115,15 @@ text = "Settings
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
 text = "Quit Game"
 
 [node name="SettingsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,17 +143,59 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 51.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ao0oo")
+theme_override_font_sizes/font_size = 41
 text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -108.0
+offset_right = 88.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 15
+text = "Background Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -21.0
+offset_right = 88.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 15
+text = "Sound Effects"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Back" type="Button" parent="SettingsPanel"]
 layout_mode = 0
-offset_left = 214.5
-offset_top = 267.0
-offset_right = 302.5
-offset_bottom = 290.0
+offset_left = 153.5
+offset_top = 250.0
+offset_right = 352.5
+offset_bottom = 305.0
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
@@ -133,10 +207,10 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 37.0
-offset_top = -92.0
-offset_right = -31.0
-offset_bottom = -62.0
+offset_left = 35.5
+offset_top = -73.0
+offset_right = -32.5
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_28co4")
@@ -147,9 +221,36 @@ value = 1.0
 script = ExtResource("2_4muxt")
 audio_bus_name = "Music"
 
+[node name="AudioControl2" type="HSlider" parent="SettingsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 32.5
+offset_top = 18.0
+offset_right = -35.5
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_28co4")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_cc463")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_4muxt")
+step = 0.05
+value = 1.0
+script = ExtResource("2_4muxt")
+audio_bus_name = "SFX"
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_cc463")
+stream = ExtResource("7_pn4sl")
+volume_db = -20.0
 autoplay = true
+bus = &"Music"
+
+[node name="buttonsounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_os6h4")
+volume_db = -20.0
+bus = &"SFX"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -161,6 +262,7 @@ scale = Vector2(0.250208, 0.251563)
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -179,14 +281,6 @@ text = "BACK IN BISKITS
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="ColorRect" parent="."]
-z_index = -1
-layout_mode = 0
-offset_right = 1186.0
-offset_bottom = 665.0
-mouse_filter = 2
-color = Color(0.680275, 0.53353, 0.452245, 1)
-metadata/_edit_lock_ = true
-
 [connection signal="pressed" from="SettingsPanel/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="SettingsPanel/AudioControl" to="SettingsPanel/AudioControl" method="_on_value_changed"]
+[connection signal="value_changed" from="SettingsPanel/AudioControl2" to="SettingsPanel/AudioControl2" method="_on_value_changed"]
