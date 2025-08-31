@@ -1,7 +1,23 @@
 extends CanvasLayer
 var blink = false
+var stopwatch_time := 0.0
+var stopwatch_running := false
+@onready var stopwatch_label = $StopwatchLabel
+
+func _ready():
+	add_to_group("ui")
+
+func start_stopwatch():
+	stopwatch_time = 0.0
+	stopwatch_running = true
+	stopwatch_label.text = "00:00.00"
+
 
 func _process(delta: float) -> void:
+	if stopwatch_running:
+		stopwatch_time += delta
+		stopwatch_label.text = format_time(stopwatch_time)
+
 	var boss = get_tree().get_first_node_in_group("boss")
 	if boss:
 		$BossLabel.visible = true
@@ -19,7 +35,7 @@ func _process(delta: float) -> void:
 	$ShieldRect.size.x = Global.shield * 32
 	if Global.potency == 3 and Global.timer >= 4 and blink == false:
 		blink = true
-		$PotencyRect.modulate = Color(1, 0.5, 0.5)  # light red
+		$PotencyRect.modulate = Color(1, 0.5, 0.5) # light red
 		await get_tree().create_timer(1.2).timeout
 		$PotencyRect.modulate = Color(1, 1, 1)
 		blink = false
@@ -37,6 +53,18 @@ func _process(delta: float) -> void:
 		$ShieldRect.visible = true
 		#btw potency can reach 0, 0 potency means all buffs are null and void
 		# so dont eat too much or else ull suffer doing nothing
+
+func stop_stopwatch():
+	stopwatch_running = false
+
+func get_stopwatch_time() -> float:
+	return stopwatch_time
+
+func format_time(time: float) -> String:
+	var minutes = int(time) / 60
+	var seconds = int(time) % 60
+	var centiseconds = int((time - int(time)) * 100)
+	return "%02d:%02d.%02d" % [minutes, seconds, centiseconds]
 		
 	
 #ok push ko 9:50, by then everything should be done na necessary for yall to build on
