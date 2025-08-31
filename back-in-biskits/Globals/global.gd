@@ -20,3 +20,9 @@ func _process(delta: float) -> void:
 			potency += 1
 		elif potency == 3:
 			lives -= 1
+			var player = get_tree().get_first_node_in_group("player")
+			if player:
+				player.get_node("Sprite2D").modulate = Color(1, 0.5, 0.5)
+				await get_tree().create_timer(0.2).timeout
+				player.get_node("Sprite2D").modulate = Color(1, 1, 1)
+			

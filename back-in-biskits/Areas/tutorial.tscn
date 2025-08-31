@@ -83,6 +83,7 @@ tile_set = SubResource("TileSet_8gp1h")
 
 [node name="Player" parent="." instance=ExtResource("4_qcivo")]
 position = Vector2(-55, 206)
+yoyoatk_scene = null
 
 [node name="Label" type="Label" parent="."]
 offset_left = -81.0

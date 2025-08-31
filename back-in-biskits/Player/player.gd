@@ -142,6 +142,7 @@ func die() -> void:
 	dead = true
 	$AnimatedSprite2D.visible = false
 	await anim.animation_finished
+	$Sprite2D.visible = false
 	#wait 0.5 sec then go to title screen
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://Screens/death_screen.tscn")
@@ -220,7 +221,7 @@ func hammer_attack() -> void:
 	is_attacking = false
 	speed = 200
 	anim.play("idle")
-
+	orb.play("idle")
 
 func yoyo_attack() -> void:
 	if is_attacking:

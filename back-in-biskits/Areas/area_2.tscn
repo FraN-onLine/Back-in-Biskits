@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://djevp70hlcgjq"]
+[gd_scene load_steps=9 format=4 uid="uid://djevp70hlcgjq"]
 
 [ext_resource type="Texture2D" uid="uid://byp4vj77bodyk" path="res://Assets/Bosses/Candy Boss/New Piskel (1).png" id="1_4ng5c"]
 [ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
@@ -6,13 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c3vr81s4mdl76" path="res://Bosses/Boss2/boss_2.tscn" id="3_mq80c"]
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="5_5ch4h"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_ugiej"]
-[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_0cto4"]
-[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="8_8qjfp"]
-[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_xjqkg"]
-[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="10_6y5rs"]
-[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="11_wnpb0"]
-[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_f4p8d"]
-[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="13_3xaqm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
 texture = ExtResource("1_4ng5c")
@@ -83,6 +76,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_mq80c")]
 position = Vector2(63, 579)
+yoyoatk_scene = null
 
 [node name="Boss2" parent="." instance=ExtResource("3_mq80c")]
 position = Vector2(70, 34)
@@ -90,7 +84,6 @@ position = Vector2(70, 34)
 [node name="UI" parent="." instance=ExtResource("5_5ch4h")]
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_ugiej")]
-possible_cookies = Array[ExtResource("7_0cto4")]([ExtResource("8_8qjfp"), ExtResource("9_xjqkg"), ExtResource("10_6y5rs"), ExtResource("11_wnpb0"), ExtResource("12_f4p8d"), ExtResource("13_3xaqm")])
 spawn_interval = 4.0
 max_active_cookies = 6
 metadata/_edit_lock_ = true

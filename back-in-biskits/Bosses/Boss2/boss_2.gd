@@ -11,7 +11,7 @@ var current_hp: int = max_hp
 
 @export var summon_interval: float = 4.0
 @export var teleport_interval: float = 8.0
-@export var barrage_interval: float = 6.0
+@export var barrage_interval: float = 14
 @export var barrage_shots: int = 12
 @export var barrage_width: float = 600.0
 
@@ -102,6 +102,10 @@ func barrage_attack() -> void:
 	print("🍬 Candy Queen candy barrage!")
 	if not projectile_scene or barrage_markers.is_empty():
 		return
+	
+	$AnimatedSprite2D.play("summon") # plays summon animation
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("idle")
 
 	for i in range(barrage_shots):
 		var projectile = projectile_scene.instantiate()
@@ -118,8 +122,7 @@ func barrage_attack() -> void:
 		# Assign random candy texture
 		if barrage_textures.size() > 0:
 			var tex = barrage_textures.pick_random()
-			if projectile.has_method("set_texture"):
-				projectile.set_texture(tex)
+			projectile.set_texture(tex)
 
 		await get_tree().create_timer(0.4).timeout  # stagger rain
 
@@ -152,4 +155,6 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	alive = false
 	Global.stage = 3
+	Global.potency = 1
+	Global.timer = 0
 	get_tree().change_scene_to_file("res://Areas/area_2.tscn")

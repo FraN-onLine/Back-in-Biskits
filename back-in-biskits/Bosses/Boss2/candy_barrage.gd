@@ -1,7 +1,7 @@
 extends Area2D
 class_name CandyProjectile
 
-@export var speed: float = 135
+@export var speed: float = 120
 var direction: Vector2 = Vector2.DOWN
 var damage: int = 1
 
@@ -25,4 +25,6 @@ func _on_body_entered(body: Node) -> void:
 
 func set_texture(tex: Texture2D) -> void:
 	if tex:
-		sprite.region_rect = Rect2(0, 0,32, 32)
+		sprite.texture = tex
+		sprite.region_enabled = true
+		sprite.region_rect = Rect2(0, 0, 32, 32)

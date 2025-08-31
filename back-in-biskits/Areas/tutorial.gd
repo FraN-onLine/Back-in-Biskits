@@ -6,7 +6,6 @@ var potset0 = false
 var potset3 = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	skip.pressed.connect(_on_skip_button_pressed)
 	$Area2D.body_entered.connect(_on_body_entered_end)
 	$SetPot0.body_entered.connect(_on_body_entered_p0)
 	$SetPot3.body_entered.connect(_on_body_entered_p3)
@@ -17,6 +16,7 @@ func _on_body_entered_end(body):
 		FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
 		Global.stage = 1
 	Global.potency = 1
+	Global.timer = 0
 	
 func _on_body_entered_p0(body):
 	if body.name == "Player" and potset0 == false:
@@ -33,3 +33,5 @@ func _on_body_entered_p3(body):
 func _on_skip_button_pressed():
 	FadeManager.fade_out_then_change_scene("res://Areas/area_2.tscn")
 	Global.stage = 1
+	Global.potency = 1
+	Global.timer = 0

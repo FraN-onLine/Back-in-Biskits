@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbycmc1usq8g"]
+[gd_scene load_steps=3 format=3 uid="uid://dbycmc1usq8g"]
 
 [ext_resource type="Script" uid="uid://bh1ovk1x2hfmd" path="res://Screens/death_screen.gd" id="1_jcaqs"]
+[ext_resource type="Texture2D" uid="uid://c2ud5fy1gasn" path="res://Assets/Bosses/Cat Boss/Cat_Win.png" id="2_e3k05"]
 
 [node name="death_screen" type="Control"]
 layout_mode = 3
@@ -37,42 +38,21 @@ offset_bottom = 493.0
 text = "Retry
 "
 
-[node name="boss_1" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1151.0
-offset_bottom = 646.0
-
-[node name="Label" type="Label" parent="boss_1"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 19.0
 offset_right = 1128.0
 offset_bottom = 121.0
 theme_override_font_sizes/font_size = 23
+text = "Placeholder, Placeholder!!!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="boss_1"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(593, 261)
 scale = Vector2(7.10938, 7.10938)
-
-[node name="boss_2" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1151.0
-offset_bottom = 648.0
-
-[node name="Label" type="Label" parent="boss_2"]
-offset_left = 23.0
-offset_top = 19.0
-offset_right = 1128.0
-offset_bottom = 121.0
-theme_override_font_sizes/font_size = 23
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="boss_2"]
-position = Vector2(593, 261)
-scale = Vector2(7.10938, 7.10938)
+texture = ExtResource("2_e3k05")
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]

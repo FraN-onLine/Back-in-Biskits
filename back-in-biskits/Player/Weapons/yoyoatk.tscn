@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://6y4qrpcrkt3y" path="res://Player/Weapons/yoyoatk.gd" id="1_eaek7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d3rar"]
-radius = 53.0094
+radius = 55.0091
 
 [node name="yoyoatk" type="Area2D"]
 collision_mask = 3

@@ -132,7 +132,7 @@ max_hp = 700
 minion_scene = ExtResource("2_k1vdw")
 projectile_scene = ExtResource("3_1vpdc")
 barrage_textures = Array[Texture2D]([ExtResource("3_h8i66"), ExtResource("4_1vpdc"), ExtResource("5_4qw46"), ExtResource("6_2ksk0"), ExtResource("7_h7d24"), ExtResource("8_7ja2r")])
-summon_interval = 13.0
+summon_interval = 10.0
 damage_popup_scene = ExtResource("3_cfiu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
