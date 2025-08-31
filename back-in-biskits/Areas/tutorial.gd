@@ -31,7 +31,7 @@ func _on_body_entered_p3(body):
 		potset3 = false
 
 func _on_skip_button_pressed():
-	FadeManager.fade_out_then_change_scene("res://Areas/area_2.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/area_3.tscn")
 	Global.stage = 1
 	Global.potency = 1
 	Global.timer = 0
