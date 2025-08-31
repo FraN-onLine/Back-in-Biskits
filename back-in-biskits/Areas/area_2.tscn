@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://djevp70hlcgjq"]
+[gd_scene load_steps=11 format=4 uid="uid://djevp70hlcgjq"]
 
 [ext_resource type="Texture2D" uid="uid://byp4vj77bodyk" path="res://Assets/Bosses/Candy Boss/New Piskel (1).png" id="1_4ng5c"]
 [ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_mq80c"]
 [ext_resource type="PackedScene" uid="uid://c3vr81s4mdl76" path="res://Bosses/Boss2/boss_2.tscn" id="3_mq80c"]
-[ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="5_5ch4h"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="5_5ch4h"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_ugiej"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="7_lykvi"]
+[ext_resource type="AudioStream" uid="uid://b60omm53h7ld8" path="res://Assets/Sounds/area_2.wav" id="8_xkiia"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
 texture = ExtResource("1_4ng5c")
@@ -124,6 +125,11 @@ position = Vector2(65, 38)
 
 [node name="WaypointMarker" parent="." instance=ExtResource("7_lykvi")]
 position = Vector2(235, 362)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xkiia")
+autoplay = true
+bus = &"Music"
 
 [editable path="Boss2"]
 [editable path="CookieSpawner"]

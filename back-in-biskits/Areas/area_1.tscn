@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
 [ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_kpacr"]
-[ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="3_v2evy"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_v2evy"]
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]

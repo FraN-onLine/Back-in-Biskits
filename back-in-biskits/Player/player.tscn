@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene load_steps=135 format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://d14nh0i1xoss" path="res://Assets/Player/Bull rush skill(put shockwave at the end).png" id="9_x3vf3"]
 [ext_resource type="AudioStream" uid="uid://3iieode3f753" path="res://Assets/Sounds/sword.wav" id="14_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://dn8wpri74g0ix" path="res://Assets/Sounds/yoyo.wav" id="15_dkpta"]
+[ext_resource type="AudioStream" uid="uid://tmjse8vir233" path="res://Assets/Sounds/shield.wav" id="15_pisgm"]
+[ext_resource type="AudioStream" uid="uid://bmlp0v4qb3uxa" path="res://Assets/Sounds/rush.wav" id="17_b1ygp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvfyp"]
 
@@ -967,6 +969,7 @@ stream = ExtResource("14_gu6f8")
 bus = &"SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_pisgm")
 bus = &"SFX"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
@@ -974,10 +977,13 @@ stream = ExtResource("15_dkpta")
 bus = &"SFX"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_pisgm")
 bus = &"SFX"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_b1ygp")
+volume_db = -20.0
 bus = &"SFX"

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_qcivo"]
 [ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_w6q01"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="4_qcivo"]
-[ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="6_4t5x3"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="6_4t5x3"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="6_pximk"]
 [ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="7_pximk"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="8_jw656"]

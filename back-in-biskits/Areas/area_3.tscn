@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://btrovvn0xng2j" path="res://Assets/Bosses/Cookie Mosnter Boss/Background.png" id="1_uu235"]
 [ext_resource type="Texture2D" uid="uid://0mghypx5ivgw" path="res://Assets/Bosses/Cookie Mosnter Boss/Table Platform.png" id="2_il3nm"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="3_23fs2"]
-[ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="4_4co3w"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="4_4co3w"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="5_ynhw7"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="6_x0tcu"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="7_se685"]
