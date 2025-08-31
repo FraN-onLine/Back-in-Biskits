@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vhtdtq0n3sxq"]
+[gd_scene load_steps=11 format=3 uid="uid://ckkrott6tmvs3"]
 
 [ext_resource type="Script" uid="uid://8esoo8esqsnn" path="res://UI/ui.gd" id="1_6dd3c"]
 [ext_resource type="Texture2D" uid="uid://b878bsp32bc4q" path="res://Assets/UI Elements/Heart.png" id="2_dhe1o"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_q0uhn"]
 [ext_resource type="Texture2D" uid="uid://d3f0qto4dfo73" path="res://Assets/UI Elements/Shield.png" id="4_jqf55"]
 [ext_resource type="PackedScene" uid="uid://c2hxhom57jt5v" path="res://UI/Healthbar/healthbar.tscn" id="5_f1fl4"]
+[ext_resource type="PackedScene" uid="uid://cogpojwh20ud7" path="res://UI/StopwatchLabel.tscn" id="7_byuxr"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -185,5 +186,11 @@ scale = Vector2(2.90045, 7.01172)
 [node name="Sprite2D2" parent="Healthbar" index="2"]
 position = Vector2(251.4, 28)
 scale = Vector2(8.60004, 7)
+
+[node name="StopwatchLabel" parent="." instance=ExtResource("7_byuxr")]
+offset_left = -59.0
+offset_top = 607.0
+offset_right = 61.0
+offset_bottom = 647.0
 
 [editable path="Healthbar"]
