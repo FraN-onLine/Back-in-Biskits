@@ -2,15 +2,16 @@ extends CharacterBody2D
 class_name CookieMonster
 
 var boss_name = "Confectioneer"
-@export var max_hp: int = 1000
+@export var max_hp: int = 800
 var current_hp: int
 
 @export var minion_scene: PackedScene
 @export var projectile_scene: PackedScene
 @export var barrage_textures: Array[Texture2D]
 
-@export var attack_interval: float = 8.0 # seconds between attacks
+@export var attack_interval: float = 5.8 # seconds between attacks
 
+var shoot_cooldown: float = 0 # timer
 var player: Node2D = null
 var alive: bool = true
 var healthbar: Node
@@ -28,10 +29,21 @@ func _ready() -> void:
 	healthbar.init_health(max_hp)
 	current_hp = max_hp
 	player = get_tree().get_first_node_in_group("player")
-
+	#zoom out to 2.5 scale and limit to 260 each side
+	player.get_node("Camera2D").zoom = Vector2(2.5, 2.5)
+	player.get_node("Camera2D").limit_left = -260
+	player.get_node("Camera2D").limit_right = 260
+	player.get_node("Camera2D").limit_top = -260
+	player.get_node("Camera2D").limit_bottom = 260
 	# Start attack loop
 	attack_loop()
 
+func _process(delta: float) -> void:
+	if alive:
+		shoot_cooldown += delta
+		if shoot_cooldown > 5.5:
+			shoot_cooldown = 0
+			do_shoot()
 
 # ----------------- ATTACK LOOP -----------------
 func attack_loop() -> void:
@@ -85,19 +97,39 @@ func do_handfall() -> void:
 	$HandfallHitbox/Slam1.disabled = true
 
 	# Second slam
-	await get_tree().create_timer(0.4).timeout
+	await get_tree().create_timer(0.5).timeout
 	$HandfallHitbox/Slam2.disabled = false
 	await get_tree().create_timer(0.1).timeout
 	$HandfallHitbox/Slam2.disabled = true
 
 	# Third slam
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.8).timeout
 	$HandfallHitbox/Slam3.disabled = false
 	await get_tree().create_timer(0.1).timeout
 	$HandfallHitbox/Slam3.disabled = true
 
 	await anim_sprite.animation_finished
 	$HandfallHitbox.monitoring = false
+
+func do_shoot() -> void:
+	if not projectile_scene:
+		return
+
+	var proj = projectile_scene.instantiate()
+	get_tree().current_scene.add_child(proj)
+
+	# get position of tree's marker2d
+	var marker = $"../ProjectileMarker"
+	proj.global_position = marker.global_position
+	# Always shoot left
+	proj.direction = Vector2.LEFT
+	proj.speed = 250
+
+	# Optional: if your projectile has a Sprite2D child, randomize its texture like Candy Queen
+	if barrage_textures.size() > 0 and proj.has_node("Sprite2D"):
+		proj.set_texture(barrage_textures.pick_random())
+
+	await anim_sprite.animation_finished
 
 
 # ----------------- DAMAGE -----------------

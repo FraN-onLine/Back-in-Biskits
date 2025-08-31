@@ -6,13 +6,14 @@ extends Control
 func _ready():
 	match Global.stage:
 		1:
-			$Label.text = "Hiss! Hiss! Me-e-e-e-ow!!"
+			$Label.text = "Captain, Captain? I thought we're just playing.. oh well"
 			$Sprite2D.texture = preload("res://Assets/Bosses/Cat Boss/Cat_Win.png")
 		2:
-			$Label.text = "I won't sugarcoat it...you never stood a chance!"
+			$Label.text = "Crumbled and Cooked, such low caliber..."
 			$Sprite2D.texture = preload("res://Assets/Bosses/Candy Boss/candy-win.png")
 		3:
-			pass
+			$Label.text = "Cookie?- Was i too powerful little hero?"
+			$Sprite2D.texture = preload("res://Assets/Bosses/Cookie Mosnter Boss/confectioneer-win.png")
 		_:
 			pass
 
