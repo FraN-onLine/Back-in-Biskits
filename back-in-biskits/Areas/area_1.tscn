@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=26 format=4 uid="uid://n8utlsd5y7ci"]
 
+[ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
 [ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_kpacr"]
@@ -9,7 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
+[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="10_jhh8q"]
+[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="11_3aty0"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="12_2actb"]
+[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="12_n1nld"]
+[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="13_2j3ld"]
+[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="14_g5qry"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
@@ -82,6 +88,7 @@ sources/1 = SubResource("TileSetAtlasSource_svy64")
 sources/2 = SubResource("TileSetAtlasSource_4ceto")
 
 [node name="Area1" type="Node2D"]
+script = ExtResource("1_3aty0")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 z_index = -2
@@ -116,7 +123,7 @@ yoyoatk_scene = ExtResource("5_64tec")
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("14_jhh8q")])
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("14_jhh8q"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("14_jhh8q"), ExtResource("14_g5qry")])
 spawn_interval = 4.0
 max_active_cookies = 4
 

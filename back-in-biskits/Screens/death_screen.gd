@@ -3,6 +3,7 @@ extends Control
 @onready var menu = $Menu
 @onready var retry = $Retry
 
+
 func _ready():
 	menu.pressed.connect(_on_menu_pressed)
 	retry.pressed.connect(_on_retry_pressed)

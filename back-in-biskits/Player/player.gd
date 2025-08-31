@@ -227,7 +227,7 @@ func yoyo_attack() -> void:
 		return
 	
 	is_attacking = true
-	orb.plau("disappear")
+	orb.play("disappear")
 	anim.play("yoyoattack")
 	
 	if yoyoatk_scene:

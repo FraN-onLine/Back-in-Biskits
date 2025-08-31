@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://djevp70hlcgjq"]
+[gd_scene load_steps=7 format=4 uid="uid://djevp70hlcgjq"]
 
 [ext_resource type="Texture2D" uid="uid://byp4vj77bodyk" path="res://Assets/Bosses/Candy Boss/New Piskel (1).png" id="1_4ng5c"]
+[ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_mq80c"]
 [ext_resource type="PackedScene" uid="uid://c3vr81s4mdl76" path="res://Bosses/Boss2/boss_2.tscn" id="3_mq80c"]
 
@@ -42,6 +43,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_hiici")
 
 [node name="Area2" type="Node2D"]
+script = ExtResource("1_hiici")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 z_index = -2
