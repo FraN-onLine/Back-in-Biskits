@@ -43,7 +43,12 @@ func _on_quit_pressed():
 func show_instructions():
 	var dialog = AcceptDialog.new()
 	dialog.title = "Instructions"
-	dialog.dialog_text = "Wait lang children"
+	dialog.dialog_text = "Lion Cracker - a melee ranged weapon
+						Graham - a long ranged projectile weapon
+						Macaroon - a mid ranged omni directional weapon
+						Cookie Cat - a shield that can block 1 point of damage
+						Pistachio - a melee ranged AoE weapon
+						Oreo - a movement type weapon that let's you dash through enemies"
 	add_child(dialog)
 	dialog.popup_centered()
 

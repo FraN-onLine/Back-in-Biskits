@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dn1wgo4yf3vf5" path="res://Assets/Player/Shield.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bfsycxe042gth" path="res://Assets/Player/Yoyo Basic Attack(Middle range type).png" id="7_00tjw"]
 [ext_resource type="Texture2D" uid="uid://d14nh0i1xoss" path="res://Assets/Player/Bull rush skill(put shockwave at the end).png" id="9_x3vf3"]
+[ext_resource type="Script" uid="uid://br6f220nl5lu" path="res://Player/Weapons/lion_cracker_sword.gd" id="13_o28un"]
 [ext_resource type="AudioStream" uid="uid://3iieode3f753" path="res://Assets/Sounds/sword.wav" id="14_gu6f8"]
 [ext_resource type="AudioStream" uid="uid://dn8wpri74g0ix" path="res://Assets/Sounds/yoyo.wav" id="15_dkpta"]
 [ext_resource type="AudioStream" uid="uid://tmjse8vir233" path="res://Assets/Sounds/shield.wav" id="15_pisgm"]
@@ -844,21 +845,6 @@ animations = [{
 "speed": 16.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_gwnis"]
-script/source = "extends Area2D
-
-@export var damage: int = 20
-
-func _ready():
-	monitoring = false
-	connect(\"body_entered\", Callable(self, \"_on_body_entered\"))
-
-func _on_body_entered(body):
-	if monitoring and body.is_in_group(\"enemy\"):
-		if body.has_method(\"take_damage\"):
-			body.take_damage(damage)
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rl0i"]
 size = Vector2(38, 35.25)
 
@@ -947,7 +933,7 @@ frame_progress = 1.0
 [node name="LionCrackerSword" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 collision_mask = 3
-script = SubResource("GDScript_gwnis")
+script = ExtResource("13_o28un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword"]
 position = Vector2(-25, -3.375)

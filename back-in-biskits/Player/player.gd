@@ -30,6 +30,9 @@ var dash_velocity := Vector2.ZERO
 @onready var shield_sound = $AudioStreamPlayer4
 @onready var graham_sound = $AudioStreamPlayer5
 @onready var rush_sound = $AudioStreamPlayer6
+
+var hit_enemies: Array = [] #tracker
+
 signal health_changed(new_hp: int)  # notify UI when HP updates
 signal player_died
 
@@ -158,15 +161,19 @@ func die() -> void:
 # -------------- Various Attacks ----------------
 
 
-func sword_attack() -> void: #this is the revamped sword att
+func sword_attack() -> void:
 	orb.play("disappear")
-	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20 #set damage based on potency, its math
-	var sword = $LionCrackerSword #on attack it will be vis and monitoring
+	$LionCrackerSword.damage = ((cookie_potency - 1) * 8) + 20
+
+	hit_enemies.clear()  # reset hits for this swing
+	var sword = $LionCrackerSword
 	sword.monitoring = true
 	sword.visible = true
 	swordanim.play("attack")
 	sword_sound.play()
+
 	await swordanim.animation_finished
+
 	sword.monitoring = false
 	swordanim.play("default")
 	orb.play("idle")
