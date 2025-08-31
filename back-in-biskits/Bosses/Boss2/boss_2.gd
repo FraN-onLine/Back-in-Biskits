@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name CandyQueen
 
-var boss_name = "Candy Connosieur"
+var boss_name = "Cookie Monster"
 @export var max_hp: int = 750
 var current_hp: int = max_hp
 
