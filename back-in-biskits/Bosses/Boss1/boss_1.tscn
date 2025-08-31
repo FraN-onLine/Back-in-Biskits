@@ -91,10 +91,8 @@ damage_popup_scene = ExtResource("3_wppuc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rcd67")
-animation = &"death"
 autoplay = "default"
-frame = 4
-frame_progress = 1.0
+frame_progress = 0.340138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wppuc")

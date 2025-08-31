@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=25 format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
 [ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
 [ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_kpacr"]
 [ext_resource type="PackedScene" uid="uid://vhtdtq0n3sxq" path="res://UI/UI.tscn" id="3_v2evy"]
-[ext_resource type="PackedScene" uid="uid://bv6nwgx4chupu" path="res://Player/Weapons/yoyoatk.tscn" id="5_64tec"]
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
@@ -117,7 +116,6 @@ tile_set = SubResource("TileSet_8hgsk")
 
 [node name="Player" parent="." instance=ExtResource("1_bmh1r")]
 position = Vector2(115, 180)
-yoyoatk_scene = ExtResource("5_64tec")
 
 [node name="UI" parent="." instance=ExtResource("3_v2evy")]
 
