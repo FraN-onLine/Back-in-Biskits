@@ -1,11 +1,12 @@
 extends CharacterBody2D
 class_name CandyMinion
 
-@export var speed: float = 100.0
+@export var speed: float = 80
 @export var max_hp: int = 50
 @export var aoe_damage: int = 1
 @export var aoe_radius: float = 40.0
 @export var attack_interval: float = 2.0
+@export var damage_popup_scene : PackedScene
 
 var hp: int
 var player: Node2D = null
@@ -24,9 +25,15 @@ func _ready() -> void:
 	attack_timer.autostart = true
 	add_child(attack_timer)
 	attack_timer.timeout.connect(_on_attack_timeout)
+	$animatedSprite2D.play("spawn")
+	speed = 0
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("idle")
+	speed = 80
 
 
 func _physics_process(delta: float) -> void:
+
 	if not alive or player == null:
 		return
 
@@ -46,9 +53,9 @@ func _on_attack_timeout() -> void:
 		#wait 0.5 seconds to sync with animation
 		$AnimatedSprite2D.play("attack")
 		await get_tree().create_timer(0.6).timeout
-		
-		
 		player.call("take_damage", aoe_damage)
+		await $AnimatedSprite2D.animation_finished
+		$AnimatedSprite2D.play("idle")
 
 
 
@@ -58,6 +65,13 @@ func take_damage(amount: int) -> void:
 	if not alive:
 		return
 	hp -= amount
+	
+	if damage_popup_scene:
+		var popup := damage_popup_scene.instantiate()
+		get_tree().current_scene.add_child(popup)
+		var jitter_x := randf_range(-6, 6)
+		popup.show_damage(amount, global_position + Vector2(jitter_x, -20))
+	
 	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5) # flash red
 	await get_tree().create_timer(0.2).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)

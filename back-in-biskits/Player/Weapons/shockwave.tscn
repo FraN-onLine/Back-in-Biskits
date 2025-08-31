@@ -57,6 +57,7 @@ animations = [{
 size = Vector2(113.75, 81)
 
 [node name="Shockwave" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_dtwqe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

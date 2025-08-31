@@ -3,7 +3,7 @@ class_name CandyQueen
 
 var boss_name = "Candy Connosieur"
 @export var max_hp: int = 750
-var hp: int = max_hp
+var current_hp: int = max_hp
 
 @export var minion_scene: PackedScene
 @export var projectile_scene: PackedScene
@@ -18,11 +18,20 @@ var hp: int = max_hp
 var player: Node2D = null
 var phase: int = 1
 var alive: bool = true
+var healthbar : Node
+@export var damage_popup_scene : PackedScene
 
 @onready var teleport_markers: Array[Node]
+@onready var spawn_points: Array[Node]
 
 func _ready() -> void:
-	teleport_markers = get_tree().get_nodes_in_group("candyqueen_teleports")
+	# Add this boss to the bosses group for waypoint tracking
+	add_to_group("bosses")
+	healthbar = $"../UI".get_node("Healthbar")
+	healthbar.init_health(max_hp)
+	current_hp = max_hp
+	teleport_markers = get_tree().get_nodes_in_group("candyqueen_teleport")
+	spawn_points = get_tree().get_nodes_in_group("candyqueen_minion")
 	player = get_tree().get_first_node_in_group("player")
 	start_phase_1()
 
@@ -45,19 +54,29 @@ func spawn_loop() -> void:
 func summon_minion() -> void:
 	if not minion_scene:
 		return
+
 	$AnimatedSprite2D.play("summon") # plays summon animation
+	await $AnimatedSprite2D.animation_finished
+	$AnimatedSprite2D.play("idle")
+
+	if spawn_points.size() == 0:
+		return
+
+	# Pick a random marker
+	var spot: Marker2D = spawn_points.pick_random()
+
+	# Spawn minion at marker position
 	var minion = minion_scene.instantiate()
 	get_tree().current_scene.add_child(minion)
-	minion.global_position = global_position + Vector2(randf_range(-100,100), randf_range(-100,100))
+	minion.global_position = spot.global_position
 
 
 func teleport_loop() -> void:
 	if !alive or phase != 1:
 		return
+		print("teleporty")
 	if teleport_markers.size() > 0:
 		var spot: Marker2D = teleport_markers.pick_random()
-		$AnimatedSprite2D.play("teleport")
-		await $AnimatedSprite2D.animation_finished
 		global_position = spot.global_position
 	await get_tree().create_timer(teleport_interval).timeout
 	teleport_loop()
@@ -106,13 +125,23 @@ func barrage_attack() -> void:
 func take_damage(amount: int) -> void:
 	if not alive:
 		return
-	hp -= amount
-	print("Candy Queen HP: %d" % hp)
+	current_hp -= amount
+	healthbar.set_health(current_hp)
+	
+	if damage_popup_scene:
+		var popup := damage_popup_scene.instantiate()
+		get_tree().current_scene.add_child(popup)
+		var jitter_x := randf_range(-6, 6)
+		popup.show_damage(amount, global_position + Vector2(jitter_x, -20))
+	
+	$AnimatedSprite2D.modulate = Color(1, 0.5, 0.5) # flash red
+	await get_tree().create_timer(0.1).timeout
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
-	if hp <= 350 and phase == 1:
+	if current_hp <= 350 and phase == 1:
 		start_phase_2()
 
-	if hp <= 0:
+	if current_hp <= 0:
 		die()
 
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://b08k8j5al6y67"]
+[gd_scene load_steps=51 format=3 uid="uid://b08k8j5al6y67"]
 
 [ext_resource type="Script" uid="uid://ceg3vd8ihqr4l" path="res://Bosses/Boss2/candy_minion.gd" id="1_uv0fx"]
 [ext_resource type="Texture2D" uid="uid://bio7kympy4tyl" path="res://Assets/Bosses/Cat Boss/received_1412002719865026.png" id="1_vbki4"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="2_murla"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vbki4"]
 atlas = ExtResource("1_vbki4")
@@ -341,16 +342,19 @@ radius = 7.0
 height = 22.0
 
 [node name="CandyMinion" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_uv0fx")
+attack_interval = 3.5
+damage_popup_scene = ExtResource("2_murla")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(4, -3)
 scale = Vector2(0.0268555, 0.0273437)
 sprite_frames = SubResource("SpriteFrames_ktmgs")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"
-frame = 22
-frame_progress = 1.0
+frame_progress = 0.318857
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

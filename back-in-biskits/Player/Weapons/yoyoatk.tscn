@@ -6,6 +6,7 @@
 radius = 53.0094
 
 [node name="yoyoatk" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_eaek7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

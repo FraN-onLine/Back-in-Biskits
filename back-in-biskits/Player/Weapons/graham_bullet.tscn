@@ -36,6 +36,7 @@ animations = [{
 size = Vector2(8, 8.5)
 
 [node name="graham_bullet" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_re13g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
