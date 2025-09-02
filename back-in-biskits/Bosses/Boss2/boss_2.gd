@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name CandyQueen
 
 var boss_name = "Candy Connosieur"
-@export var max_hp: int = 750
+@export var max_hp: int = 780
 var current_hp: int = max_hp
 
 @export var minion_scene: PackedScene
@@ -148,7 +148,7 @@ func take_damage(amount: int) -> void:
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
-	if current_hp <= 350 and phase == 1:
+	if current_hp <= 380 and phase == 1:
 		start_phase_2()
 
 	if current_hp <= 0:
