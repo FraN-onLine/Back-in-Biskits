@@ -156,4 +156,5 @@ func die() -> void:
 	Global.stage = 2
 	Global.potency = 1
 	Global.timer = 0
+	Global.shield = 0
 	get_tree().change_scene_to_file("res://Areas/area_2.tscn")

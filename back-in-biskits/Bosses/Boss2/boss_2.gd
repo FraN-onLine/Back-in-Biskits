@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name CandyQueen
 
-var boss_name = "Cookie Monster"
+var boss_name = "Candy Connosieur"
 @export var max_hp: int = 750
 var current_hp: int = max_hp
 
@@ -99,6 +99,7 @@ func barrage_loop() -> void:
 
 
 func barrage_attack() -> void:
+	Global.warning_enabled = true
 	print("🍬 Candy Queen candy barrage!")
 	if not projectile_scene or barrage_markers.is_empty():
 		return
@@ -125,6 +126,8 @@ func barrage_attack() -> void:
 			projectile.set_texture(tex)
 
 		await get_tree().create_timer(0.4).timeout  # stagger rain
+		
+	Global.warning_enabled = false
 
 
 
@@ -157,4 +160,5 @@ func die() -> void:
 	Global.stage = 3
 	Global.potency = 1
 	Global.timer = 0
+	Global.shield = 0
 	get_tree().change_scene_to_file("res://Areas/area_3.tscn")

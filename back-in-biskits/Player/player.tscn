@@ -933,6 +933,8 @@ frame_progress = 1.0
 [node name="LionCrackerSword" type="Area2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 collision_mask = 3
+monitoring = false
+monitorable = false
 script = ExtResource("13_o28un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword"]

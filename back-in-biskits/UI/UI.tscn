@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckkrott6tmvs3"]
+[gd_scene load_steps=12 format=3 uid="uid://ckkrott6tmvs3"]
 
 [ext_resource type="Script" uid="uid://8esoo8esqsnn" path="res://UI/ui.gd" id="1_6dd3c"]
 [ext_resource type="Texture2D" uid="uid://b878bsp32bc4q" path="res://Assets/UI Elements/Heart.png" id="2_dhe1o"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3f0qto4dfo73" path="res://Assets/UI Elements/Shield.png" id="4_jqf55"]
 [ext_resource type="PackedScene" uid="uid://c2hxhom57jt5v" path="res://UI/Healthbar/healthbar.tscn" id="5_f1fl4"]
 [ext_resource type="PackedScene" uid="uid://cogpojwh20ud7" path="res://UI/StopwatchLabel.tscn" id="7_byuxr"]
+[ext_resource type="Texture2D" uid="uid://cej0hlbpkovup" path="res://Assets/UI Elements/Warning.png" id="8_d050y"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -45,6 +46,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(207, 510)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WarningIcon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(597, 135)]
 }
 
 [sub_resource type="Animation" id="Animation_dhe1o"]
@@ -85,6 +98,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(207, 510), Vector2(207, 491)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WarningIcon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(597, 135), Vector2(597, 159)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e707p"]
@@ -192,5 +217,11 @@ offset_left = -59.0
 offset_top = 607.0
 offset_right = 61.0
 offset_bottom = 647.0
+
+[node name="WarningIcon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(597, 135)
+scale = Vector2(2.82812, 2.37662)
+texture = ExtResource("8_d050y")
 
 [editable path="Healthbar"]

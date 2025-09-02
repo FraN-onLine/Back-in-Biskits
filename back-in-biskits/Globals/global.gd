@@ -5,6 +5,7 @@ var shield = 0
 var potency = 1
 var timer = 0.0
 var stage = 0
+var warning_enabled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

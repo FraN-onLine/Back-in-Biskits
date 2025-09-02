@@ -53,6 +53,11 @@ func _process(delta: float) -> void:
 		$ShieldRect.visible = true
 		#btw potency can reach 0, 0 potency means all buffs are null and void
 		# so dont eat too much or else ull suffer doing nothing
+	
+	if Global.warning_enabled:
+		$WarningIcon.visible = true
+	else:
+		$WarningIcon.visible = false
 
 func stop_stopwatch():
 	stopwatch_running = false

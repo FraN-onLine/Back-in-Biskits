@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbycmc1usq8g"]
+[gd_scene load_steps=5 format=3 uid="uid://dbycmc1usq8g"]
 
 [ext_resource type="Script" uid="uid://bh1ovk1x2hfmd" path="res://Screens/death_screen.gd" id="1_jcaqs"]
-[ext_resource type="Texture2D" uid="uid://c2ud5fy1gasn" path="res://Assets/Bosses/Cat Boss/Cat_Win.png" id="2_e3k05"]
+[ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_0tnk7"]
 [ext_resource type="AudioStream" uid="uid://c5w5stxodaqjg" path="res://Assets/Sounds/death.wav" id="3_4v2tk"]
+[ext_resource type="Texture2D" uid="uid://hupnkjyt8w0u" path="res://Assets/Bosses/Boss Portraits/Candy-win.png" id="3_8vqtu"]
 
 [node name="death_screen" type="Control"]
 layout_mode = 3
@@ -45,19 +46,20 @@ text = "Retry
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 23.0
-offset_top = 19.0
-offset_right = 1128.0
-offset_bottom = 121.0
+offset_left = 62.0
+offset_top = 322.0
+offset_right = 1167.0
+offset_bottom = 424.0
+theme_override_fonts/font = ExtResource("2_0tnk7")
 theme_override_font_sizes/font_size = 23
 text = "Placeholder, Placeholder!!!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(574, 196)
-scale = Vector2(3.55929, 3.63741)
-texture = ExtResource("2_e3k05")
+position = Vector2(607, 172)
+scale = Vector2(4.87339, 5.16246)
+texture = ExtResource("3_8vqtu")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4v2tk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://djevp70hlcgjq"]
+[gd_scene load_steps=14 format=4 uid="uid://djevp70hlcgjq"]
 
 [ext_resource type="Texture2D" uid="uid://byp4vj77bodyk" path="res://Assets/Bosses/Candy Boss/New Piskel (1).png" id="1_4ng5c"]
 [ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_ugiej"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="7_lykvi"]
 [ext_resource type="AudioStream" uid="uid://b60omm53h7ld8" path="res://Assets/Sounds/area_2.wav" id="8_xkiia"]
+[ext_resource type="Texture2D" uid="uid://cve0jpsfbyulh" path="res://Assets/Bosses/Candy Boss/Decotiles.png" id="9_xy2jk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
 texture = ExtResource("1_4ng5c")
@@ -47,6 +48,25 @@ physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_hiici")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwo6g"]
+texture = ExtResource("9_xy2jk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gbqj3"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_jwo6g")
+
 [node name="Area2" type="Node2D"]
 script = ExtResource("1_hiici")
 
@@ -56,7 +76,7 @@ offset_left = -904.0
 offset_top = -339.0
 offset_right = 1003.0
 offset_bottom = 955.0
-color = Color(0.92549, 0.654902, 0.776471, 1)
+color = Color(0.981655, 0.540727, 0.588122, 1)
 
 [node name="Barrage" type="Marker2D" parent="." groups=["candyqueen_barrage"]]
 position = Vector2(16, 16)
@@ -130,6 +150,10 @@ position = Vector2(235, 362)
 stream = ExtResource("8_xkiia")
 autoplay = true
 bus = &"Music"
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9/xAAAAAAAAAAAAAIAA0AAAAAAAAAAAALAA8AAAAAAAAAAAD8/wsAAAAAAAAAAAD+/wsAAAABAAAAAAAHABUAAAABAAAAAAAIAAgAAAABAAAAAAD8/wIAAAABAAAAAAAIAAAAAAABAAAAAAAMAAQAAAABAAAAAAD5/wgAAAABAAAAAAD+/wYAAAAAAAAAAAD6/wMAAAAAAAAAAAAFAAQAAAAAAAAAAAALAAkAAAAAAAAAAAD7/wgAAAACAAAAAAD+/wIAAAACAAAAAAAKAAsAAAACAAAAAAAFAAgAAAACAAAAAAAGAA8AAAACAAAAAAD5/xEAAAACAAAAAAD+/w4AAAACAAAAAAAAABUAAAACAAAAAAD7/xcAAAACAAAAAAD9/wAAAAACAAAAAAAEAPz/AAACAAAAAAAGAP//AAACAAAAAAALAP7/AAACAAAAAAD7////AAAAAAAAAAD9//3/AAAAAAAAAAAHAAIAAAABAAAAAAAJAAYAAAAAAAAAAAD7/wQAAAACAAAAAAAIAAMAAAAAAAAAAAANAAcAAAAAAAAAAAD0/wYAAAACAAAAAAD2/w0AAAABAAAAAAD7/w4AAAACAAAAAAD3/woAAAAAAAAAAAAQAAwAAAAAAAAAAAAOAA8AAAAAAAAAAAD4/wAAAAABAAAAAAALABQAAAABAAAAAAD7/xQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gbqj3")
 
 [editable path="Boss2"]
 [editable path="CookieSpawner"]
