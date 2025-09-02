@@ -2067,8 +2067,7 @@ projectile_scene = ExtResource("14_23fs2")
 barrage_textures = Array[Texture2D]([ExtResource("15_moblf"), ExtResource("16_j4aaq"), ExtResource("17_bveg3"), ExtResource("18_wt1fd"), ExtResource("19_q5ql2"), ExtResource("20_e2o84")])
 
 [node name="AnimatedSprite2D" parent="Boss3" index="1"]
-animation = &"handfall"
-frame = 40
+frame_progress = 0.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

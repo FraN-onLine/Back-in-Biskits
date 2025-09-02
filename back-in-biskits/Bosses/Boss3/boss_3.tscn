@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvjung7cmmi6" path="res://Assets/Bosses/Cookie Mosnter Boss/Smash final.png" id="2_rcvk8"]
 [ext_resource type="Texture2D" uid="uid://dwuoyqqjdat0u" path="res://Assets/Bosses/Cookie Mosnter Boss/Idle Animation head bobbing.png" id="3_mnd71"]
 [ext_resource type="Texture2D" uid="uid://cfw36q6rx7p3" path="res://Assets/Bosses/Cookie Mosnter Boss/Final Swipe.png" id="4_jlsy8"]
-[ext_resource type="AudioStream" uid="uid://do7nqdqligvgr" path="res://Assets/Sounds/swipe.WAV" id="5_mnd71"]
+[ext_resource type="AudioStream" uid="uid://do7nqdqligvgr" path="res://Assets/Sounds/swipe.wav" id="5_mnd71"]
 [ext_resource type="AudioStream" uid="uid://bycv7ongs5ndo" path="res://Assets/Sounds/smash.wav" id="6_jlsy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvn1q"]
