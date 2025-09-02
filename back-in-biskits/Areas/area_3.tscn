@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://d2rvpc750ns1a"]
+[gd_scene load_steps=34 format=4 uid="uid://d2rvpc750ns1a"]
 
 [ext_resource type="Texture2D" uid="uid://btrovvn0xng2j" path="res://Assets/Bosses/Cookie Mosnter Boss/Background.png" id="1_uu235"]
 [ext_resource type="Texture2D" uid="uid://0mghypx5ivgw" path="res://Assets/Bosses/Cookie Mosnter Boss/Table Platform.png" id="2_il3nm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="18_wt1fd"]
 [ext_resource type="Texture2D" uid="uid://b62n87eu32f65" path="res://Assets/Cookies/Macaroon-Sheet.png" id="19_q5ql2"]
 [ext_resource type="Texture2D" uid="uid://277kxoep2ysh" path="res://Assets/Cookies/CookieCat-Sheet.png" id="20_e2o84"]
+[ext_resource type="AudioStream" uid="uid://by7urnsgxx73k" path="res://Assets/Sounds/not-so-merry-christmas-182564.mp3" id="21_j4aaq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5ql2"]
 texture = ExtResource("1_uu235")
@@ -2082,5 +2083,11 @@ shape = SubResource("RectangleShape2D_23fs2")
 
 [node name="ProjectileMarker" type="Marker2D" parent="."]
 position = Vector2(212, 180)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_j4aaq")
+volume_db = -5.0
+autoplay = true
+bus = &"Music"
 
 [editable path="CookieSpawner"]

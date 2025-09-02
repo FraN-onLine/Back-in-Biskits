@@ -19,6 +19,8 @@ var healthbar: Node
 var rng := RandomNumberGenerator.new()
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var swipe_sound = $AudioStreamPlayer
+@onready var fall_sound = $AudioStreamPlayer2
 
 var last_attack: String = ""
 
@@ -81,6 +83,7 @@ func perform_random_attack() -> void:
 # ----------------- INDIVIDUAL ATTACKS -----------------
 func do_swipe() -> void:
 	anim_sprite.play("swipe")
+	swipe_sound.play()
 	await get_tree().create_timer(0.5).timeout # charge-up
 	$SwipeHitbox.monitoring = true
 	await anim_sprite.animation_finished
@@ -89,6 +92,7 @@ func do_swipe() -> void:
 func do_handfall() -> void:
 	$HandfallHitbox.monitoring = true
 	anim_sprite.play("handfall")
+	fall_sound.play()
 
 	# First slam
 	await get_tree().create_timer(1.2).timeout

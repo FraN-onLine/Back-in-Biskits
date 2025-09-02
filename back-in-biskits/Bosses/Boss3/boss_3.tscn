@@ -1,9 +1,11 @@
-[gd_scene load_steps=82 format=3 uid="uid://dysrllnb0orue"]
+[gd_scene load_steps=84 format=3 uid="uid://dysrllnb0orue"]
 
 [ext_resource type="Script" uid="uid://fntdbby11hud" path="res://Bosses/Boss3/boss_3.gd" id="1_rcvk8"]
 [ext_resource type="Texture2D" uid="uid://dvjung7cmmi6" path="res://Assets/Bosses/Cookie Mosnter Boss/Smash final.png" id="2_rcvk8"]
 [ext_resource type="Texture2D" uid="uid://dwuoyqqjdat0u" path="res://Assets/Bosses/Cookie Mosnter Boss/Idle Animation head bobbing.png" id="3_mnd71"]
 [ext_resource type="Texture2D" uid="uid://cfw36q6rx7p3" path="res://Assets/Bosses/Cookie Mosnter Boss/Final Swipe.png" id="4_jlsy8"]
+[ext_resource type="AudioStream" uid="uid://do7nqdqligvgr" path="res://Assets/Sounds/swipe.WAV" id="5_mnd71"]
+[ext_resource type="AudioStream" uid="uid://bycv7ongs5ndo" path="res://Assets/Sounds/smash.wav" id="6_jlsy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvn1q"]
 size = Vector2(1097, 368.5)
@@ -585,6 +587,14 @@ shape = SubResource("CapsuleShape2D_rcvk8")
 position = Vector2(-126, -524)
 scale = Vector2(62.3559, 25.4913)
 shape = SubResource("CapsuleShape2D_rcvk8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mnd71")
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jlsy8")
+bus = &"SFX"
 
 [connection signal="body_entered" from="SwipeHitbox" to="." method="_on_swipe_hitbox_body_entered"]
 [connection signal="body_entered" from="HandfallHitbox" to="." method="_on_handfall_hitbox_body_entered"]
