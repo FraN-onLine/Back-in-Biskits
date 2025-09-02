@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name CookieMonster
 
 var boss_name = "Confectioneer"
-@export var max_hp: int = 800
+@export var max_hp: int = 880
 var current_hp: int
 
 @export var minion_scene: PackedScene

@@ -545,6 +545,7 @@ radius = 1.86029
 height = 7.21813
 
 [node name="Boss3" type="CharacterBody2D" groups=["boss", "enemy"]]
+position = Vector2(1, 0)
 script = ExtResource("1_rcvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -555,9 +556,9 @@ shape = SubResource("RectangleShape2D_gvn1q")
 position = Vector2(-139, -838)
 scale = Vector2(8.96094, 9.03287)
 sprite_frames = SubResource("SpriteFrames_1vpdc")
-animation = &"swipe"
+animation = &"handfall"
 autoplay = "idle"
-frame = 24
+frame = 40
 frame_progress = 1.0
 
 [node name="SwipeHitbox" type="Area2D" parent="."]
