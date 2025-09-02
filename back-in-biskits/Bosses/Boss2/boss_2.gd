@@ -9,10 +9,10 @@ var current_hp: int = max_hp
 @export var projectile_scene: PackedScene
 @export var barrage_textures: Array[Texture2D]   # assign in inspector
 
-@export var summon_interval: float = 4.0
+@export var summon_interval: float = 8.5
 @export var teleport_interval: float = 8.0
-@export var barrage_interval: float = 14
-@export var barrage_shots: int = 12
+@export var barrage_interval: float = 12
+@export var barrage_shots: int = 10
 @export var barrage_width: float = 600.0
 
 var player: Node2D = null
@@ -125,7 +125,7 @@ func barrage_attack() -> void:
 			var tex = barrage_textures.pick_random()
 			projectile.set_texture(tex)
 
-		await get_tree().create_timer(0.4).timeout  # stagger rain
+		await get_tree().create_timer(0.6).timeout  # stagger rain
 		
 	Global.warning_enabled = false
 
