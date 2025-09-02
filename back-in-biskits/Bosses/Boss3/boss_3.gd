@@ -2,14 +2,14 @@ extends CharacterBody2D
 class_name CookieMonster
 
 var boss_name = "Confectioneer"
-@export var max_hp: int = 880
+@export var max_hp: int = 950
 var current_hp: int
 
 @export var minion_scene: PackedScene
 @export var projectile_scene: PackedScene
 @export var barrage_textures: Array[Texture2D]
 
-@export var attack_interval: float = 5.8 # seconds between attacks
+@export var attack_interval: float = 5.5 # seconds between attacks
 
 var shoot_cooldown: float = 0 # timer
 var player: Node2D = null
@@ -43,7 +43,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if alive:
 		shoot_cooldown += delta
-		if shoot_cooldown > 5.5:
+		if shoot_cooldown > 5.0:
 			shoot_cooldown = 0
 			do_shoot()
 

@@ -35,6 +35,7 @@ func _ready() -> void:
 	spawn_points = get_tree().get_nodes_in_group("candyqueen_minion")
 	barrage_markers = get_tree().get_nodes_in_group("candyqueen_barrage")
 	player = get_tree().get_first_node_in_group("player")
+	Global.warning_enabled = false
 	start_phase_1()
 
 
@@ -157,8 +158,11 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	alive = false
+	$AnimatedSprite2D.play("death")
+	await $AnimatedSprite2D.animation_finished
 	Global.stage = 3
 	Global.potency = 1
 	Global.timer = 0
 	Global.shield = 0
+	Global.warning_enabled = false
 	get_tree().change_scene_to_file("res://Areas/area_3.tscn")

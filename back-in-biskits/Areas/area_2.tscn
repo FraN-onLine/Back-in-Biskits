@@ -100,10 +100,10 @@ metadata/_edit_lock_ = true
 position = Vector2(63, 579)
 yoyoatk_scene = null
 
+[node name="UI" parent="." instance=ExtResource("5_5ch4h")]
+
 [node name="Boss2" parent="." instance=ExtResource("3_mq80c")]
 position = Vector2(70, 34)
-
-[node name="UI" parent="." instance=ExtResource("5_5ch4h")]
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_ugiej")]
 spawn_interval = 4.0

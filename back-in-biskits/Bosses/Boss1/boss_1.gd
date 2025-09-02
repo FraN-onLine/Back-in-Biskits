@@ -150,9 +150,9 @@ func die() -> void:
 	$AnimatedSprite2D.play("death")
 	$CollisionShape2D.disabled = true
 	velocity = Vector2.ZERO
+	dead = true
 	emit_signal("boss_died")
 	await $AnimatedSprite2D.animation_finished
-	dead = true
 	Global.stage = 2
 	Global.potency = 1
 	Global.timer = 0
