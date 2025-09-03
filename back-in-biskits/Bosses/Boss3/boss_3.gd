@@ -31,12 +31,12 @@ func _ready() -> void:
 	healthbar.init_health(max_hp)
 	current_hp = max_hp
 	player = get_tree().get_first_node_in_group("player")
-	#zoom out to 2.5 scale and limit to 260 each side
-	player.get_node("Camera2D").zoom = Vector2(2.5, 2.5)
-	player.get_node("Camera2D").limit_left = -260
-	player.get_node("Camera2D").limit_right = 260
-	player.get_node("Camera2D").limit_top = -260
-	player.get_node("Camera2D").limit_bottom = 260
+	#zoom out to 2.5 scale and limit to 260 each sidedddd
+	player.get_node("Camera2D").zoom = Vector2(1.5, 1.5)
+	#player.get_node("Camera2D").limit_left = -300
+	#player.get_node("Camera2D").limit_right = 300
+	#player.get_node("Camera2D").limit_top = -260
+	player.get_node("Camera2D").limit_bottom = 250
 	# Start attack loop
 	attack_loop()
 
@@ -161,7 +161,7 @@ func take_damage(amount: int = 1) -> void:
 func die() -> void:
 	alive = false
 	$CollisionShape2D.disabled = true
-	Global.stage = 3
+	Global.stage = 0
 	Global.potency = 1
 	Global.timer = 0
 	get_tree().change_scene_to_file("res://Screens/Cutscene/Cutscene.tscn")

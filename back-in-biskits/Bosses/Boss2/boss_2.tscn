@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://1akdpv3pnaxy" path="res://Assets/Bosses/Candy Boss/candy-idle.png" id="12_2ksk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvn1q"]
-size = Vector2(168, 150)
+size = Vector2(168, 129)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ja2r"]
 atlas = ExtResource("11_4qw46")
@@ -184,7 +184,7 @@ barrage_textures = Array[Texture2D]([ExtResource("3_h8i66"), ExtResource("4_1vpd
 damage_popup_scene = ExtResource("3_cfiu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -77)
+position = Vector2(-4, -66.5)
 shape = SubResource("RectangleShape2D_gvn1q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
