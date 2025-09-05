@@ -547,7 +547,6 @@ radius = 1.86029
 height = 7.21813
 
 [node name="Boss3" type="CharacterBody2D" groups=["boss", "enemy"]]
-position = Vector2(1, 0)
 script = ExtResource("1_rcvk8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

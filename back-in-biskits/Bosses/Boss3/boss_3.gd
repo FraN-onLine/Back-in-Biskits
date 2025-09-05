@@ -32,7 +32,7 @@ func _ready() -> void:
 	current_hp = max_hp
 	player = get_tree().get_first_node_in_group("player")
 	#zoom out to 2.5 scale and limit to 260 each sidedddd
-	player.get_node("Camera2D").zoom = Vector2(1.5, 1.5)
+	player.get_node("Camera2D").zoom = Vector2(1.25, 1.25)
 	#player.get_node("Camera2D").limit_left = -300
 	#player.get_node("Camera2D").limit_right = 300
 	#player.get_node("Camera2D").limit_top = -260
