@@ -58,6 +58,8 @@ func _process(delta: float) -> void:
 		$WarningIcon.visible = true
 	else:
 		$WarningIcon.visible = false
+		
+	update_skill_icon()
 
 func stop_stopwatch():
 	stopwatch_running = false
@@ -70,6 +72,14 @@ func format_time(time: float) -> String:
 	var seconds = int(time) % 60
 	var centiseconds = int((time - int(time)) * 100)
 	return "%02d:%02d.%02d" % [minutes, seconds, centiseconds]
+
+func update_skill_icon():
+	var skill = get_tree().get_first_node_in_group("player").current_skill_icon
+	if skill != null:
+		$SkillIcon.texture = skill
+		$SkillIcon.visible = true
+	else:
+		$SkillIcon.visible = false
 		
 	
 #ok push ko 9:50, by then everything should be done na necessary for yall to build on

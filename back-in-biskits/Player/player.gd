@@ -9,7 +9,8 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var shockwave_scene: PackedScene
 @export var yoyoatk_scene: PackedScene
 var can_attack: bool = true
-var current_attack: String = "basic"
+var current_attack: String = "void"
+var current_skill_icon
 var cookie_potency = 1
 var dead = false
 var is_attacking = false
@@ -323,13 +324,19 @@ func pickup_cookie(cookie_type: String, atkcd, min_potency) -> void:
 func show_cookie_pickup(display_name: String, icon_tex: Texture2D, min_potency) -> void:
 	if Global.potency == 0:
 		display_name = "Cookie Void"
+		current_skill_icon = null
 	elif Global.potency < min_potency:
 		display_name = "Cookie Potent only at >=%d" % min_potency
+		current_skill_icon = null
 	else:
+		if display_name != "Shield Active":
+			current_skill_icon = icon_tex
 		display_name = display_name + " %d" % ((Global.potency - ((min_potency if min_potency > 1 else 1)) + 1))
+	
 	var popup = PopupScene.instantiate()
 	add_child(popup)  # attach popup to player so it follows them
 	popup.setup(display_name, icon_tex)
+	
 
 
 
