@@ -32,10 +32,7 @@ func _ready() -> void:
 	current_hp = max_hp
 	player = get_tree().get_first_node_in_group("player")
 	#zoom out to 2.5 scale and limit to 260 each sidedddd
-	player.get_node("Camera2D").zoom = Vector2(1.25, 1.25)
-	#player.get_node("Camera2D").limit_left = -300
-	#player.get_node("Camera2D").limit_right = 300
-	#player.get_node("Camera2D").limit_top = -260
+	player.get_node("Camera2D").zoom = Vector2(2.5, 2.5)
 	player.get_node("Camera2D").limit_bottom = 250
 	# Start attack loop
 	attack_loop()
@@ -78,6 +75,18 @@ func perform_random_attack() -> void:
 		await do_handfall()
 
 	anim_sprite.play("idle")
+
+func zoom_out_camera_slowly():
+	var cam = player.get_node("Camera2D")
+	var start_zoom = cam.zoom
+	var target_zoom = Vector2(1.25, 1.25)
+	var duration = 2.5 # seconds
+	var t = 0.0
+	while t < duration:
+		t += get_process_delta_time()
+		cam.zoom = start_zoom.lerp(target_zoom, t / duration)
+		await get_tree().process_frame
+	cam.zoom = target_zoom
 
 
 # ----------------- INDIVIDUAL ATTACKS -----------------
@@ -153,6 +162,10 @@ func take_damage(amount: int = 1) -> void:
 	anim_sprite.modulate = Color(1, 0.5, 0.5) # flash red
 	await get_tree().create_timer(0.1).timeout
 	anim_sprite.modulate = Color(1, 1, 1)
+
+	# Zoom out camera at half HP
+	if current_hp <= max_hp / 2 and player.get_node("Camera2D").zoom != Vector2(1.25, 1.25):
+		zoom_out_camera_slowly()
 
 	if current_hp <= 0:
 		die()
