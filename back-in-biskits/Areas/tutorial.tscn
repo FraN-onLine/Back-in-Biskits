@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://gmao1bw0xgpl"]
+[gd_scene load_steps=28 format=4 uid="uid://gmao1bw0xgpl"]
 
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="1_1g7pl"]
 [ext_resource type="Script" uid="uid://14xk0h1pf7us" path="res://Areas/tutorial.gd" id="1_c5plm"]
@@ -13,8 +13,11 @@
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_khkes"]
 [ext_resource type="Texture2D" uid="uid://ba76wp4u7b068" path="res://Assets/Main Menu/button_rectangle_depth_border.png" id="10_y5la3"]
 [ext_resource type="Texture2D" uid="uid://2rjibsfwdvns" path="res://Assets/Main Menu/button_rectangle_depth_gradient.png" id="11_ygrh2"]
+[ext_resource type="PackedScene" uid="uid://bsfoflwra3rgn" path="res://Bosses/Boss1/cake_dog.tscn" id="12_eh6eq"]
 [ext_resource type="AudioStream" uid="uid://cy6k2ufyu8d34" path="res://Assets/Sounds/button.wav" id="12_y5la3"]
 [ext_resource type="AudioStream" uid="uid://chk2job1t4pik" path="res://Assets/Sounds/tutorial.wav" id="13_ygrh2"]
+[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="16_eh6eq"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="18_3vgv6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q01"]
 texture = ExtResource("1_1g7pl")
@@ -81,6 +84,9 @@ size = Vector2(233, 366)
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_c5plm")
 
+[node name="Cake Dog" parent="." instance=ExtResource("12_eh6eq")]
+position = Vector2(155, 150)
+
 [node name="TextureRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = -2
@@ -94,18 +100,11 @@ color = Color(0.876647, 0.615706, 0.374357, 1)
 z_index = -1
 tile_map_data = PackedByteArray("AAACAAcAAAABAAIAAAABAAcAAAABAAIAAAAAAAcAAAABAAIAAAD//wcAAAABAAIAAAD+/wcAAAABAAIAAAD9/wcAAAAAAAIAAAD9/wYAAAAAAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAABAAEAAAD//wYAAAABAAEAAAD+/wYAAAABAAEAAAD9/wUAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wMAAAAAAAEAAAD+/wMAAAABAAEAAAAAAAMAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAABAAQAAAABAAEAAAAAAAQAAAABAAEAAAD//wQAAAABAAEAAAD+/wQAAAABAAEAAAD+/wUAAAABAAEAAAD//wUAAAABAAEAAAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAEAAAD//wMAAAABAAEAAAADAAMAAAACAAEAAAADAAQAAAACAAEAAAADAAUAAAACAAEAAAADAAYAAAACAAEAAAADAAcAAAACAAIAAAADAAEAAAACAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAEAAAADAAIAAAACAAEAAAD+/wIAAAABAAEAAAABAAIAAAABAAEAAAAAAAIAAAABAAEAAAD//wIAAAABAAEAAAACAAIAAAABAAEAAAD+/wEAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_8gp1h")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_qcivo")]
 position = Vector2(-55, 206)
 yoyoatk_scene = null
-
-[node name="Label2" type="Label" parent="."]
-offset_left = 303.0
-offset_top = 103.0
-offset_right = 599.0
-offset_bottom = 178.0
-theme_override_fonts/font = ExtResource("6_pximk")
-text = "Pick up cookies to get power"
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 789.0
@@ -173,6 +172,18 @@ theme_override_fonts/font = ExtResource("6_pximk")
 text = "W A S D - movement
 left click - attack
 "
+metadata/_edit_lock_ = true
+
+[node name="Tutorial Label" type="Label" parent="UI"]
+offset_left = 244.0
+offset_top = 21.0
+offset_right = 940.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("6_pximk")
+theme_override_font_sizes/font_size = 20
+text = "Pick up cookies to get powersdfffffsdfsdfsfsfsfsfsfsdfsfsfsfsfsf"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="buttonsounds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_y5la3")
@@ -184,10 +195,6 @@ stream = ExtResource("13_ygrh2")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"
-
-[node name="Cookie" parent="." instance=ExtResource("8_jw656")]
-position = Vector2(449, 187)
-cookie = ExtResource("9_khkes")
 
 [node name="SetPot0" type="Area2D" parent="."]
 
@@ -201,7 +208,26 @@ shape = SubResource("RectangleShape2D_c5plm")
 position = Vector2(2027, 181)
 shape = SubResource("RectangleShape2D_c5plm")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Cookie1" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(13, 76)
+cookie = ExtResource("9_khkes")
+
 [node name="Cookie2" parent="." instance=ExtResource("8_jw656")]
-position = Vector2(1744, 183)
+position = Vector2(15, 219)
+cookie = ExtResource("16_eh6eq")
+
+[node name="Cookie3" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(103, 137)
+cookie = ExtResource("16_eh6eq")
+
+[node name="Cookie4" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(-70, 137)
+cookie = ExtResource("18_3vgv6")
 
 [connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="body_entered" from="Cookie1" to="." method="_on_cookie_1_body_entered"]
+[connection signal="body_entered" from="Cookie2" to="." method="_on_cookie_2_body_entered"]
+[connection signal="body_entered" from="Cookie3" to="." method="_on_cookie_1_body_entered"]
+[connection signal="body_entered" from="Cookie4" to="." method="_on_cookie_1_body_entered"]

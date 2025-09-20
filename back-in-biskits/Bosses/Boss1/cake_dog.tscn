@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://bsfoflwra3rgn"]
+
+[ext_resource type="Script" uid="uid://5vi5jgotf1ib" path="res://Bosses/Boss1/cake_dog.gd" id="1_5jxg7"]
+[ext_resource type="Texture2D" uid="uid://cn2ubtx48qkyt" path="res://Assets/Bosses/Cat Boss/cakedog.png" id="2_5jxg7"]
+[ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="2_k3jbc"]
+[ext_resource type="AudioStream" uid="uid://cmkof53b8ftwx" path="res://Assets/Sounds/[91] WAV_91_splat 1.wav" id="4_yw16u"]
+[ext_resource type="AudioStream" uid="uid://di37tqevbbqcx" path="res://Assets/Sounds/Voicy_Barbarian king scream - Clash of Clans.mp3" id="5_13du3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uplrc"]
+atlas = ExtResource("2_5jxg7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5e7r"]
+atlas = ExtResource("2_5jxg7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g5fx"]
+atlas = ExtResource("2_5jxg7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54l2b"]
+atlas = ExtResource("2_5jxg7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie4sf"]
+atlas = ExtResource("2_5jxg7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ktmgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uplrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5e7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g5fx")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54l2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie4sf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uv0fx"]
+radius = 6.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ahsim"]
+radius = 7.0
+
+[node name="Cake Dog" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_5jxg7")
+damage_popup_scene = ExtResource("2_k3jbc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.0959547, -3.10064)
+scale = Vector2(1.256, 1.13129)
+sprite_frames = SubResource("SpriteFrames_ktmgs")
+animation = &"attack"
+autoplay = "idle"
+frame = 2
+frame_progress = 1.0
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("CapsuleShape2D_uv0fx")
+
+[node name="spawm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_yw16u")
+volume_db = -25.0
+bus = &"SFX"
+
+[node name="atk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_13du3")
+bus = &"SFX"
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, 1)
+shape = SubResource("CircleShape2D_ahsim")
