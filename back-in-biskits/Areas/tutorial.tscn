@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://gmao1bw0xgpl"]
+[gd_scene load_steps=26 format=4 uid="uid://gmao1bw0xgpl"]
 
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="1_1g7pl"]
 [ext_resource type="Script" uid="uid://14xk0h1pf7us" path="res://Areas/tutorial.gd" id="1_c5plm"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="4_qcivo"]
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="6_4t5x3"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="6_pximk"]
-[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="7_pximk"]
 [ext_resource type="PackedScene" uid="uid://ch61q6045g2b4" path="res://Pickup/cookie.tscn" id="8_jw656"]
 [ext_resource type="Texture2D" uid="uid://b0ql7d1kirvko" path="res://Assets/Main Menu/button_rectangle_depth_flat.png" id="9_77gea"]
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_khkes"]
@@ -18,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://chk2job1t4pik" path="res://Assets/Sounds/tutorial.wav" id="13_ygrh2"]
 [ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="16_eh6eq"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="18_3vgv6"]
+[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="19_pwus2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q01"]
 texture = ExtResource("1_1g7pl")
@@ -66,9 +66,6 @@ sources/0 = SubResource("TileSetAtlasSource_w6q01")
 sources/1 = SubResource("TileSetAtlasSource_4t5x3")
 sources/2 = SubResource("TileSetAtlasSource_8eli6")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcivo"]
-size = Vector2(337, 237)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eh6eq"]
 texture = ExtResource("9_77gea")
 
@@ -78,14 +75,9 @@ texture = ExtResource("10_y5la3")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3vgv6"]
 texture = ExtResource("11_ygrh2")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5plm"]
-size = Vector2(233, 366)
-
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_c5plm")
-
-[node name="Cake Dog" parent="." instance=ExtResource("12_eh6eq")]
-position = Vector2(155, 150)
+enemy_scene = ExtResource("12_eh6eq")
 
 [node name="TextureRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -105,51 +97,6 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("4_qcivo")]
 position = Vector2(-55, 206)
 yoyoatk_scene = null
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 789.0
-offset_top = 107.0
-offset_right = 1407.0
-offset_bottom = 182.0
-theme_override_fonts/font = ExtResource("6_pximk")
-text = "Powers will scale of potency, which accumulates over time"
-
-[node name="Label4" type="Label" parent="."]
-offset_left = 833.0
-offset_top = 220.0
-offset_right = 1391.0
-offset_bottom = 295.0
-theme_override_fonts/font = ExtResource("7_pximk")
-text = "Potency decreases when a cookie is picked up"
-
-[node name="Label5" type="Label" parent="."]
-offset_left = 1594.0
-offset_top = 105.0
-offset_right = 2152.0
-offset_bottom = 180.0
-text = "If potency is 0, Cookie skills are void"
-
-[node name="Label7" type="Label" parent="."]
-offset_left = 1740.0
-offset_top = 221.0
-offset_right = 2298.0
-offset_bottom = 296.0
-theme_override_fonts/font = ExtResource("6_pximk")
-text = "Higher Potency == New Cookies, Stronger Powers"
-
-[node name="Label6" type="Label" parent="."]
-offset_left = 2078.0
-offset_top = 105.0
-offset_right = 2636.0
-offset_bottom = 180.0
-text = "Too much potency deals damage to you if left unchecked"
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(2941, 108)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(792, 76)
-shape = SubResource("RectangleShape2D_qcivo")
 
 [node name="UI" parent="." instance=ExtResource("6_4t5x3")]
 
@@ -196,18 +143,6 @@ volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="SetPot0" type="Area2D" parent="."]
-
-[node name="Area2D" type="CollisionShape2D" parent="SetPot0"]
-position = Vector2(1582, 194)
-shape = SubResource("RectangleShape2D_c5plm")
-
-[node name="SetPot3" type="Area2D" parent="."]
-
-[node name="Area2D" type="CollisionShape2D" parent="SetPot3"]
-position = Vector2(2027, 181)
-shape = SubResource("RectangleShape2D_c5plm")
-
 [node name="Node" type="Node" parent="."]
 
 [node name="Cookie1" parent="." instance=ExtResource("8_jw656")]
@@ -225,6 +160,23 @@ cookie = ExtResource("16_eh6eq")
 [node name="Cookie4" parent="." instance=ExtResource("8_jw656")]
 position = Vector2(-70, 137)
 cookie = ExtResource("18_3vgv6")
+
+[node name="Cookie5" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(-77, 51)
+
+[node name="Cookie6" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(111, 49)
+cookie = ExtResource("19_pwus2")
+
+[node name="Cookie7" parent="." instance=ExtResource("8_jw656")]
+position = Vector2(107, 229)
+cookie = ExtResource("16_eh6eq")
+
+[node name="SpawnMarker1" type="Marker2D" parent="."]
+position = Vector2(-53, 136)
+
+[node name="SpawnMarker2" type="Marker2D" parent="."]
+position = Vector2(94, 136)
 
 [connection signal="pressed" from="UI/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="body_entered" from="Cookie1" to="." method="_on_cookie_1_body_entered"]

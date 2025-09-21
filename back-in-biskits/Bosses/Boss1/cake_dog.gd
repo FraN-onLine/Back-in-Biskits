@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal enemy_died
+
 # --- Enemy Stats ---
 var max_hp := 35
 var hp := max_hp
@@ -85,9 +87,8 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	alive = false
 	anim.play("idle")  # or you can add a "death" anim
+	emit_signal("enemy_died")
 	queue_free()
-	# You could signal tutorial here:
-	# get_parent().call_deferred("mark_done")
 
 
 func _on_body_entered(body: Node) -> void:

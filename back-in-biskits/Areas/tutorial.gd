@@ -12,7 +12,8 @@ var steps = [
 	{"desc": "Eating a cookie while you have 0 Potency nullifies your attacks", "done": false},
 	{"desc": "On the other end, staying at max potency for too long will hurt you", "done": false},
 	{"desc": "Control your hunger to effectively beat the stages", "done": false},
-	{"desc": "Some cookies have a minimum potency to start being effective", "done": false}
+	{"desc": "Some cookies have a minimum potency to start being effective", "done": false},
+	{"desc": "Defeat the enemies to finish the tutorial", "done": false}
 ]
 
 # References to tutorial objects (set in editor)
@@ -20,7 +21,16 @@ var steps = [
 @onready var cookie2 = $Cookie2
 @onready var cookie3 = $Cookie3
 @onready var cookie4 = $Cookie4
-@onready var dummy_enemy = $"Cake Dog"
+@onready var cookie5 = $Cookie5
+@onready var cookie6 = $Cookie6
+@onready var cookie7 = $Cookie7
+
+
+# Enemy spawn setup
+@export var enemy_scene: PackedScene
+@onready var spawn_marker1: Marker2D = $SpawnMarker1
+@onready var spawn_marker2: Marker2D = $SpawnMarker2
+var active_enemies: Array = []
 
 
 func _ready() -> void:
@@ -33,6 +43,12 @@ func _ready() -> void:
 	cookie3.set_deferred("monitoring", false)
 	cookie4.visible = false
 	cookie4.set_deferred("monitoring", false)
+	cookie5.visible = false
+	cookie5.set_deferred("monitoring", false)
+	cookie6.visible = false
+	cookie6.set_deferred("monitoring", false)
+	cookie7.visible = false
+	cookie7.set_deferred("monitoring", false)
 
 	# Initial "explore" phase
 	tutorial_label.text = ""
@@ -84,7 +100,39 @@ func show_step() -> void:
 			Global.potency = 1
 			cookie4.visible = true
 			cookie4.set_deferred("monitoring", true)
+		7:
+			cookie5.visible = true
+			cookie5.set_deferred("monitoring", true)
+			cookie6.visible = true
+			cookie6.set_deferred("monitoring", true)
+			cookie7.visible = true
+			cookie7.set_deferred("monitoring", true)
+			# Spawn enemies
+			_spawn_enemies()
+			
+func _spawn_enemies() -> void:
+	if not enemy_scene: return
+	var e1 = enemy_scene.instantiate()
+	var e2 = enemy_scene.instantiate()
+	e1.global_position = spawn_marker1.global_position
+	e2.global_position = spawn_marker2.global_position
 
+	get_tree().current_scene.add_child(e1)
+	get_tree().current_scene.add_child(e2)
+
+	# Track them
+	active_enemies = [e1, e2]
+
+	# Connect death signals
+	e1.connect("enemy_died", Callable(self, "_on_enemy_defeated"))
+	e2.connect("enemy_died", Callable(self, "_on_enemy_defeated"))
+
+func _on_enemy_defeated() -> void:
+	# Remove defeated enemies from list
+	active_enemies.pop_front()
+	await get_tree().create_timer(0.5).timeout
+	if active_enemies.is_empty():
+		finish_tutorial()
 
 func mark_done() -> void:
 	steps[current_step]["done"] = true
@@ -97,7 +145,6 @@ func next_step() -> void:
 		show_step()
 	else:
 		finish_tutorial()
-
 
 func finish_tutorial() -> void:
 	tutorial_label.text = "Tutorial complete!"
@@ -117,12 +164,6 @@ func _on_cookie_1_body_entered(body: Node2D) -> void:
 func _on_cookie_2_body_entered(body: Node2D) -> void:
 	next_step()
 	pass # Replace with function body.
-
-
-# Enemy death (hook from DummyEnemy die())
-func _on_enemy_defeated():
-	if current_step == 2:
-		mark_done()
 
 
 # ----------------- SKIP -----------------
