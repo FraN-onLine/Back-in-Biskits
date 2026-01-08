@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3vr81s4mdl76"]
+[gd_scene load_steps=35 format=3 uid="uid://c3vr81s4mdl76"]
 
 [ext_resource type="Script" uid="uid://piosoklf2in7" path="res://Bosses/Boss2/boss_2.gd" id="1_gvn1q"]
 [ext_resource type="PackedScene" uid="uid://b08k8j5al6y67" path="res://Bosses/Boss2/candy_minion.tscn" id="2_k1vdw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="6_2ksk0"]
 [ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="7_h7d24"]
 [ext_resource type="Texture2D" uid="uid://b62n87eu32f65" path="res://Assets/Cookies/Macaroon-Sheet.png" id="8_7ja2r"]
+[ext_resource type="Texture2D" uid="uid://eqiu54na3tlu" path="res://Assets/Cookies/Biscoff-Sheet.png" id="10_2ksk0"]
 [ext_resource type="Texture2D" uid="uid://c02cj0mn0lgui" path="res://Assets/Bosses/Candy Boss/death-bow-Sheet.png" id="11_4qw46"]
 [ext_resource type="Texture2D" uid="uid://1akdpv3pnaxy" path="res://Assets/Bosses/Candy Boss/candy-idle.png" id="12_2ksk0"]
 
@@ -180,7 +181,7 @@ animations = [{
 script = ExtResource("1_gvn1q")
 minion_scene = ExtResource("2_k1vdw")
 projectile_scene = ExtResource("3_1vpdc")
-barrage_textures = Array[Texture2D]([ExtResource("3_h8i66"), ExtResource("4_1vpdc"), ExtResource("5_4qw46"), ExtResource("6_2ksk0"), ExtResource("7_h7d24"), ExtResource("8_7ja2r")])
+barrage_textures = Array[Texture2D]([ExtResource("3_h8i66"), ExtResource("4_1vpdc"), ExtResource("5_4qw46"), ExtResource("6_2ksk0"), ExtResource("7_h7d24"), ExtResource("8_7ja2r"), ExtResource("10_2ksk0")])
 damage_popup_scene = ExtResource("3_cfiu0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

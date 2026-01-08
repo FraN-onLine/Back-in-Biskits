@@ -2050,6 +2050,10 @@ tile_set = SubResource("TileSet_ynhw7")
 [node name="Player" parent="." instance=ExtResource("3_23fs2")]
 z_index = 1
 position = Vector2(115, 180)
+speed = null
+attack_cooldown = null
+dash_speed = null
+dash_distance = null
 
 [node name="UI" parent="." instance=ExtResource("4_4co3w")]
 

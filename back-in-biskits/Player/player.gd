@@ -123,6 +123,8 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 			hammer_attack()
 		"oreo":
 			oreo_rush()
+		"biscoff_cookie":
+			smash()
 
 	await get_tree().create_timer(attack_cooldown).timeout #attack cooldown
 	can_attack = true #so u can attack obv...
@@ -161,6 +163,59 @@ func die() -> void:
 
 # -------------- Various Attacks ----------------
 
+func smash() -> void:
+	if is_attacking:
+		return
+
+	$SmashArea.reset_hits()
+
+	is_attacking = true
+	orb.play("disappear")
+	#hammer_sound.play()
+
+	#6,7,8 damage per potency multiplied by Global.lives, so (6-30), (7-35), (8-40) each attack also has a 25% chance to reduce global potency by 1
+	var base_damage := 6
+	match cookie_potency:
+		1:
+			base_damage = 6
+		2:
+			base_damage = 7
+		3:
+			base_damage = 8
+		_:
+			base_damage = 1
+
+	var total_damage := base_damage * Global.lives
+
+
+	var smash_area = $SmashArea
+	var smash_shape = $SmashArea/CollisionShape2D
+	smash_area.damage = total_damage
+	smash_area.monitoring = false
+	smash_shape.disabled = true
+-
+	anim.play("smash")
+
+	#hits at 8 stops at 12
+	await anim.frame_changed
+	while anim.animation == "smash":
+		match anim.frame:
+			8:
+				smash_area.monitoring = true
+				smash_shape.disabled = false
+			12:
+				smash_area.monitoring = false
+				smash_shape.disabled = true
+		await anim.frame_changed
+
+	#25% chance to reduce global potency
+	if randf() <= 0.25 and Global.potency > 0:
+		Global.potency -= 1
+
+	is_attacking = false
+	anim.play("idle")
+	orb.play("idle")
+	
 
 func sword_attack() -> void:
 	orb.play("disappear")
