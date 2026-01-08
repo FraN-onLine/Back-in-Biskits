@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=28 format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_v2evy"]
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
+[ext_resource type="PackedScene" uid="uid://bsfoflwra3rgn" path="res://Bosses/Boss1/cake_dog.tscn" id="7_2j3ld"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
 [ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="10_jhh8q"]
@@ -83,7 +84,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSet" id="TileSet_8hgsk"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
 sources/0 = SubResource("TileSetAtlasSource_2actb")
 sources/1 = SubResource("TileSetAtlasSource_svy64")
 sources/2 = SubResource("TileSetAtlasSource_4ceto")
@@ -118,12 +119,14 @@ tile_set = SubResource("TileSet_8hgsk")
 
 [node name="Player" parent="." instance=ExtResource("1_bmh1r")]
 position = Vector2(115, 180)
-speed = 200.0
-attack_cooldown = 0.6
-dash_speed = 280.0
-dash_distance = 150
 
 [node name="UI" parent="." instance=ExtResource("3_v2evy")]
+
+[node name="Cake Dog" parent="." instance=ExtResource("7_2j3ld")]
+position = Vector2(-77, -16)
+
+[node name="Cake Dog2" parent="." instance=ExtResource("7_2j3ld")]
+position = Vector2(302, 236)
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
