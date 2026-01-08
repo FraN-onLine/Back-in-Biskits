@@ -96,10 +96,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_qcivo")]
 position = Vector2(-55, 206)
-speed = null
-attack_cooldown = null
-dash_speed = null
-dash_distance = null
 
 [node name="UI" parent="." instance=ExtResource("6_4t5x3")]
 

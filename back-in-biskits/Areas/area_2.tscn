@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://djevp70hlcgjq"]
+[gd_scene load_steps=21 format=4 uid="uid://djevp70hlcgjq"]
 
 [ext_resource type="Texture2D" uid="uid://byp4vj77bodyk" path="res://Assets/Bosses/Candy Boss/New Piskel (1).png" id="1_4ng5c"]
 [ext_resource type="Script" uid="uid://dq0q5xdrdnikm" path="res://Areas/area_2.gd" id="1_hiici"]
@@ -7,8 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="5_5ch4h"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_ugiej"]
 [ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="7_lykvi"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_xjqkg"]
+[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="8_6y5rs"]
 [ext_resource type="AudioStream" uid="uid://b60omm53h7ld8" path="res://Assets/Sounds/area_2.wav" id="8_xkiia"]
+[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="9_wnpb0"]
 [ext_resource type="Texture2D" uid="uid://cve0jpsfbyulh" path="res://Assets/Bosses/Candy Boss/Decotiles.png" id="9_xy2jk"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="10_f4p8d"]
+[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="11_3xaqm"]
+[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_fr8km"]
+[ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="13_in6r6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
 texture = ExtResource("1_4ng5c")
@@ -98,10 +105,10 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_mq80c")]
 position = Vector2(63, 579)
-speed = null
-attack_cooldown = null
-dash_speed = null
-dash_distance = null
+speed = 200.0
+attack_cooldown = 0.6
+dash_speed = 280.0
+dash_distance = 150
 
 [node name="UI" parent="." instance=ExtResource("5_5ch4h")]
 
@@ -109,6 +116,7 @@ dash_distance = null
 position = Vector2(70, 34)
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_ugiej")]
+possible_cookies = Array[ExtResource("7_xjqkg")]([ExtResource("8_6y5rs"), ExtResource("9_wnpb0"), ExtResource("10_f4p8d"), ExtResource("11_3xaqm"), ExtResource("12_fr8km"), ExtResource("13_in6r6")])
 spawn_interval = 4.0
 max_active_cookies = 6
 metadata/_edit_lock_ = true

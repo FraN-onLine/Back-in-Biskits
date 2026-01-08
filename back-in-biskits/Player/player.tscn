@@ -989,13 +989,9 @@ radius = 18.1108
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")
-speed = null
-attack_cooldown = null
 graham_bullet = ExtResource("2_btcbx")
 shockwave_scene = ExtResource("3_od3ui")
 yoyoatk_scene = ExtResource("4_p5o4e")
-dash_speed = null
-dash_distance = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hvfyp")
@@ -1092,3 +1088,4 @@ script = ExtResource("21_7emwf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SmashArea"]
 position = Vector2(-19, 5)
 shape = SubResource("CircleShape2D_n471f")
+disabled = true

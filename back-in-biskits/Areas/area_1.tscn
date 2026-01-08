@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene load_steps=27 format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="13_2j3ld"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="14_g5qry"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
+[ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="15_n1nld"]
 [ext_resource type="AudioStream" uid="uid://culldhebnqveb" path="res://Assets/Sounds/area_1.wav" id="17_3aty0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
@@ -117,16 +118,16 @@ tile_set = SubResource("TileSet_8hgsk")
 
 [node name="Player" parent="." instance=ExtResource("1_bmh1r")]
 position = Vector2(115, 180)
-speed = null
-attack_cooldown = null
-dash_speed = null
-dash_distance = null
+speed = 200.0
+attack_cooldown = 0.6
+dash_speed = 280.0
+dash_distance = 150
 
 [node name="UI" parent="." instance=ExtResource("3_v2evy")]
 
 [node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry")])
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry"), ExtResource("15_n1nld")])
 spawn_interval = 4.0
 max_active_cookies = 4
 

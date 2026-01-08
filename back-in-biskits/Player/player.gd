@@ -18,6 +18,9 @@ var dashing := false
 var dash_velocity := Vector2.ZERO
 @export var dash_speed := 280.0
 @export var dash_distance := 150
+@onready var smash_area = $SmashArea
+@onready var smash_shape = $SmashArea/CollisionShape2D
+var smash_pos
 
 
 @onready var anim: AnimatedSprite2D = $Sprite2D # reference to sprite
@@ -39,6 +42,7 @@ signal player_died
 
 
 func _ready() -> void:
+	smash_pos = smash_area.position
 	Global.lives = 5
 
 
@@ -85,6 +89,8 @@ func handle_movement(delta: float) -> void:
 	velocity = input_dir * speed
 	move_and_slide()
 
+	
+
 	# --- Animation handling ---
 	if input_dir == Vector2.ZERO:
 		# Idle
@@ -106,6 +112,10 @@ func handle_movement(delta: float) -> void:
 		var pos = shape.position
 		pos.x = abs(pos.x) * (-1 if input_dir.x < 0 else 1)
 		shape.position = pos
+		var smash_area = $SmashArea
+		var smash_shape = $SmashArea/CollisionShape2D
+		smash_pos.x = abs(smash_pos.x) * (-1 if anim.flip_h else 1)
+		smash_area.position = smash_pos
 
 
 # ---------------- Attacks ----------------
@@ -185,28 +195,25 @@ func smash() -> void:
 		_:
 			base_damage = 1
 
-	var total_damage := base_damage * Global.lives
+	var total_damage = base_damage * Global.lives
 
-
-	var smash_area = $SmashArea
-	var smash_shape = $SmashArea/CollisionShape2D
 	smash_area.damage = total_damage
 	smash_area.monitoring = false
 	smash_shape.disabled = true
--
+
 	anim.play("smash")
 
 	#hits at 8 stops at 12
-	await anim.frame_changed
 	while anim.animation == "smash":
-		match anim.frame:
-			8:
-				smash_area.monitoring = true
-				smash_shape.disabled = false
-			12:
-				smash_area.monitoring = false
-				smash_shape.disabled = true
 		await anim.frame_changed
+
+		if anim.frame == 8:
+			smash_area.monitoring = true
+			smash_shape.disabled = false
+		elif anim.frame >= 12:
+			smash_area.monitoring = false
+			smash_shape.disabled = true
+			break
 
 	#25% chance to reduce global potency
 	if randf() <= 0.25 and Global.potency > 0:
@@ -215,6 +222,7 @@ func smash() -> void:
 	is_attacking = false
 	anim.play("idle")
 	orb.play("idle")
+
 	
 
 func sword_attack() -> void:
