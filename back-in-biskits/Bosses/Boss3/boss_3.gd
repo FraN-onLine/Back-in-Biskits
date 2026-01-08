@@ -26,6 +26,7 @@ var last_attack: String = ""
 
 
 func _ready() -> void:
+	Global.stage = 3
 	add_to_group("bosses")
 	healthbar = $"../UI".get_node("Healthbar")
 	healthbar.init_health(max_hp)

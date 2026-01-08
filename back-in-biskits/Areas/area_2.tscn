@@ -98,7 +98,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_mq80c")]
 position = Vector2(63, 579)
-yoyoatk_scene = null
 
 [node name="UI" parent="." instance=ExtResource("5_5ch4h")]
 

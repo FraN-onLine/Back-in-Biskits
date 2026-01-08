@@ -96,7 +96,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_qcivo")]
 position = Vector2(-55, 206)
-yoyoatk_scene = null
 
 [node name="UI" parent="." instance=ExtResource("6_4t5x3")]
 
@@ -111,10 +110,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_3vgv6")
 text = "SKIP"
 
 [node name="Label2" type="Label" parent="UI"]
-offset_left = 14.0
-offset_top = 84.0
-offset_right = 212.0
-offset_bottom = 159.0
+offset_left = 12.0
+offset_top = 113.0
+offset_right = 210.0
+offset_bottom = 188.0
 theme_override_fonts/font = ExtResource("6_pximk")
 text = "W A S D - movement
 left click - attack
