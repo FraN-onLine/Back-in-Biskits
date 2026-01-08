@@ -42,7 +42,7 @@ signal player_died
 
 
 func _ready() -> void:
-	smash_pos = smash_area.position
+	smash_pos = smash_shape.position
 	Global.lives = 5
 
 
@@ -114,8 +114,8 @@ func handle_movement(delta: float) -> void:
 		shape.position = pos
 		var smash_area = $SmashArea
 		var smash_shape = $SmashArea/CollisionShape2D
-		smash_pos.x = abs(smash_pos.x) * (-1 if anim.flip_h else 1)
-		smash_area.position = smash_pos
+		smash_pos.x = abs(smash_pos.x) * (-1 if not anim.flip_h else 1)
+		smash_shape.position = smash_pos
 
 
 # ---------------- Attacks ----------------
@@ -181,6 +181,7 @@ func smash() -> void:
 
 	is_attacking = true
 	orb.play("disappear")
+	speed = 140 #slow
 	#hammer_sound.play()
 
 	#6,7,8 damage per potency multiplied by Global.lives, so (6-30), (7-35), (8-40) each attack also has a 25% chance to reduce global potency by 1
@@ -220,6 +221,7 @@ func smash() -> void:
 		Global.potency -= 1
 
 	is_attacking = false
+	speed = 200
 	anim.play("idle")
 	orb.play("idle")
 

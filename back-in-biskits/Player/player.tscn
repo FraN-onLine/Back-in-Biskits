@@ -586,7 +586,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"smash",
-"speed": 14.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -985,7 +985,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n471f"]
-radius = 18.1108
+radius = 28.0179
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l8h54")

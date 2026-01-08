@@ -63,8 +63,9 @@ func _physics_process(delta: float) -> void:
 
 # ----------------- STEP LOGIC -----------------
 func show_step() -> void:
-	await get_tree().create_timer(0.3).timeout
-	tutorial_label.text = steps[current_step]["desc"]
+	if get_tree():
+		await get_tree().create_timer(0.3).timeout
+		tutorial_label.text = steps[current_step]["desc"]
 
 	match current_step:
 		0:
