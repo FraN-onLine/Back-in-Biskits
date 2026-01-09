@@ -14,3 +14,4 @@ Added Biscoff Cookie
 Biscoff Cookie spawnable at all stages  
 Yoyo bug fix for Tutorial and Stage 2 where it fails to deal damage  
 Smash skill from Biscoff - Scales on Current HP. May reduce Potency on Smash. (testing atm, in a later update Biscoff will only appear at Stage 3(new) and 4)  
+added interface prestage battles  
