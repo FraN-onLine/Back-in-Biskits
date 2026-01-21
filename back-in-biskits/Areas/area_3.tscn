@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://d2rvpc750ns1a"]
+[gd_scene load_steps=34 format=4 uid="uid://d2rvpc750ns1a"]
 
 [ext_resource type="Texture2D" uid="uid://btrovvn0xng2j" path="res://Assets/Bosses/Cookie Mosnter Boss/Background.png" id="1_uu235"]
 [ext_resource type="Texture2D" uid="uid://0mghypx5ivgw" path="res://Assets/Bosses/Cookie Mosnter Boss/Table Platform.png" id="2_il3nm"]
@@ -12,7 +12,6 @@
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="10_j4aaq"]
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_bveg3"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_wt1fd"]
-[ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="13_bveg3"]
 [ext_resource type="PackedScene" uid="uid://dysrllnb0orue" path="res://Bosses/Boss3/boss_3.tscn" id="13_il3nm"]
 [ext_resource type="PackedScene" uid="uid://dunepp1pb2igq" path="res://Bosses/Boss2/candy_barrage.tscn" id="14_23fs2"]
 [ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="15_moblf"]
@@ -2051,16 +2050,12 @@ tile_set = SubResource("TileSet_ynhw7")
 [node name="Player" parent="." instance=ExtResource("3_23fs2")]
 z_index = 1
 position = Vector2(115, 180)
-speed = 200.0
-attack_cooldown = 0.6
-dash_speed = 280.0
-dash_distance = 150
 
 [node name="UI" parent="." instance=ExtResource("4_4co3w")]
 
 [node name="CookieSpawner" parent="." instance=ExtResource("5_ynhw7")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("6_x0tcu")]([ExtResource("7_se685"), ExtResource("8_ool1y"), ExtResource("9_moblf"), ExtResource("10_j4aaq"), ExtResource("11_bveg3"), ExtResource("7_se685"), ExtResource("12_wt1fd"), ExtResource("13_bveg3")])
+possible_cookies = Array[ExtResource("6_x0tcu")]([ExtResource("7_se685"), ExtResource("8_ool1y"), ExtResource("9_moblf"), ExtResource("10_j4aaq"), ExtResource("11_bveg3"), ExtResource("7_se685"), ExtResource("12_wt1fd")])
 spawn_interval = 4.0
 max_active_cookies = 4
 

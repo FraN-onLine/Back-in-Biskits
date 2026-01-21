@@ -105,10 +105,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_mq80c")]
 position = Vector2(63, 579)
-speed = 200.0
-attack_cooldown = 0.6
-dash_speed = 280.0
-dash_distance = 150
 
 [node name="UI" parent="." instance=ExtResource("5_5ch4h")]
 
