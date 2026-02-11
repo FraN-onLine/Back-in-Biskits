@@ -196,7 +196,7 @@ func smash() -> void:
 		_:
 			base_damage = 1
 
-	var total_damage = base_damage * Global.lives
+	var total_damage = base_damage * (6 - Global.lives)
 
 	smash_area.damage = total_damage
 	smash_area.monitoring = false
