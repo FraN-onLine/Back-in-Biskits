@@ -21,3 +21,5 @@ func show_damage(amount: int, world_start: Vector2) -> void:
 
 	await tween.finished
 	queue_free()
+
+#ror
