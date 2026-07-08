@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyeyap1gpibg8"]
+[gd_scene format=3 uid="uid://cyeyap1gpibg8"]
 
 [ext_resource type="Texture2D" uid="uid://cfww4j3aw1ndk" path="res://Assets/Cookies/Graham-Bullet-Sheet.png" id="1_0q6rp"]
 [ext_resource type="Script" uid="uid://mjyv0jo2dtir" path="res://Player/Weapons/graham_bullet.gd" id="1_re13g"]
@@ -35,17 +35,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd0kd"]
 size = Vector2(8, 8.5)
 
-[node name="graham_bullet" type="Area2D"]
+[node name="graham_bullet2" type="Area2D" unique_id=1678040581]
 collision_mask = 3
 script = ExtResource("1_re13g")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1209118566]
 position = Vector2(0, -1)
 scale = Vector2(0.40625, 0.40625)
 sprite_frames = SubResource("SpriteFrames_wqw5p")
+autoplay = "default"
 frame_progress = 0.581593
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1001321780]
 position = Vector2(0, -2.25)
 shape = SubResource("RectangleShape2D_kd0kd")
 

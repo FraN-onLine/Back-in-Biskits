@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Cookie" format=3 uid="uid://b88ejf07bethg"]
+
+[ext_resource type="Texture2D" uid="uid://bix832pmr6fly" path="res://Assets/Cookies/peanut-cookie-Sheet.png" id="1_peanut"]
+[ext_resource type="Texture2D" path="res://Assets/Cookies/Peanut-projectile1.png" id="2_peanut"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="3_peanut"]
+
+[resource]
+script = ExtResource("3_peanut")
+cookie_type = "peanut_cookie"
+cookie_name = "Peanut Cookie"
+atlas_texture = ExtResource("1_peanut")
+icon_texture = ExtResource("2_peanut")
+min_potency = 0
+pickup_message = "Peanut Bullet"
+attack_cooldown = 1.0
+metadata/_custom_type_script = "uid://dq108u8j1agm8"

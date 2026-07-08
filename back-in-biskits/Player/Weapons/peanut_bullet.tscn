@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://de3dlxs2pferi"]
+
+[ext_resource type="Script" uid="uid://dxd81j588ais8" path="res://Player/Weapons/peanut_bullet.gd" id="1_2ijxn"]
+[ext_resource type="Texture2D" uid="uid://uvnj2ewwr7pd" path="res://Assets/Cookies/Peanut-projectile-Sheet.png" id="2_2ijxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w3sc"]
+atlas = ExtResource("2_2ijxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqwan"]
+atlas = ExtResource("2_2ijxn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8ovx"]
+atlas = ExtResource("2_2ijxn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68efl"]
+atlas = ExtResource("2_2ijxn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqw5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w3sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqwan")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8ovx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68efl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kd0kd"]
+size = Vector2(8, 8.5)
+
+[node name="peanut_bullet" type="Area2D" unique_id=181206049]
+collision_mask = 3
+script = ExtResource("1_2ijxn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=777851322]
+position = Vector2(0, -1)
+scale = Vector2(0.40625, 0.40625)
+sprite_frames = SubResource("SpriteFrames_wqw5p")
+autoplay = "default"
+frame_progress = 0.4174476
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=945789357]
+position = Vector2(0, -2.25)
+shape = SubResource("RectangleShape2D_kd0kd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

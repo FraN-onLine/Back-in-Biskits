@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene format=4 uid="uid://n8utlsd5y7ci"]
 
 [ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="13_2j3ld"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="14_g5qry"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
+[ext_resource type="Resource" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="16_2j3ld"]
 [ext_resource type="AudioStream" uid="uid://culldhebnqveb" path="res://Assets/Sounds/area_1.wav" id="17_3aty0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
@@ -90,10 +91,10 @@ sources/0 = SubResource("TileSetAtlasSource_2actb")
 sources/1 = SubResource("TileSetAtlasSource_svy64")
 sources/2 = SubResource("TileSetAtlasSource_4ceto")
 
-[node name="Area1" type="Node2D"]
+[node name="Area1" type="Node2D" unique_id=811822154]
 script = ExtResource("1_3aty0")
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="." unique_id=152537643]
 z_index = -2
 offset_left = -615.0
 offset_top = -339.0
@@ -101,37 +102,37 @@ offset_right = 827.0
 offset_bottom = 517.0
 color = Color(0.876647, 0.615706, 0.374357, 1)
 
-[node name="TileMapLayer3" type="TileMapLayer" parent="." groups=["walls"]]
+[node name="TileMapLayer3" type="TileMapLayer" parent="." unique_id=675188865 groups=["walls"]]
 position = Vector2(46, 26)
 scale = Vector2(0.616117, 0.673306)
 tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAD//wAAAAAAAAAAAAADAP//AAAAAAAAAAADAAUAAAAAAAAAAAAHAAQAAAAAAAAAAAAJAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAP7/AAAAAAAAAAD5////AAAAAAAAAAD7/wEAAAAAAAAAAAAKAP7/AAAAAAAAAAD4/wQAAAAAAAAAAAD+/wMAAAAAAAAAAAAFAAMAAAAAAAAAAAALAAQAAAAAAAAAAAD9/wUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_t85wl")
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1606736210]
 position = Vector2(236, -33)
 scale = Vector2(0.884588, 0.998998)
 tile_map_data = PackedByteArray("AAACAPv/AAAAAAAAAAD9//z/AAAAAAAAAAAHAPz/AAAAAAAAAADq//z/AAAAAAAAAADn//3/AAAAAAAAAADz//v/AAAAAAAAAAD4//v/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_kpacr")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["walls"]]
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1128723308 groups=["walls"]]
 z_index = -1
 tile_map_data = PackedByteArray("AAD+//7/AAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAADAP7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAAGAP7/AAABAAAAAAAHAP7/AAABAAAAAAAIAP7/AAABAAAAAAAIAP//AAABAAEAAAAIAAAAAAABAAEAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAHAAUAAAABAAEAAAAGAAUAAAABAAEAAAAFAAUAAAABAAEAAAAEAAUAAAABAAEAAAADAAUAAAABAAEAAAACAAUAAAABAAEAAAABAAUAAAABAAEAAAAAAAUAAAABAAEAAAD//wUAAAABAAEAAAD+/wUAAAABAAEAAAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAD//wQAAAABAAEAAAAAAAQAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAEAAIAAAABAAEAAAADAAMAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAFAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAAAAAAABAAEAAAAHAP//AAABAAEAAAAHAAQAAAABAAEAAAAGAAIAAAABAAEAAAAGAAEAAAABAAEAAAAGAAAAAAABAAEAAAAGAP//AAABAAEAAAAFAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAD9//7/AAAAAAAAAAAJAP7/AAACAAAAAAAJAP//AAACAAEAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAIAAAAIAAcAAAABAAIAAAAHAAcAAAABAAIAAAAGAAcAAAABAAIAAAAFAAcAAAABAAIAAAAEAAcAAAABAAIAAAADAAcAAAABAAIAAAACAAcAAAABAAIAAAABAAcAAAABAAIAAAAAAAcAAAABAAIAAAD//wcAAAABAAIAAAD+/wcAAAABAAIAAAD9/wcAAAAAAAIAAAD9////AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAEAAAD9/wYAAAAAAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAAGAAYAAAABAAEAAAAFAAYAAAABAAEAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAABAAEAAAD//wYAAAABAAEAAAD+/wYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_8hgsk")
 
-[node name="Player" parent="." instance=ExtResource("1_bmh1r")]
+[node name="Player" parent="." unique_id=81437017 instance=ExtResource("1_bmh1r")]
 position = Vector2(115, 180)
 
-[node name="UI" parent="." instance=ExtResource("3_v2evy")]
+[node name="UI" parent="." unique_id=776433428 instance=ExtResource("3_v2evy")]
 
-[node name="Cake Dog" parent="." instance=ExtResource("7_2j3ld")]
+[node name="Cake Dog" parent="." unique_id=180105307 instance=ExtResource("7_2j3ld")]
 position = Vector2(-77, -16)
 
-[node name="Cake Dog2" parent="." instance=ExtResource("7_2j3ld")]
+[node name="Cake Dog2" parent="." unique_id=938328304 instance=ExtResource("7_2j3ld")]
 position = Vector2(302, 236)
 
-[node name="CookieSpawner" parent="." instance=ExtResource("6_01mxt")]
+[node name="CookieSpawner" parent="." unique_id=1594577870 instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry")])
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry"), ExtResource("16_2j3ld")])
 spawn_interval = 4.0
 max_active_cookies = 4
 
@@ -144,23 +145,23 @@ position = Vector2(-70, 45)
 [node name="Spawnpoint3" parent="CookieSpawner" index="2"]
 position = Vector2(267, 40)
 
-[node name="Spawnpoint4" type="Marker2D" parent="CookieSpawner"]
+[node name="Spawnpoint4" type="Marker2D" parent="CookieSpawner" unique_id=484200787]
 position = Vector2(102, -51)
 
-[node name="Spawnpoint5" type="Marker2D" parent="CookieSpawner"]
+[node name="Spawnpoint5" type="Marker2D" parent="CookieSpawner" unique_id=326591904]
 position = Vector2(237, -80)
 
-[node name="Spawnpoint6" type="Marker2D" parent="CookieSpawner"]
+[node name="Spawnpoint6" type="Marker2D" parent="CookieSpawner" unique_id=925985568]
 position = Vector2(116, 129)
 
-[node name="Boss 1" parent="." instance=ExtResource("7_8hgsk")]
+[node name="Boss 1" parent="." unique_id=2025715022 instance=ExtResource("7_8hgsk")]
 position = Vector2(85, -16)
 
-[node name="WaypointMarker" parent="." instance=ExtResource("12_2actb")]
+[node name="WaypointMarker" parent="." unique_id=877394183 instance=ExtResource("12_2actb")]
 position = Vector2(404.5, 221)
 scale = Vector2(1.5625, 1.5)
 
-[node name="buttonsounds" type="AudioStreamPlayer" parent="."]
+[node name="buttonsounds" type="AudioStreamPlayer" parent="." unique_id=1751908962]
 stream = ExtResource("17_3aty0")
 volume_db = -20.0
 autoplay = true

@@ -1,5 +1,5 @@
 extends Area2D
-class_name GrahamBullet
+class_name Peanut
 
 var speed: float = 300.0
 var damage: float = 10.0

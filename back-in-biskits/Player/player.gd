@@ -6,6 +6,7 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var speed: float = 200.0
 @export var attack_cooldown: float = 0.6
 @export var graham_bullet: PackedScene
+@export var peanut_bullet: PackedScene
 @export var shockwave_scene: PackedScene
 @export var yoyoatk_scene: PackedScene
 var can_attack: bool = true
@@ -125,6 +126,8 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 	match current_attack: #depends on what was picked up last
 		"lion_cracker":
 			sword_attack()
+		"peanut_cookie":
+			peanut_attack()
 		"graham":
 			graham_attack()
 		"macaroon":
@@ -244,6 +247,26 @@ func sword_attack() -> void:
 	swordanim.play("default")
 	orb.play("idle")
 	
+func peanut_attack() -> void:
+	graham_sound.play()
+	if not peanut_bullet: return
+	var mouse_pos = get_global_mouse_position()
+	var base_dir = (mouse_pos - global_position).normalized()
+	var potency = cookie_potency
+
+	match potency:
+		1:
+			_spawn_peanut(global_position, base_dir, 6.0)
+		2:
+			_spawn_peanut(global_position, base_dir, 7.0)
+		_:
+			_spawn_peanut(global_position, base_dir, 8.0)
+
+func _spawn_peanut(pos: Vector2, dir: Vector2, dmg: float) -> void:
+	var b = peanut_bullet.instantiate()
+	get_tree().current_scene.add_child(b)
+	b.init(pos, dir, dmg, cookie_potency, self)
+
 func graham_attack() -> void:
 	graham_sound.play()
 	if not graham_bullet: return
