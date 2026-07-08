@@ -1,7 +1,7 @@
 extends Area2D
 class_name PeanutBullet
 
-var speed: float = 200.0
+var speed: float = 250.0
 var damage: float = 8.0
 var direction: Vector2
 var potency: int = 1
@@ -22,14 +22,14 @@ func init(start_pos: Vector2, dir: Vector2, dmg: float, pot: int, player: Node) 
 	# Durations based on potency (stage)
 	match potency:
 		1:
-			outgoing_duration = 0.6
-			return_duration = 0.7
+			outgoing_duration = 0.2
+			return_duration = 0.4
 		2:
-			outgoing_duration = 0.9
-			return_duration = 1.0
+			outgoing_duration = 0.5
+			return_duration = 0.6
 		3:
-			outgoing_duration = 1.2
-			return_duration = 1.3
+			outgoing_duration = 0.7
+			return_duration = 0.8
 	
 	# Rotate sprite so "up" points in travel direction
 	rotation = direction.angle() + (PI/2)

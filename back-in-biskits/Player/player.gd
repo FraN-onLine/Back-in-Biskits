@@ -256,11 +256,12 @@ func peanut_attack() -> void:
 
 	match potency:
 		1:
-			_spawn_peanut(global_position, base_dir, 6.0)
+			_spawn_peanut(global_position, base_dir, 5.0)
 		2:
-			_spawn_peanut(global_position, base_dir, 7.0)
+			_spawn_peanut(global_position, base_dir, 7)
 		_:
-			_spawn_peanut(global_position, base_dir, 8.0)
+			_spawn_peanut(global_position, base_dir, 6.0)
+			_spawn_peanut(global_position, base_dir, 6.0)
 
 func _spawn_peanut(pos: Vector2, dir: Vector2, dmg: float) -> void:
 	var b = peanut_bullet.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=3 uid="uid://bk3vlngnal1r6"]
+[gd_scene format=3 uid="uid://bk3vlngnal1r6"]
 
 [ext_resource type="Script" uid="uid://piisnawdngc4" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Texture2D" uid="uid://wocw80o7yw40" path="res://Assets/Player/MC_WALKING.png" id="2_4ntmi"]
@@ -988,20 +988,20 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_n471f"]
 radius = 28.0179
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=855032050 groups=["player"]]
 script = ExtResource("1_l8h54")
 graham_bullet = ExtResource("2_btcbx")
 peanut_bullet = ExtResource("2_peanut")
 shockwave_scene = ExtResource("3_od3ui")
 yoyoatk_scene = ExtResource("4_p5o4e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2115837905]
 shape = SubResource("CapsuleShape2D_hvfyp")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=978398523]
 zoom = Vector2(3.5, 3.5)
 
-[node name="Orb" type="AnimatedSprite2D" parent="."]
+[node name="Orb" type="AnimatedSprite2D" parent="." unique_id=324435357]
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_pnkso")
@@ -1010,7 +1010,7 @@ autoplay = "idle"
 frame = 5
 frame_progress = 1.0
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2122296708]
 position = Vector2(-1, -2)
 scale = Vector2(0.923828, 0.90625)
 sprite_frames = SubResource("SpriteFrames_k53q1")
@@ -1019,13 +1019,13 @@ frame = 12
 frame_progress = 1.0
 metadata/_edit_lock_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=238601919]
 visible = false
 position = Vector2(-6, 1)
 scale = Vector2(0.640625, 0.75)
 sprite_frames = SubResource("SpriteFrames_8viyr")
 
-[node name="RushEffect" type="AnimatedSprite2D" parent="."]
+[node name="RushEffect" type="AnimatedSprite2D" parent="." unique_id=1699486091]
 position = Vector2(-6, 1)
 scale = Vector2(0.640625, 0.75)
 sprite_frames = SubResource("SpriteFrames_pfstq")
@@ -1033,61 +1033,59 @@ animation = &"rush"
 frame = 18
 frame_progress = 1.0
 
-[node name="LionCrackerSword" type="Area2D" parent="."]
+[node name="LionCrackerSword" type="Area2D" parent="." unique_id=557655250]
 modulate = Color(1, 1, 1, 0)
 collision_mask = 3
 monitoring = false
 monitorable = false
 script = ExtResource("13_o28un")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LionCrackerSword" unique_id=870035657]
 position = Vector2(-25, -3.375)
 shape = SubResource("RectangleShape2D_6rl0i")
 debug_color = Color(0.745312, 0.378077, 0.693413, 0.42)
 
-[node name="Shield" type="Sprite2D" parent="."]
+[node name="Shield" type="Sprite2D" parent="." unique_id=382898790]
 visible = false
 modulate = Color(1, 1, 1, 0.694118)
 texture = ExtResource("6_fhl08")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield"]
-libraries = {
-&"": SubResource("AnimationLibrary_od3ui")
-}
-autoplay = "new_animation"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shield" unique_id=1719455782]
+libraries/ = SubResource("AnimationLibrary_od3ui")
+autoplay = &"new_animation"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1720356890]
 stream = ExtResource("14_gu6f8")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=1427840034]
 stream = ExtResource("15_pisgm")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="." unique_id=1543263135]
 stream = ExtResource("15_dkpta")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="." unique_id=1743239698]
 stream = ExtResource("15_pisgm")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="." unique_id=1391722710]
 stream = ExtResource("17_o28un")
 volume_db = -20.0
 bus = &"SFX"
 
-[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="." unique_id=1038785478]
 stream = ExtResource("17_b1ygp")
 volume_db = -20.0
 bus = &"SFX"
 
-[node name="SmashArea" type="Area2D" parent="."]
+[node name="SmashArea" type="Area2D" parent="." unique_id=1072159748]
 collision_mask = 3
 monitoring = false
 script = ExtResource("21_7emwf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SmashArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmashArea" unique_id=1290257409]
 position = Vector2(-19, 5)
 shape = SubResource("CircleShape2D_n471f")
 disabled = true

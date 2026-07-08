@@ -40,21 +40,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kd0kd"]
-size = Vector2(8, 8.5)
+size = Vector2(11, 11.5)
 
 [node name="peanut_bullet" type="Area2D" unique_id=181206049]
 collision_mask = 3
 script = ExtResource("1_2ijxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=777851322]
-position = Vector2(0, -1)
-scale = Vector2(0.40625, 0.40625)
+position = Vector2(-1.1920929e-07, -2)
+scale = Vector2(0.484375, 0.484375)
 sprite_frames = SubResource("SpriteFrames_wqw5p")
 autoplay = "default"
-frame_progress = 0.4174476
+frame_progress = 0.49596328
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=945789357]
-position = Vector2(0, -2.25)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_kd0kd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
