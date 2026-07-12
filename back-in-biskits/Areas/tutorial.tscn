@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://cy6k2ufyu8d34" path="res://Assets/Sounds/button.wav" id="12_y5la3"]
 [ext_resource type="AudioStream" uid="uid://chk2job1t4pik" path="res://Assets/Sounds/tutorial.wav" id="13_ygrh2"]
 [ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="16_eh6eq"]
-[ext_resource type="Resource" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="17_3vgv6"]
+[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="17_3vgv6"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="19_pwus2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q01"]
