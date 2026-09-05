@@ -62,9 +62,11 @@ func _open_battle_popup() -> void:
 	else:
 		get_tree().current_scene.add_child(popup)
 	_battle_popup = popup
+	Global.dialog_open = true
 
 
 func _close_battle_popup() -> void:
 	if _battle_popup and is_instance_valid(_battle_popup):
 		_battle_popup.queue_free()
 	_battle_popup = null
+	Global.dialog_open = false

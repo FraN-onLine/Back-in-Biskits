@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cve0jpsfbyulh" path="res://Assets/Bosses/Candy Boss/Decotiles.png" id="9_xy2jk"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="10_f4p8d"]
 [ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="11_3xaqm"]
-[ext_resource type="Resource" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="12_8qjfp"]
+[ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="12_8qjfp"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_fr8km"]
-[ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="13_d0qbv"]
+[ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="13_xjqkg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
 texture = ExtResource("1_4ng5c")
@@ -112,7 +112,7 @@ position = Vector2(63, 579)
 position = Vector2(70, 34)
 
 [node name="CookieSpawner" parent="." unique_id=936157404 instance=ExtResource("6_ugiej")]
-possible_cookies = Array[ExtResource("7_xjqkg")]([ExtResource("8_6y5rs"), ExtResource("10_f4p8d"), ExtResource("11_3xaqm"), ExtResource("12_fr8km"), ExtResource("12_8qjfp"), ExtResource("13_d0qbv")])
+possible_cookies = Array[ExtResource("7_xjqkg")]([ExtResource("8_6y5rs"), ExtResource("10_f4p8d"), ExtResource("11_3xaqm"), ExtResource("12_fr8km"), ExtResource("12_8qjfp"), ExtResource("13_xjqkg")])
 spawn_interval = 4.0
 max_active_cookies = 6
 metadata/_edit_lock_ = true

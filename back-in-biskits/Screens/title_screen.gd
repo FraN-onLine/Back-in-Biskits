@@ -32,7 +32,7 @@ func _on_start_pressed():
 	button_sound.play()
 	Global.potency = 1
 	Global.timer = 0
-	FadeManager.fade_out_then_change_scene("res://Areas/hallway_1.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/tutorial.tscn")
 
 func _on_instructions_pressed():
 	button_sound.play()
@@ -72,7 +72,7 @@ func _on_back_best_times_pressed():
 	main_buttons.visible = true
 
 func _refresh_best_times():
-	var names := {1: "BOTANIC PANIC", 2: "CANDY CONNOSIEUR", 3: "CONFECTIONEER"}
+	var names := {1: "CALICO CONUNDRUM", 2: "JUST DESSERTS", 3: "TABLE MANNERS"}
 	var rows := PackedStringArray()
 	for stage in [1, 2, 3]:
 		var best := Global.get_best_time(stage)

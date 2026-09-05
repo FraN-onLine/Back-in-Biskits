@@ -18,7 +18,7 @@ func setup(config: Dictionary) -> void:
 func _ready() -> void:
 	title_label.text = str(_config.get("title", "BOSS BATTLE"))
 	battle_button.pressed.connect(_on_battle_begin_pressed)
-	back_button.pressed.connect(queue_free)
+	back_button.pressed.connect(_close)
 
 	var icon: Texture2D = _config.get("boss_icon", null)
 	if icon:
@@ -48,17 +48,26 @@ func _populate_cookies() -> void:
 
 
 func _cookie_icon(c: Cookie) -> Texture2D:
-	if c.icon_texture:
-		return c.icon_texture
+	# Use the cookie's own sprite from its atlas/texture sheet, falling back
+	# to the ability icon texture if no sheet frame is available.
 	if c.atlas_texture:
 		var at := AtlasTexture.new()
 		at.atlas = c.atlas_texture
 		at.region = Rect2(0, 0, 32, 32)
 		return at
+	if c.icon_texture:
+		return c.icon_texture
 	return null
 
 
+func _close() -> void:
+	Global.dialog_open = false
+	queue_free()
+
+
 func _on_battle_begin_pressed() -> void:
+	Global.dialog_open = false
+	Global.potency_paused = false
 	var next: String = str(_config.get("next_scene", ""))
 	if next != "":
 		Global.timer = 0

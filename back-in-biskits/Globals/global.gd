@@ -6,6 +6,8 @@ var potency = 1
 var timer = 0.0
 var stage = 0
 var warning_enabled = false
+var dialog_open = false       # true while the battle popup is up (player locked)
+var potency_paused = false    # true in hallways (no potency accumulation)
 
 # Best times (per boss stage)
 const BEST_TIMES_PATH = "user://best_times.json"
@@ -18,6 +20,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if potency_paused:
+		return
 	timer += delta
 	if timer >= 6.5:
 		timer = 0.0

@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
 [ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="16_2j3ld"]
 [ext_resource type="AudioStream" uid="uid://culldhebnqveb" path="res://Assets/Sounds/area_1.wav" id="17_3aty0"]
-[ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="18_cyt9p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
 texture = ExtResource("3_kpacr")
@@ -133,7 +132,7 @@ position = Vector2(302, 236)
 
 [node name="CookieSpawner" parent="." unique_id=1594577870 instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry"), ExtResource("16_2j3ld"), ExtResource("18_cyt9p")])
+possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry"), ExtResource("16_2j3ld")])
 spawn_interval = 4.0
 max_active_cookies = 4
 

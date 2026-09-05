@@ -61,7 +61,7 @@ position = Vector2(160, 540)
 
 [node name="Teleporter" parent="." instance=ExtResource("4_hw")]
 position = Vector2(960, 520)
-display_title = "CONFECTIONEER"
+display_title = "TABLE MANNERS"
 boss_icon = ExtResource("13_hw")
 boss_stage = 3
 next_area_path = "res://Areas/area_3.tscn"

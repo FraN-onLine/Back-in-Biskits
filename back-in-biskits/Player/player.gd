@@ -48,7 +48,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if dead: return
+	if dead or Global.dialog_open: return
 	handle_movement(delta)
 
 	if Input.is_action_just_pressed("attack") and can_attack:

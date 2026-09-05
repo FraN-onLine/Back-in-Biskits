@@ -1,16 +1,14 @@
-﻿[gd_scene format=3 uid="uid://d0h2hallw002x"]
+[gd_scene format=3 uid="uid://c0bt4j2jt7fcr"]
 
-[ext_resource type="Script" path="res://Areas/hallway.gd" id="1_hw"]
+[ext_resource type="Script" uid="uid://cn2u0na6mgw2u" path="res://Areas/hallway.gd" id="1_hw"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_hw"]
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_hw"]
-[ext_resource type="PackedScene" path="res://Areas/teleporter.tscn" id="4_hw"]
+[ext_resource type="PackedScene" uid="uid://cyusdhemecb2i" path="res://Areas/teleporter.tscn" id="4_hw"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="5_hw"]
 [ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="6_hw"]
-[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="7_hw"]
 [ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="8_hw"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="9_hw"]
-[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="10_hw"]
-[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_hw"]
+[ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="11_tt8fm"]
 [ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="12_hw"]
 [ext_resource type="Texture2D" uid="uid://hupnkjyt8w0u" path="res://Assets/Bosses/Boss Portraits/Candy-win.png" id="13_hw"]
 
@@ -20,49 +18,45 @@ size = Vector2(1200, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(48, 700)
 
-[node name="Hallway2" type="Node2D"]
+[node name="Hallway2" type="Node2D" unique_id=1768582432]
 script = ExtResource("1_hw")
 
-[node name="Background" type="Polygon2D" parent="."]
+[node name="Background" type="Polygon2D" parent="." unique_id=1645674687]
 position = Vector2(576, 324)
 color = Color(0.13, 0.19, 0.24, 1)
 polygon = PackedVector2Array(-576, -324, 576, -324, 576, 324, -576, 324)
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="Floor" type="StaticBody2D" parent="." unique_id=1995365650]
 position = Vector2(576, 600)
-collision_layer = 1
-collision_mask = 1
 
-[node name="FloorVisual" type="Polygon2D" parent="Floor"]
+[node name="FloorVisual" type="Polygon2D" parent="Floor" unique_id=216938922]
 color = Color(0.68, 0.52, 0.36, 1)
 polygon = PackedVector2Array(-600, -24, 600, -24, 600, 24, -600, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1876194153]
 shape = SubResource("RectangleShape2D_floor")
 
-[node name="LeftWall" type="StaticBody2D" parent="."]
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=2140641582]
 position = Vector2(0, 324)
-collision_layer = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=826151889]
 shape = SubResource("RectangleShape2D_wall")
 
-[node name="RightWall" type="StaticBody2D" parent="."]
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=261298308]
 position = Vector2(1152, 324)
-collision_layer = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1414479140]
 shape = SubResource("RectangleShape2D_wall")
 
-[node name="Player" parent="." instance=ExtResource("2_hw")]
+[node name="Player" parent="." unique_id=539566914 instance=ExtResource("2_hw")]
 position = Vector2(160, 540)
 
-[node name="UI" parent="." instance=ExtResource("3_hw")]
+[node name="UI" parent="." unique_id=1401294316 instance=ExtResource("3_hw")]
 
-[node name="Teleporter" parent="." instance=ExtResource("4_hw")]
+[node name="Teleporter" parent="." unique_id=693269645 instance=ExtResource("4_hw")]
 position = Vector2(960, 520)
-display_title = "CANDY CONNOSIEUR"
+display_title = "JUST DESSERTS"
 boss_icon = ExtResource("13_hw")
+cookies = Array[ExtResource("5_hw")]([ExtResource("6_hw"), ExtResource("12_hw"), ExtResource("8_hw"), ExtResource("9_hw"), ExtResource("11_tt8fm")])
 boss_stage = 2
 next_area_path = "res://Areas/area_2.tscn"
-cookies = Array[ExtResource("5_hw")]([ExtResource("6_hw"), ExtResource("7_hw"), ExtResource("8_hw"), ExtResource("9_hw"), ExtResource("10_hw"), ExtResource("11_hw")])
