@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cookie" load_steps=4 format=3 uid="uid://c0jkuoimbflll"]
+[gd_resource type="Resource" script_class="Cookie" format=3 uid="uid://c0jkuoimbflll"]
 
 [ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="1_3dre2"]
 [ext_resource type="Texture2D" uid="uid://mteh2xjd25v" path="res://Assets/Cookies/Graham-Skill.png" id="2_ngnj8"]
@@ -13,4 +13,5 @@ icon_texture = ExtResource("2_ngnj8")
 min_potency = 0
 pickup_message = "Graham Shoot"
 attack_cooldown = 1.0
+description = "Launch a graham cracker at your cursor. Each potency level adds an extra cracker fired in a spreading pattern, shredding anything in the arc."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

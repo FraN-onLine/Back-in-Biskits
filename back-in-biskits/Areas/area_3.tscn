@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_bveg3"]
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_wt1fd"]
 [ext_resource type="Resource" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="13_bveg3"]
+[ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="14_lq6dw"]
 [ext_resource type="PackedScene" uid="uid://dysrllnb0orue" path="res://Bosses/Boss3/boss_3.tscn" id="13_il3nm"]
 [ext_resource type="PackedScene" uid="uid://dunepp1pb2igq" path="res://Bosses/Boss2/candy_barrage.tscn" id="14_23fs2"]
 [ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="15_moblf"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b62n87eu32f65" path="res://Assets/Cookies/Macaroon-Sheet.png" id="19_q5ql2"]
 [ext_resource type="Texture2D" uid="uid://277kxoep2ysh" path="res://Assets/Cookies/CookieCat-Sheet.png" id="20_e2o84"]
 [ext_resource type="AudioStream" uid="uid://by7urnsgxx73k" path="res://Assets/Sounds/not-so-merry-christmas-182564.mp3" id="21_j4aaq"]
+[ext_resource type="Script" path="res://Areas/area_3.gd" id="22_a3gd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q5ql2"]
 texture = ExtResource("1_uu235")
@@ -2002,6 +2004,7 @@ size = Vector2(512.5, 20)
 size = Vector2(161.421, 20)
 
 [node name="Area3" type="Node2D" unique_id=60186393]
+script = ExtResource("22_a3gd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=12368002]
 layer = -6
@@ -2056,7 +2059,7 @@ position = Vector2(115, 180)
 
 [node name="CookieSpawner" parent="." unique_id=1515074797 instance=ExtResource("5_ynhw7")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("6_x0tcu")]([ExtResource("7_se685"), ExtResource("8_ool1y"), ExtResource("9_moblf"), ExtResource("10_j4aaq"), ExtResource("11_bveg3"), ExtResource("7_se685"), ExtResource("12_wt1fd"), ExtResource("13_bveg3")])
+possible_cookies = Array[ExtResource("6_x0tcu")]([ExtResource("7_se685"), ExtResource("8_ool1y"), ExtResource("9_moblf"), ExtResource("10_j4aaq"), ExtResource("11_bveg3"), ExtResource("7_se685"), ExtResource("12_wt1fd"), ExtResource("13_bveg3"), ExtResource("14_lq6dw")])
 spawn_interval = 4.0
 max_active_cookies = 4
 

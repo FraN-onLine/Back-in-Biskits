@@ -13,4 +13,5 @@ icon_texture = ExtResource("2_peanut")
 min_potency = 0
 pickup_message = "Peanut Bullet"
 attack_cooldown = 0.7
+description = "Fire a crackling peanut toward your cursor. Higher potency makes the shot hit harder, and at maximum potency TWO peanuts are launched at once."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

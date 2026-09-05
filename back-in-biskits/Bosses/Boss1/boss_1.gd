@@ -151,10 +151,16 @@ func die() -> void:
 	$CollisionShape2D.disabled = true
 	velocity = Vector2.ZERO
 	dead = true
+	_record_best_time(1)
 	emit_signal("boss_died")
 	await $AnimatedSprite2D.animation_finished
 	Global.stage = 2
 	Global.potency = 1
 	Global.timer = 0
 	Global.shield = 0
-	get_tree().change_scene_to_file("res://Areas/area_2.tscn")
+	get_tree().change_scene_to_file("res://Areas/hallway_2.tscn")
+
+func _record_best_time(stage: int) -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("get_stopwatch_time"):
+		Global.submit_best_time(stage, ui_node.get_stopwatch_time())

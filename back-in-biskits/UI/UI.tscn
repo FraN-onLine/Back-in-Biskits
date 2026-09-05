@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ckkrott6tmvs3"]
+[gd_scene format=3 uid="uid://ckkrott6tmvs3"]
 
 [ext_resource type="Script" uid="uid://8esoo8esqsnn" path="res://UI/ui.gd" id="1_6dd3c"]
 [ext_resource type="Texture2D" uid="uid://b878bsp32bc4q" path="res://Assets/UI Elements/Heart.png" id="2_dhe1o"]
@@ -122,10 +122,10 @@ _data = {
 &"new_animationmove": SubResource("Animation_dhe1o")
 }
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="CanvasLayer" unique_id=281829241]
 script = ExtResource("1_6dd3c")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1286166915]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -138,7 +138,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_dhe1o")
 stretch_mode = 1
 
-[node name="PotencyRect" type="TextureRect" parent="."]
+[node name="PotencyRect" type="TextureRect" parent="." unique_id=1262364512]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -151,7 +151,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_e707p")
 stretch_mode = 1
 
-[node name="ShieldRect" type="TextureRect" parent="."]
+[node name="ShieldRect" type="TextureRect" parent="." unique_id=937622917]
 visible = false
 anchors_preset = 2
 anchor_top = 1.0
@@ -165,13 +165,11 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_jqf55")
 stretch_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_e707p")
-}
-autoplay = "new_animationmove"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1627005970]
+libraries/ = SubResource("AnimationLibrary_e707p")
+autoplay = &"new_animationmove"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=2078314166]
 offset_left = 23.0
 offset_top = 470.0
 offset_right = 137.0
@@ -179,7 +177,7 @@ offset_bottom = 493.0
 theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "Potency: "
 
-[node name="Name Label" type="Label" parent="."]
+[node name="Name Label" type="Label" parent="." unique_id=1437153493]
 offset_left = 15.0
 offset_top = 80.0
 offset_right = 197.0
@@ -187,7 +185,7 @@ offset_bottom = 103.0
 theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "Orion Skyflake"
 
-[node name="BossLabel" type="Label" parent="."]
+[node name="BossLabel" type="Label" parent="." unique_id=1946083295]
 visible = false
 offset_left = 397.0
 offset_top = 50.0
@@ -197,7 +195,7 @@ theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "CALICO-COOKIE CAT "
 horizontal_alignment = 1
 
-[node name="HPLabel" type="Label" parent="."]
+[node name="HPLabel" type="Label" parent="." unique_id=1700697856]
 visible = false
 offset_left = 431.0
 offset_top = 65.0
@@ -208,7 +206,7 @@ theme_override_fonts/font = ExtResource("3_q0uhn")
 text = "HP: 100/500"
 horizontal_alignment = 1
 
-[node name="Healthbar" parent="." instance=ExtResource("5_f1fl4")]
+[node name="Healthbar" parent="." unique_id=1050199189 instance=ExtResource("5_f1fl4")]
 visible = false
 offset_left = 425.0
 offset_top = 16.0
@@ -224,33 +222,33 @@ scale = Vector2(2.90045, 7.01172)
 position = Vector2(251.4, 28)
 scale = Vector2(8.60004, 7)
 
-[node name="StopwatchLabel" parent="." instance=ExtResource("7_byuxr")]
+[node name="StopwatchLabel" parent="." unique_id=1766764610 instance=ExtResource("7_byuxr")]
 offset_left = -59.0
 offset_top = 607.0
 offset_right = 61.0
 offset_bottom = 647.0
 
-[node name="WarningIcon" type="Sprite2D" parent="."]
+[node name="WarningIcon" type="Sprite2D" parent="." unique_id=1534967215]
 visible = false
 position = Vector2(597, 135)
 scale = Vector2(2.82812, 2.37662)
 texture = ExtResource("8_d050y")
 
-[node name="Mc-icon-box" type="Sprite2D" parent="."]
+[node name="Mc-icon-box" type="Sprite2D" parent="." unique_id=149840032]
 position = Vector2(45.5, 45)
 scale = Vector2(2.03125, 2.03125)
 texture = ExtResource("9_qhxh2")
 
-[node name="Mc-icon" type="Sprite2D" parent="."]
+[node name="Mc-icon" type="Sprite2D" parent="." unique_id=1296990135]
 position = Vector2(46.5, 45)
 texture = ExtResource("10_017wa")
 
-[node name="Skill-box2" type="Sprite2D" parent="."]
+[node name="Skill-box2" type="Sprite2D" parent="." unique_id=1951355225]
 position = Vector2(111.5, 45)
 scale = Vector2(2.0625, 2.0625)
 texture = ExtResource("11_npmjx")
 
-[node name="SkillIcon" type="Sprite2D" parent="."]
+[node name="SkillIcon" type="Sprite2D" parent="." unique_id=1456635653]
 z_index = 1
 position = Vector2(110.5, 45)
 scale = Vector2(1.46875, 1.375)

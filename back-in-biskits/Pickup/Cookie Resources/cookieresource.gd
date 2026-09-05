@@ -8,4 +8,5 @@ class_name Cookie
 @export var min_potency: int = 1                    # minimum effect strength
 @export var pickup_message: String = "Item Obtained"
 @export var attack_cooldown: float = 0.0  # cd of the attack
+@export var description: String = ""      # almanac page text
 #yah

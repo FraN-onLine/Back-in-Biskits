@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cyusdhemecb2i"]
+
+[ext_resource type="Script" uid="uid://c06p0c4yf3qkv" path="res://Areas/teleporter.gd" id="1_tp"]
+[ext_resource type="Texture2D" uid="uid://detw78yw5k55d" path="res://Assets/Hallways/Portal-Sheet.png" id="2_0hxva"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp"]
+radius = 60.0
+height = 124.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftk8o"]
+atlas = ExtResource("2_0hxva")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h377h"]
+atlas = ExtResource("2_0hxva")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbe32"]
+atlas = ExtResource("2_0hxva")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydq7t"]
+atlas = ExtResource("2_0hxva")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwc0f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftk8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h377h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbe32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydq7t")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Teleporter" type="Area2D" unique_id=736022006]
+collision_layer = 2
+script = ExtResource("1_tp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048735786]
+shape = SubResource("CapsuleShape2D_tp")
+
+[node name="InteractKey" type="AnimatedSprite2D" parent="." unique_id=1687552434]
+visible = false
+position = Vector2(0, -48)
+sprite_frames = SubResource("SpriteFrames_tp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1343830382]
+sprite_frames = SubResource("SpriteFrames_qwc0f")
+autoplay = "default"
+frame_progress = 0.4702237

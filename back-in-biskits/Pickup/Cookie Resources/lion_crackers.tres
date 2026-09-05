@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Cookie" load_steps=4 format=3 uid="uid://cncmcw36ala46"]
+[gd_resource type="Resource" script_class="Cookie" format=3 uid="uid://cncmcw36ala46"]
 
 [ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="1_45dxa"]
 [ext_resource type="Texture2D" uid="uid://cn7ut8w1y54a2" path="res://Assets/Cookies/Sword.png" id="2_rr4tc"]
@@ -13,4 +13,5 @@ icon_texture = ExtResource("2_rr4tc")
 min_potency = 0
 pickup_message = "Sword Slash"
 attack_cooldown = 0.6
+description = "Slash through enemies with a mighty sword. Damage increases with every point of potency you hold. A simple, reliable cookie for up-close fights."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

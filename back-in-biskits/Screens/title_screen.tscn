@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6l777w1uox7m"]
+[gd_scene load_steps=21 format=3 uid="uid://b6l777w1uox7m"]
 
 [ext_resource type="Script" uid="uid://cquel1gyflwcr" path="res://Screens/title_screen.gd" id="1_curwl"]
 [ext_resource type="Script" path="res://Screens/audio_control.gd" id="2_4muxt"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://63kq32wvdot8" path="res://Assets/Sounds/Project_0.wav" id="7_pn4sl"]
 [ext_resource type="AudioStream" uid="uid://cy6k2ufyu8d34" path="res://Assets/Sounds/button.wav" id="9_os6h4"]
 [ext_resource type="Texture2D" uid="uid://d3au64nhlxfsc" path="res://Assets/Untitled31_20250831142232.jpg" id="10_ch080"]
+[ext_resource type="PackedScene" path="res://Screens/almanac.tscn" id="11_alman"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ch080"]
 texture = ExtResource("2_pn4sl")
@@ -111,6 +112,26 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
 text = "Settings
 "
+
+[node name="BestTimesButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Best Times"
+
+[node name="AlmanacButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Almanac"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -241,6 +262,65 @@ value = 1.0
 script = ExtResource("2_4muxt")
 audio_bus_name = "SFX"
 
+[node name="BestTimesPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.5
+offset_top = -131.0
+offset_right = 259.5
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="BestTimesPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("6_ao0oo")
+theme_override_font_sizes/font_size = 34
+text = "Best Times"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestTimesLabel" type="Label" parent="BestTimesPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 78.0
+offset_bottom = 235.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 22
+text = "1. BOTANIC PANIC   --:--
+2. CANDY CONNOSIEUR   --:--
+3. CONFECTIONEER   --:--"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="BestTimesPanel"]
+layout_mode = 0
+offset_left = 153.5
+offset_top = 250.0
+offset_right = 352.5
+offset_bottom = 305.0
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_28co4")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover = SubResource("StyleBoxTexture_3yumr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dc4i4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_e54dn")
+text = "Back"
+
+[node name="AlmanacPanel" parent="." instance=ExtResource("11_alman")]
+visible = false
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_pn4sl")
 volume_db = -20.0
@@ -281,6 +361,10 @@ text = "BACK IN BISKITS
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="VBoxContainer/BestTimesButton" to="." method="_on_best_times_pressed"]
+[connection signal="pressed" from="VBoxContainer/AlmanacButton" to="." method="_on_almanac_pressed"]
+[connection signal="back_pressed" from="AlmanacPanel" to="." method="_on_back_almanac_pressed"]
+[connection signal="pressed" from="BestTimesPanel/Back" to="." method="_on_back_best_times_pressed"]
 [connection signal="pressed" from="SettingsPanel/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="SettingsPanel/AudioControl" to="SettingsPanel/AudioControl" method="_on_value_changed"]
 [connection signal="value_changed" from="SettingsPanel/AudioControl2" to="SettingsPanel/AudioControl2" method="_on_value_changed"]

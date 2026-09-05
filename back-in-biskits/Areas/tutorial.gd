@@ -150,7 +150,7 @@ func next_step() -> void:
 func finish_tutorial() -> void:
 	tutorial_label.text = "Tutorial complete!"
 	await get_tree().create_timer(2).timeout
-	FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/hallway_1.tscn")
 	Global.stage = 1
 	Global.potency = 1
 	Global.timer = 0
@@ -169,7 +169,7 @@ func _on_cookie_2_body_entered(body: Node2D) -> void:
 
 # ----------------- SKIP -----------------
 func _on_skip_button_pressed():
-	FadeManager.fade_out_then_change_scene("res://Areas/area_1.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/hallway_1.tscn")
 	Global.stage = 1
 	Global.potency = 1
 	Global.timer = 0

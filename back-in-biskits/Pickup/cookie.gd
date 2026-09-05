@@ -1,5 +1,18 @@
 extends Area2D
 
+# Every existing cookie, used when a Cookie Bag (cookie_type == "cookie_bag")
+# is picked up so a random one of these effects is granted.
+const COOKIE_POOL = [
+	preload("res://Pickup/Cookie Resources/peanut_cookie.tres"),
+	preload("res://Pickup/Cookie Resources/lion_crackers.tres"),
+	preload("res://Pickup/Cookie Resources/graham.tres"),
+	preload("res://Pickup/Cookie Resources/macaroon.tres"),
+	preload("res://Pickup/Cookie Resources/pistachio_cookie.tres"),
+	preload("res://Pickup/Cookie Resources/oreo.tres"),
+	preload("res://Pickup/Cookie Resources/cookie_cat.tres"),
+	preload("res://Pickup/Cookie Resources/biscoff_cookie.tres"),
+]
+
 var cookie_type: String = "basic_cookie"
 var cookie_name: String = "Basic Cookie"
 var atlas_texture: Texture2D
@@ -21,16 +34,21 @@ var _frame: int = 0
 var _time_acc: float = 0.0
 
 func _ready() -> void:
-	if cookie and cookie.atlas_texture:
-		sprite.texture = cookie.atlas_texture
-		sprite.region_enabled = true
+	if cookie:
 		cookie_type = cookie.cookie_type
 		cookie_name = cookie.cookie_name
 		icon_texture = cookie.icon_texture
 		min_potency = cookie.min_potency
 		pickup_message = cookie.pickup_message
-		sprite.region_rect = Rect2(0, 0,frame_w, frame_h)
-		
+		if cookie.atlas_texture:
+			sprite.texture = cookie.atlas_texture
+			sprite.region_enabled = true
+			sprite.region_rect = Rect2(0, 0, frame_w, frame_h)
+		else:
+			# No texture assigned yet (e.g. Cookie Bag) -> keep the sprite blank
+			sprite.texture = null
+			sprite.region_enabled = false
+
 	if atlas_texture:
 		sprite.texture = atlas_texture
 		sprite.region_enabled = true
@@ -57,8 +75,32 @@ func _update_sprite_region() -> void:
 	sprite.region_rect = Rect2(x, y, frame_w, frame_h)
 
 
+# Cookie Bag: swap this pickup for a random existing cookie that the player
+# can actually use at their current potency (same filter as the cookie spawner).
+func _roll_cookie_bag() -> void:
+	var valid: Array[Cookie] = []
+	for c in COOKIE_POOL:
+		var candidate: Cookie = c
+		if Global.potency >= candidate.min_potency:
+			valid.append(candidate)
+
+	if valid.is_empty():
+		return  # keep as-is; pickup_cookie() will handle a void pickup
+
+	var rolled: Cookie = valid.pick_random()
+	cookie = rolled
+	cookie_type = rolled.cookie_type
+	cookie_name = rolled.cookie_name
+	icon_texture = rolled.icon_texture
+	pickup_message = "Cookie Bag: " + rolled.pickup_message
+	min_potency = rolled.min_potency
+	atlas_texture = rolled.atlas_texture
+
+
 func _on_body_entered(body: Node) -> void:
 	if body.has_method("pickup_cookie"):
+		if cookie_type == "cookie_bag":
+			_roll_cookie_bag()
 		body.pickup_cookie(cookie_type, cookie.attack_cooldown, cookie.min_potency)
 		queue_free()
 

@@ -1,28 +1,27 @@
-[gd_scene format=4 uid="uid://n8utlsd5y7ci"]
+[gd_scene format=4 uid="uid://yf4ehf3gi8b4"]
 
-[ext_resource type="Script" uid="uid://ktfwu2gckllf" path="res://Areas/area_1.gd" id="1_3aty0"]
-[ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="1_bmh1r"]
-[ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="2_8hgsk"]
-[ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="3_kpacr"]
-[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_v2evy"]
-[ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
-[ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
-[ext_resource type="PackedScene" uid="uid://bsfoflwra3rgn" path="res://Bosses/Boss1/cake_dog.tscn" id="7_2j3ld"]
-[ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
-[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
-[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="10_jhh8q"]
-[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="11_3aty0"]
-[ext_resource type="PackedScene" uid="uid://cv2i8py5ecp8x" path="res://UI/waypoint_marker.tscn" id="12_2actb"]
-[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="12_n1nld"]
-[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="13_2j3ld"]
-[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="14_g5qry"]
-[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_jhh8q"]
-[ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="16_2j3ld"]
-[ext_resource type="AudioStream" uid="uid://culldhebnqveb" path="res://Assets/Sounds/area_1.wav" id="17_3aty0"]
-[ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="18_cyt9p"]
+[ext_resource type="Script" uid="uid://cn2u0na6mgw2u" path="res://Areas/hallway.gd" id="1_x2i64"]
+[ext_resource type="Texture2D" uid="uid://cpqqypanyfv3b" path="res://Assets/Dessert Map/rocks.png" id="2_j2gx6"]
+[ext_resource type="Texture2D" uid="uid://bjmx22pml8bvm" path="res://Assets/Dessert Map/pyramid.png" id="3_m2ddk"]
+[ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="4_l8no1"]
+[ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="5_2vy5u"]
+[ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="6_ujnd0"]
+[ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="8_a1i4s"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="9_ox5qp"]
+[ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="10_kgqdt"]
+[ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_4npqd"]
+[ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="12_cxbt5"]
+[ext_resource type="Resource" uid="uid://c0jkuoimbflll" path="res://Pickup/Cookie Resources/graham.tres" id="13_71pg2"]
+[ext_resource type="Resource" uid="uid://bup434e0nk7hl" path="res://Pickup/Cookie Resources/oreo.tres" id="14_ed578"]
+[ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="15_oc0cs"]
+[ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="16_5v0ch"]
+[ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="17_evayk"]
+[ext_resource type="AudioStream" uid="uid://culldhebnqveb" path="res://Assets/Sounds/area_1.wav" id="20_hdp12"]
+[ext_resource type="PackedScene" uid="uid://cyusdhemecb2i" path="res://Areas/teleporter.tscn" id="21_tp1"]
+[ext_resource type="Texture2D" uid="uid://dm357p2migaqv" path="res://Assets/Bosses/Boss Portraits/Calico-win.png" id="22_icon1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpacr"]
-texture = ExtResource("3_kpacr")
+texture = ExtResource("2_j2gx6")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.9342, -5.64474, 2.82237, -7.33816, 15.8053, 2.82237, 17.4987, 19.1921, -13.5474, 19.7566, -25.9658, 16.9342, -27.0947, 11.2895)
@@ -34,7 +33,7 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_kpacr")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8hgsk"]
-texture = ExtResource("2_8hgsk")
+texture = ExtResource("3_m2ddk")
 texture_region_size = Vector2i(124, 124)
 use_texture_padding = false
 0:0/0 = 0
@@ -46,7 +45,7 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_8hgsk")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2actb"]
-texture = ExtResource("5_e5usc")
+texture = ExtResource("4_l8no1")
 texture_region_size = Vector2i(32, 32)
 use_texture_padding = false
 0:0/0 = 0
@@ -68,7 +67,7 @@ use_texture_padding = false
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, 16, -16, 16, -16, 12.108, 12.5859, 12.108, 12.5859, -16, 16, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_svy64"]
-texture = ExtResource("2_8hgsk")
+texture = ExtResource("3_m2ddk")
 texture_region_size = Vector2i(41, 41)
 0:0/0 = 0
 1:0/0 = 0
@@ -81,7 +80,7 @@ texture_region_size = Vector2i(41, 41)
 0:2/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ceto"]
-texture = ExtResource("3_kpacr")
+texture = ExtResource("2_j2gx6")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
@@ -93,7 +92,7 @@ sources/1 = SubResource("TileSetAtlasSource_svy64")
 sources/2 = SubResource("TileSetAtlasSource_4ceto")
 
 [node name="Area1" type="Node2D" unique_id=811822154]
-script = ExtResource("1_3aty0")
+script = ExtResource("1_x2i64")
 
 [node name="TextureRect" type="ColorRect" parent="." unique_id=152537643]
 z_index = -2
@@ -120,20 +119,14 @@ z_index = -1
 tile_map_data = PackedByteArray("AAD+//7/AAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAADAP7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAAGAP7/AAABAAAAAAAHAP7/AAABAAAAAAAIAP7/AAABAAAAAAAIAP//AAABAAEAAAAIAAAAAAABAAEAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAHAAUAAAABAAEAAAAGAAUAAAABAAEAAAAFAAUAAAABAAEAAAAEAAUAAAABAAEAAAADAAUAAAABAAEAAAACAAUAAAABAAEAAAABAAUAAAABAAEAAAAAAAUAAAABAAEAAAD//wUAAAABAAEAAAD+/wUAAAABAAEAAAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD+/wIAAAABAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAEAAAD//wMAAAABAAEAAAAAAAMAAAABAAEAAAD//wQAAAABAAEAAAAAAAQAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAADAAEAAAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAABAAQAAAABAAEAAAACAAQAAAABAAEAAAADAAQAAAABAAEAAAAEAAQAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAEAAIAAAABAAEAAAADAAMAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAFAAQAAAABAAEAAAAHAAMAAAABAAEAAAAHAAIAAAABAAEAAAAHAAEAAAABAAEAAAAHAAAAAAABAAEAAAAHAP//AAABAAEAAAAHAAQAAAABAAEAAAAGAAIAAAABAAEAAAAGAAEAAAABAAEAAAAGAAAAAAABAAEAAAAGAP//AAABAAEAAAAFAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAEAP//AAABAAEAAAADAP//AAABAAEAAAACAP//AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAD9//7/AAAAAAAAAAAJAP7/AAACAAAAAAAJAP//AAACAAEAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAIAAAAIAAcAAAABAAIAAAAHAAcAAAABAAIAAAAGAAcAAAABAAIAAAAFAAcAAAABAAIAAAAEAAcAAAABAAIAAAADAAcAAAABAAIAAAACAAcAAAABAAIAAAABAAcAAAABAAIAAAAAAAcAAAABAAIAAAD//wcAAAABAAIAAAD+/wcAAAABAAIAAAD9/wcAAAAAAAIAAAD9////AAAAAAEAAAD9/wAAAAAAAAEAAAD9/wEAAAAAAAEAAAD9/wIAAAAAAAEAAAD9/wMAAAAAAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAEAAAD9/wYAAAAAAAEAAAAHAAYAAAABAAEAAAAIAAYAAAABAAEAAAAGAAYAAAABAAEAAAAFAAYAAAABAAEAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAACAAYAAAABAAEAAAABAAYAAAABAAEAAAAAAAYAAAABAAEAAAD//wYAAAABAAEAAAD+/wYAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_8hgsk")
 
-[node name="Player" parent="." unique_id=81437017 instance=ExtResource("1_bmh1r")]
+[node name="Player" parent="." unique_id=81437017 instance=ExtResource("5_2vy5u")]
 position = Vector2(115, 180)
 
-[node name="UI" parent="." unique_id=776433428 instance=ExtResource("3_v2evy")]
+[node name="UI" parent="." unique_id=776433428 instance=ExtResource("6_ujnd0")]
 
-[node name="Cake Dog" parent="." unique_id=180105307 instance=ExtResource("7_2j3ld")]
-position = Vector2(-77, -16)
-
-[node name="Cake Dog2" parent="." unique_id=938328304 instance=ExtResource("7_2j3ld")]
-position = Vector2(302, 236)
-
-[node name="CookieSpawner" parent="." unique_id=1594577870 instance=ExtResource("6_01mxt")]
+[node name="CookieSpawner" parent="." unique_id=1594577870 instance=ExtResource("8_a1i4s")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_t85wl")]([ExtResource("12_n1nld"), ExtResource("13_2j3ld"), ExtResource("10_jhh8q"), ExtResource("11_3aty0"), ExtResource("14_jhh8q"), ExtResource("14_g5qry"), ExtResource("16_2j3ld"), ExtResource("18_cyt9p")])
+possible_cookies = Array[ExtResource("9_ox5qp")]([ExtResource("10_kgqdt"), ExtResource("11_4npqd"), ExtResource("12_cxbt5"), ExtResource("13_71pg2"), ExtResource("14_ed578"), ExtResource("15_oc0cs"), ExtResource("16_5v0ch"), ExtResource("17_evayk")])
 spawn_interval = 4.0
 max_active_cookies = 4
 
@@ -155,15 +148,15 @@ position = Vector2(237, -80)
 [node name="Spawnpoint6" type="Marker2D" parent="CookieSpawner" unique_id=925985568]
 position = Vector2(116, 129)
 
-[node name="Boss 1" parent="." unique_id=2025715022 instance=ExtResource("7_8hgsk")]
-position = Vector2(85, -16)
-
-[node name="WaypointMarker" parent="." unique_id=877394183 instance=ExtResource("12_2actb")]
-position = Vector2(404.5, 221)
-scale = Vector2(1.5625, 1.5)
+[node name="Teleporter" parent="." unique_id=992799427 instance=ExtResource("21_tp1")]
+position = Vector2(242, 178)
+display_title = "BOTANIC PANIC"
+boss_icon = ExtResource("22_icon1")
+cookies = Array[ExtResource("9_ox5qp")]([ExtResource("10_kgqdt"), ExtResource("11_4npqd"), ExtResource("12_cxbt5"), ExtResource("13_71pg2"), ExtResource("14_ed578"), ExtResource("15_oc0cs")])
+next_area_path = "res://Areas/area_1.tscn"
 
 [node name="buttonsounds" type="AudioStreamPlayer" parent="." unique_id=1751908962]
-stream = ExtResource("17_3aty0")
+stream = ExtResource("20_hdp12")
 volume_db = -20.0
 autoplay = true
 bus = &"SFX"

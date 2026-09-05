@@ -1,41 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5h5mphflsohl"]
+﻿[gd_scene load_steps=7 format=3 uid="uid://c5h5mphflsohl"]
 
-[ext_resource type="Texture2D" uid="uid://dufkee6llaq" path="res://Assets/UI Elements/BattleMenu.png" id="1_htgqe"]
-[ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_bwxfd"]
-[ext_resource type="Texture2D" uid="uid://c6rcqvv116uru" path="res://Assets/UI Elements/BattleButton.png" id="3_nmheq"]
-[ext_resource type="Texture2D" uid="uid://c2ud5fy1gasn" path="res://Assets/Bosses/Cat Boss/Cat_Win.png" id="4_0c40v"]
-[ext_resource type="Texture2D" uid="uid://bjf5g4hs7xyjr" path="res://Assets/Cookies/Oreo-Sheet.png" id="5_cwt5d"]
-[ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="6_l1yey"]
-[ext_resource type="Texture2D" uid="uid://c1idarmsfuuaw" path="res://Assets/Cookies/Lion-Crackers-Sheet.png" id="7_e6hni"]
-[ext_resource type="Texture2D" uid="uid://b62n87eu32f65" path="res://Assets/Cookies/Macaroon-Sheet.png" id="8_4dv3u"]
-[ext_resource type="Texture2D" uid="uid://eqiu54na3tlu" path="res://Assets/Cookies/Biscoff-Sheet.png" id="9_shdxw"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0uya5"]
-load_path = "res://.godot/imported/CookieCat-Sheet.png-fc2209ee139a7a521e9220c6ce4495bb.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgjct"]
-atlas = SubResource("CompressedTexture2D_0uya5")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ywsy5"]
-atlas = ExtResource("5_cwt5d")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3u1pi"]
-atlas = ExtResource("6_l1yey")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2eo2"]
-atlas = ExtResource("7_e6hni")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqlpi"]
-atlas = ExtResource("8_4dv3u")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4nydq"]
-atlas = ExtResource("9_shdxw")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Script" path="res://UI/battle.gd" id="1_btl"]
+[ext_resource type="Texture2D" uid="uid://dufkee6llaq" path="res://Assets/UI Elements/BattleMenu.png" id="2_btl"]
+[ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="3_btl"]
+[ext_resource type="Texture2D" uid="uid://c6rcqvv116uru" path="res://Assets/UI Elements/BattleButton.png" id="4_btl"]
+[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="5_btl"]
+[ext_resource type="Texture2D" uid="uid://dm357p2migaqv" path="res://Assets/Bosses/Boss Portraits/Calico-win.png" id="6_btl"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -44,91 +14,126 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_btl")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 308.0
 offset_top = 23.0
 offset_right = 861.0
 offset_bottom = 602.0
-texture = ExtResource("1_htgqe")
+texture = ExtResource("2_btl")
 
 [node name="Stagename" type="Label" parent="."]
 layout_mode = 0
 offset_left = 456.0
-offset_top = 236.0
+offset_top = 224.0
 offset_right = 722.0
-offset_bottom = 275.0
-theme_override_fonts/font = ExtResource("2_bwxfd")
+offset_bottom = 263.0
+theme_override_fonts/font = ExtResource("3_btl")
 theme_override_font_sizes/font_size = 30
 text = "BOTANIC PANIC"
+horizontal_alignment = 1
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
 offset_left = 470.0
-offset_top = 278.0
+offset_top = 270.0
 offset_right = 736.0
-offset_bottom = 317.0
-theme_override_fonts/font = ExtResource("2_bwxfd")
+offset_bottom = 309.0
+theme_override_fonts/font = ExtResource("3_btl")
 theme_override_font_sizes/font_size = 24
 text = "Best time: --:--"
+horizontal_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 243.0
-offset_right = 735.0
-offset_bottom = 543.0
-texture_normal = ExtResource("3_nmheq")
-
-[node name="TextureRect2" type="TextureRect" parent="."]
+[node name="BossIcon" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = 526.0
-offset_top = 115.0
+offset_top = 100.0
 offset_right = 650.0
-offset_bottom = 249.0
-texture = ExtResource("4_0c40v")
+offset_bottom = 224.0
+texture = ExtResource("6_btl")
+expand_mode = 1
 
 [node name="Container" type="Node" parent="."]
 
 [node name="Cookie-1" type="TextureRect" parent="Container"]
 offset_left = 464.0
-offset_top = 308.0
+offset_top = 322.0
 offset_right = 532.0
-offset_bottom = 376.0
-texture = SubResource("AtlasTexture_xgjct")
+offset_bottom = 390.0
+expand_mode = 1
 
 [node name="Cookie-2" type="TextureRect" parent="Container"]
 offset_left = 549.0
-offset_top = 309.0
+offset_top = 323.0
 offset_right = 617.0
-offset_bottom = 377.0
-texture = SubResource("AtlasTexture_ywsy5")
+offset_bottom = 391.0
+expand_mode = 1
 
 [node name="Cookie-3" type="TextureRect" parent="Container"]
 offset_left = 633.0
-offset_top = 308.0
+offset_top = 322.0
 offset_right = 701.0
-offset_bottom = 376.0
-texture = SubResource("AtlasTexture_3u1pi")
+offset_bottom = 390.0
+expand_mode = 1
 
 [node name="Cookie-4" type="TextureRect" parent="Container"]
 offset_left = 466.0
-offset_top = 361.0
+offset_top = 397.0
 offset_right = 534.0
-offset_bottom = 429.0
-texture = SubResource("AtlasTexture_s2eo2")
+offset_bottom = 465.0
+expand_mode = 1
 
 [node name="Cookie-5" type="TextureRect" parent="Container"]
 offset_left = 550.0
-offset_top = 363.0
+offset_top = 398.0
 offset_right = 618.0
-offset_bottom = 431.0
-texture = SubResource("AtlasTexture_sqlpi")
+offset_bottom = 466.0
+expand_mode = 1
 
 [node name="Cookie-6" type="TextureRect" parent="Container"]
 offset_left = 635.0
-offset_top = 364.0
+offset_top = 399.0
 offset_right = 703.0
-offset_bottom = 432.0
-texture = SubResource("AtlasTexture_4nydq")
+offset_bottom = 467.0
+expand_mode = 1
+
+[node name="BattleButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 486.0
+offset_right = 735.0
+offset_bottom = 550.0
+texture_normal = ExtResource("4_btl")
+
+[node name="Label" type="Label" parent="BattleButton"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 300.0
+offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("5_btl")
+theme_override_font_sizes/font_size = 24
+text = "BATTLE BEGIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 554.0
+offset_right = 460.0
+offset_bottom = 596.0
+theme_override_fonts/font = ExtResource("3_btl")
+theme_override_font_sizes/font_size = 18
+text = "BACK"

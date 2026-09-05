@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Cookie" format=3 uid="uid://c0qb4g5k7n0d0"]
+
+[ext_resource type="Texture2D" uid="uid://b1qt643w7m7mq" path="res://Assets/Cookies/Cookie-bag-Sheet.png" id="1_b3c10"]
+[ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="1_bagk"]
+
+[resource]
+script = ExtResource("1_bagk")
+cookie_type = "cookie_bag"
+cookie_name = "Cookie Bag"
+atlas_texture = ExtResource("1_b3c10")
+min_potency = 0
+pickup_message = "Cookie Blessing"
+description = "A mysterious bag of treats! Devour it to randomly gain the effect of one of the cookies you are potent enough to use."
+metadata/_custom_type_script = "uid://dq108u8j1agm8"

@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://d1almanac001"]
+
+[ext_resource type="Script" uid="uid://daa1giwfo1fdx" path="res://Screens/almanac.gd" id="1_al"]
+[ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_al"]
+[ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_al"]
+
+[node name="AlmanacPanel" type="Panel" unique_id=1142312377]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.0
+offset_top = -280.0
+offset_right = 425.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_al")
+
+[node name="Title" type="Label" parent="." unique_id=174639006]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 17.0
+offset_right = 618.0
+offset_bottom = 57.0
+theme_override_fonts/font = ExtResource("3_al")
+theme_override_font_sizes/font_size = 30
+text = "COOKIE ALMANAC"
+
+[node name="BackButton" type="Button" parent="." unique_id=387014311]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 510.0
+offset_right = 832.0
+offset_bottom = 550.0
+theme_override_fonts/font = ExtResource("2_al")
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[node name="SpriteFrame" type="Panel" parent="." unique_id=1049828620]
+layout_mode = 0
+offset_left = 628.0
+offset_top = 63.0
+offset_right = 828.0
+offset_bottom = 263.0
+
+[node name="CookieSprite" type="TextureRect" parent="SpriteFrame" unique_id=13492628]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="CookieName" type="Label" parent="." unique_id=444041663]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 65.0
+offset_right = 436.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("3_al")
+theme_override_font_sizes/font_size = 26
+text = "Cookie Name"
+vertical_alignment = 1
+
+[node name="AbilityLabel" type="Label" parent="." unique_id=1267778850]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 106.0
+offset_right = 431.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("2_al")
+theme_override_font_sizes/font_size = 14
+text = "ABILITY"
+
+[node name="AbilityName" type="Label" parent="." unique_id=975311195]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 128.0
+offset_right = 617.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("3_al")
+theme_override_font_sizes/font_size = 20
+text = "Peanut Bullet"
+
+[node name="MetaLabel" type="Label" parent="." unique_id=1117077838]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 158.0
+offset_right = 624.0
+offset_bottom = 186.0
+theme_override_fonts/font = ExtResource("2_al")
+theme_override_font_sizes/font_size = 16
+text = "MIN POTENCY: 0    COOLDOWN: 0.7s"
+
+[node name="DetailsPanel" type="Panel" parent="." unique_id=1694391121]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 207.0
+offset_right = 606.0
+offset_bottom = 533.0
+
+[node name="DetailsLabel" type="Label" parent="DetailsPanel" unique_id=570692955]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 14.0
+offset_right = -20.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_al")
+theme_override_font_sizes/font_size = 17
+text = "Details go here."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PrevButton" type="Button" parent="." unique_id=1024139646]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 276.0
+offset_right = 702.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("3_al")
+theme_override_font_sizes/font_size = 18
+text = "<"
+
+[node name="NextButton" type="Button" parent="." unique_id=1001595461]
+layout_mode = 0
+offset_left = 771.0
+offset_top = 276.0
+offset_right = 831.0
+offset_bottom = 308.0
+theme_override_fonts/font = ExtResource("3_al")
+theme_override_font_sizes/font_size = 18
+text = ">"
+
+[node name="PageLabel" type="Label" parent="." unique_id=1406638770]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 502.0
+offset_right = 126.0
+offset_bottom = 534.0
+theme_override_fonts/font = ExtResource("2_al")
+theme_override_font_sizes/font_size = 18
+text = "1 / 9"
+horizontal_alignment = 1

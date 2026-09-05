@@ -159,10 +159,16 @@ func take_damage(amount: int) -> void:
 func die() -> void:
 	alive = false
 	$AnimatedSprite2D.play("death")
+	_record_best_time(2)
 	await $AnimatedSprite2D.animation_finished
 	Global.stage = 3
 	Global.potency = 1
 	Global.timer = 0
 	Global.shield = 0
 	Global.warning_enabled = false
-	get_tree().change_scene_to_file("res://Areas/area_3.tscn")
+	get_tree().change_scene_to_file("res://Areas/hallway_3.tscn")
+
+func _record_best_time(stage: int) -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("get_stopwatch_time"):
+		Global.submit_best_time(stage, ui_node.get_stopwatch_time())
