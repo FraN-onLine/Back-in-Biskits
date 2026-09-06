@@ -2,12 +2,33 @@
 
 [ext_resource type="Script" uid="uid://c06p0c4yf3qkv" path="res://Areas/teleporter.gd" id="1_tp"]
 [ext_resource type="Texture2D" uid="uid://detw78yw5k55d" path="res://Assets/Hallways/Portal-Sheet.png" id="2_0hxva"]
+[ext_resource type="Texture2D" uid="uid://3u8uiywxihm" path="res://Assets/Hallways/keypress-Sheet.png" id="2_ftk8o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tp"]
 radius = 60.0
 height = 124.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8emc"]
+atlas = ExtResource("2_ftk8o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1lf3"]
+atlas = ExtResource("2_ftk8o")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8emc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1lf3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ftk8o"]
 atlas = ExtResource("2_0hxva")
@@ -54,10 +75,13 @@ shape = SubResource("CapsuleShape2D_tp")
 
 [node name="InteractKey" type="AnimatedSprite2D" parent="." unique_id=1687552434]
 visible = false
-position = Vector2(0, -48)
+position = Vector2(0, -30.000002)
+scale = Vector2(0.56250006, 0.49999997)
 sprite_frames = SubResource("SpriteFrames_tp")
+autoplay = "default"
+frame_progress = 0.16968626
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1343830382]
 sprite_frames = SubResource("SpriteFrames_qwc0f")
 autoplay = "default"
-frame_progress = 0.4702237
+frame_progress = 0.48370788
