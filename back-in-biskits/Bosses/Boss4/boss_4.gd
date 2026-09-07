@@ -182,6 +182,10 @@ func die() -> void:
 	get_tree().change_scene_to_file("res://Screens/Cutscene/Cutscene.tscn")
 
 func _record_best_time(stage: int) -> void:
+	# Guard against the tree being torn down (e.g. a second die() racing a
+	# scene change) which made get_tree() return null.
+	if not is_instance_valid(get_tree()):
+		return
 	var ui_node = get_tree().get_first_node_in_group("ui")
 	if ui_node and ui_node.has_method("get_stopwatch_time"):
 		Global.submit_best_time(stage, ui_node.get_stopwatch_time())

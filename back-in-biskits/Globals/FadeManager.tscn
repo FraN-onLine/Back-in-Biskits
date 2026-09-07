@@ -11,6 +11,7 @@ func fade_out_then_change_scene(scene_path):
 	anim.animation_finished.connect(
 		func(anim_name):
 			if anim_name == \"fade_out\":
+				get_tree().paused = false
 				get_tree().change_scene_to_file(scene_path)
 				anim.play(\"fade_in\")
 	)
@@ -71,6 +72,7 @@ _data = {
 }
 
 [node name="FadeManager" type="CanvasLayer"]
+process_mode = 3
 script = SubResource("GDScript_rihmp")
 
 [node name="FadeRect" type="ColorRect" parent="."]

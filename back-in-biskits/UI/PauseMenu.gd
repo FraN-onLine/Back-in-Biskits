@@ -39,7 +39,9 @@ func _on_continue_pressed() -> void:
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().paused = false
+	# Keep the game paused while the fade runs so the player can't move;
+	# FadeManager unpauses the tree when the title screen loads.
+	menu_panel.visible = false
 	Global.dialog_open = false
 	Global.warning_enabled = false
 	FadeManager.fade_out_then_change_scene("res://Screens/title_screen.tscn")

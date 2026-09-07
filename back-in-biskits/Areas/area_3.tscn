@@ -89,6 +89,20 @@
 [ext_resource type="Texture2D" uid="uid://dior7uxwpu3d6" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss26.png" id="87_li7p7"]
 [ext_resource type="Script" uid="uid://cijiotd01623a" path="res://Bosses/Boss3/boss_3.gd" id="88_bs3"]
 [ext_resource type="PackedScene" uid="uid://ds67jg2ay35um" path="res://Bosses/Damage/damage_popup.tscn" id="89_pop"]
+[ext_resource type="Texture2D" uid="uid://bu3tmlfkc0f7q" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss27.png" id="90_m33f7"]
+[ext_resource type="Texture2D" uid="uid://4xmyo2gdnd0r" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss28.png" id="91_t3nvh"]
+[ext_resource type="Texture2D" uid="uid://ct8vs02dfp28b" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss29.png" id="92_y23dn"]
+[ext_resource type="Texture2D" uid="uid://bwd5gbsji3m5f" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss30.png" id="93_kxw1i"]
+[ext_resource type="Texture2D" uid="uid://06ineegvva1n" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss31.png" id="94_14nfb"]
+[ext_resource type="Texture2D" uid="uid://dm633qcubrlyg" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss32.png" id="95_mdqi2"]
+[ext_resource type="Texture2D" uid="uid://76bsmrjvtdgv" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss33.png" id="96_bjta4"]
+[ext_resource type="Texture2D" uid="uid://bc6i74x62ov6k" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss34.png" id="97_2my15"]
+[ext_resource type="Texture2D" uid="uid://c7ddl72siwtwa" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss35.png" id="98_li7p7"]
+[ext_resource type="Texture2D" uid="uid://caum8rq6vm3eq" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss36.png" id="99_ruect"]
+[ext_resource type="Texture2D" uid="uid://b1yr2o4qu7h83" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss37.png" id="100_n50qi"]
+[ext_resource type="Texture2D" uid="uid://de8klyx0qmk5r" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss38.png" id="101_asbn1"]
+[ext_resource type="Texture2D" uid="uid://ceeuh7p12m8sw" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss39.png" id="102_v40p2"]
+[ext_resource type="Texture2D" uid="uid://eyibtwo5sp6" path="res://Assets/Bosses/Hotdoggier/Boss/Hotdoggier-Boss40.png" id="103_4ryq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_il3nm"]
 size = Vector2(296.25, 20)
@@ -289,9 +303,12 @@ radius = 25.079872
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgxk8"]
 size = Vector2(262.5, 56)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxw1i"]
+size = Vector2(223.26532, 84.98896)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpc2v"]
-radius = 63.01351
-height = 161.50824
+radius = 49.004562
+height = 168.02908
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qgxk8"]
 animations = [{
@@ -397,10 +414,13 @@ animations = [{
 "texture": ExtResource("87_li7p7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("81_5xsjr")
+"texture": ExtResource("90_m33f7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("79_3ba3m")
+"texture": ExtResource("91_t3nvh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_y23dn")
 }, {
 "duration": 1.0,
 "texture": ExtResource("78_erbhm")
@@ -416,6 +436,44 @@ animations = [{
 }],
 "loop": 0,
 "name": &"smash",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("93_kxw1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_14nfb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_mdqi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_bjta4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_2my15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_li7p7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_ruect")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_n50qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_asbn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_v40p2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_4ryq2")
+}],
+"loop": 0,
+"name": &"tail",
 "speed": 8.0
 }]
 
@@ -540,6 +598,7 @@ position = Vector2(-7, 147)
 shape = SubResource("CircleShape2D_qwc0f")
 
 [node name="Boss3" type="CharacterBody2D" parent="." unique_id=955735257 groups=["boss", "enemy"]]
+z_index = 2
 script = ExtResource("88_bs3")
 damage_popup_scene = ExtResource("89_pop")
 
@@ -549,10 +608,18 @@ damage_popup_scene = ExtResource("89_pop")
 position = Vector2(-64.25, 118)
 shape = SubResource("RectangleShape2D_qgxk8")
 
+[node name="TailArea" type="Area2D" parent="Boss3" unique_id=1462648739]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boss3/TailArea" unique_id=115732371]
+position = Vector2(14.867535, 112.436386)
+rotation = 1.5510142
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_kxw1i")
+
 [node name="SmashArea" type="Area2D" parent="Boss3" unique_id=492392423]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boss3/SmashArea" unique_id=568012878]
-position = Vector2(-65, 113)
+position = Vector2(-73.00001, 117)
 rotation = 1.5760231
 shape = SubResource("CapsuleShape2D_wpc2v")
 
@@ -561,7 +628,7 @@ position = Vector2(-6, 119)
 sprite_frames = SubResource("SpriteFrames_qgxk8")
 animation = &"smash"
 autoplay = "idle"
-frame = 18
+frame = 19
 frame_progress = 1.0
 metadata/_edit_lock_ = true
 

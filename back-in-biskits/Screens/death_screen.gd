@@ -13,7 +13,7 @@ func _ready():
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Candy-win.png")
 		3:
 			$Label.text = "Cookout Craze - burnt to a crisp!"
-			$Sprite2D.texture = preload("res://Assets/Bosses/Hotdoggier/Stage/Hotdoggier-Stage1.png")
+			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Hotdoggier-win.png")
 		4:
 			$Label.text = "Cookie?- Was i too powerful little hero?"
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Confectioneer-win.png")

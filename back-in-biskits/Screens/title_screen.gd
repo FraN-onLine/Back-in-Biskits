@@ -13,6 +13,8 @@ extends Control
 @onready var button_sound = $buttonsounds
 
 func _ready():
+	# Clear any lingering pause state (e.g. returning from the pause menu)
+	get_tree().paused = false
 	# Connect button signals
 	start_button.pressed.connect(_on_start_pressed)
 	instructions_button.pressed.connect(_on_instructions_pressed)

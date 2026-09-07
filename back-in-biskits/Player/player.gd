@@ -17,6 +17,8 @@ var dead = false
 var is_attacking = false
 var dashing := false
 var dash_velocity := Vector2.ZERO
+var knockback_velocity := Vector2.ZERO
+const KNOCKBACK_DECAY := 10.0
 @export var dash_speed := 280.0
 @export var dash_distance := 150
 @onready var smash_area = $SmashArea
@@ -79,16 +81,20 @@ func handle_movement(delta: float) -> void:
 		if collision:
 			end_dash()
 		return
-	
-	
-	
+
 	var input_dir = Vector2.ZERO
 	input_dir.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir = input_dir.normalized()
 
-	velocity = input_dir * speed
-	move_and_slide()
+	# Knockback (e.g. shoved by a boss attack) overrides input briefly
+	if knockback_velocity.length() > 0.0:
+		velocity = knockback_velocity
+		move_and_slide()
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
+	else:
+		velocity = input_dir * speed
+		move_and_slide()
 
 	
 
@@ -119,6 +125,9 @@ func handle_movement(delta: float) -> void:
 		smash_shape.position = smash_pos
 
 
+# Shove the player with an impulse (used by boss knockback etc.)
+func apply_knockback(kb: Vector2) -> void:
+	knockback_velocity = kb
 # ---------------- Attacks ----------------
 func perform_attack() -> void: #when mouse clicked read cookie type
 	can_attack = false
