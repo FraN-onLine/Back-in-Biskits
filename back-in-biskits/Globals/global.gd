@@ -33,7 +33,8 @@ func _process(delta: float) -> void:
 			if player:
 				player.get_node("Sprite2D").modulate = Color(1, 0.5, 0.5)
 				await get_tree().create_timer(0.2).timeout
-				player.get_node("Sprite2D").modulate = Color(1, 1, 1)
+				if player:
+					player.get_node("Sprite2D").modulate = Color(1, 1, 1)
 			
 # ---------------- Best times -----------------
 func load_best_times() -> void:

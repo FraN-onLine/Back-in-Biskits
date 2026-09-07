@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="13_o6wra"]
 [ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="14_xxp33"]
 [ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="15_b64h7"]
-[ext_resource type="PackedScene" uid="uid://dysrllnb0orue" path="res://Bosses/Boss3/boss_3.tscn" id="16_sl7of"]
+[ext_resource type="PackedScene" uid="uid://dysrllnb0orue" path="res://Bosses/Boss4/boss_4.tscn" id="16_sl7of"]
 [ext_resource type="PackedScene" uid="uid://dunepp1pb2igq" path="res://Bosses/Boss2/candy_barrage.tscn" id="17_71cl3"]
 [ext_resource type="Texture2D" uid="uid://d2ess51rwmv5x" path="res://Assets/Cookies/Graham-Sheet.png" id="18_rjpjf"]
 [ext_resource type="Texture2D" uid="uid://d0lkxrl5ego7l" path="res://Assets/Cookies/PistachioCookie-Sheet.png" id="19_v3oc2"]

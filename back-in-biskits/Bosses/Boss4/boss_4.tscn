@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://dh3txqg1xdrg"]
+[gd_scene load_steps=84 format=3 uid="uid://dysrllnb0orue"]
 
-[ext_resource type="Script" uid="uid://cijiotd01623a" path="res://Bosses/Boss3/boss_3.gd" id="1_rcvk8"]
+[ext_resource type="Script" uid="uid://fntdbby11hud" path="res://Bosses/Boss4/boss_4.gd" id="1_rcvk8"]
 [ext_resource type="Texture2D" uid="uid://dvjung7cmmi6" path="res://Assets/Bosses/Cookie Mosnter Boss/Smash final.png" id="2_rcvk8"]
 [ext_resource type="Texture2D" uid="uid://dwuoyqqjdat0u" path="res://Assets/Bosses/Cookie Mosnter Boss/Idle Animation head bobbing.png" id="3_mnd71"]
 [ext_resource type="Texture2D" uid="uid://cfw36q6rx7p3" path="res://Assets/Bosses/Cookie Mosnter Boss/Final Swipe.png" id="4_jlsy8"]
@@ -428,7 +428,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vxl1w")
 }],
-"loop": 0,
+"loop": false,
 "name": &"handfall",
 "speed": 10.0
 }, {
@@ -454,7 +454,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3oumx")
 }],
-"loop": 1,
+"loop": true,
 "name": &"idle",
 "speed": 8.0
 }, {
@@ -534,7 +534,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_abfuy")
 }],
-"loop": 0,
+"loop": false,
 "name": &"swipe",
 "speed": 12.0
 }]
@@ -546,17 +546,14 @@ size = Vector2(11.6689, 5.11938)
 radius = 1.86029
 height = 7.21813
 
-[node name="Boss3" type="CharacterBody2D" unique_id=921568402 groups=["boss", "enemy"]]
+[node name="Boss3" type="CharacterBody2D" groups=["boss", "enemy"]]
 script = ExtResource("1_rcvk8")
-max_hp = null
-barrage_textures = null
-attack_interval = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1616290654]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-129.5, -797.25)
 shape = SubResource("RectangleShape2D_gvn1q")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=146356357]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-139, -838)
 scale = Vector2(8.96094, 9.03287)
 sprite_frames = SubResource("SpriteFrames_1vpdc")
@@ -565,37 +562,37 @@ autoplay = "idle"
 frame = 40
 frame_progress = 1.0
 
-[node name="SwipeHitbox" type="Area2D" parent="." unique_id=1852729368]
+[node name="SwipeHitbox" type="Area2D" parent="."]
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeHitbox" unique_id=668597752]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeHitbox"]
 position = Vector2(-121.813, -538.25)
 scale = Vector2(62.3559, 25.4913)
 shape = SubResource("RectangleShape2D_rcvk8")
 
-[node name="HandfallHitbox" type="Area2D" parent="." unique_id=1073388965]
+[node name="HandfallHitbox" type="Area2D" parent="."]
 monitoring = false
 
-[node name="Slam1" type="CollisionShape2D" parent="HandfallHitbox" unique_id=1005946223]
+[node name="Slam1" type="CollisionShape2D" parent="HandfallHitbox"]
 position = Vector2(78, -517)
 scale = Vector2(62.3559, 25.4913)
 shape = SubResource("CapsuleShape2D_rcvk8")
 
-[node name="Slam2" type="CollisionShape2D" parent="HandfallHitbox" unique_id=979898675]
+[node name="Slam2" type="CollisionShape2D" parent="HandfallHitbox"]
 position = Vector2(-332, -515)
 scale = Vector2(62.3559, 25.4913)
 shape = SubResource("CapsuleShape2D_rcvk8")
 
-[node name="Slam3" type="CollisionShape2D" parent="HandfallHitbox" unique_id=1488874322]
+[node name="Slam3" type="CollisionShape2D" parent="HandfallHitbox"]
 position = Vector2(-126, -524)
 scale = Vector2(62.3559, 25.4913)
 shape = SubResource("CapsuleShape2D_rcvk8")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1519648824]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_mnd71")
 bus = &"SFX"
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="." unique_id=2140234343]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jlsy8")
 bus = &"SFX"
 

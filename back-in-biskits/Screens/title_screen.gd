@@ -72,9 +72,9 @@ func _on_back_best_times_pressed():
 	main_buttons.visible = true
 
 func _refresh_best_times():
-	var names := {1: "CALICO CONUNDRUM", 2: "JUST DESSERTS", 3: "TABLE MANNERS"}
+	var names := {1: "CALICO CONUNDRUM", 2: "JUST DESSERTS", 3: "COOKOUT CRAZE", 4: "TABLE MANNERS"}
 	var rows := PackedStringArray()
-	for stage in [1, 2, 3]:
+	for stage in [1, 2, 3, 4]:
 		var best := Global.get_best_time(stage)
 		var time_text := Global.format_time(best) if best > 0.0 else "--:--"
 		rows.append("%d. %s   %s" % [stage, names[stage], time_text])

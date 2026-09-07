@@ -300,7 +300,8 @@ theme_override_fonts/font = ExtResource("2_28co4")
 theme_override_font_sizes/font_size = 22
 text = "1. CALICO CONUNDRUM   --:--
 2. JUST DESSERTS   --:--
-3. TABLE MANNERS   --:--"
+3. COOKOUT CRAZE   --:--
+4. TABLE MANNERS   --:--"
 horizontal_alignment = 1
 vertical_alignment = 1
 

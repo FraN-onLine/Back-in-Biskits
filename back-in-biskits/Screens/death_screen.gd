@@ -12,6 +12,9 @@ func _ready():
 			$Label.text = "Crumbled and Cooked, such low caliber..."
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Candy-win.png")
 		3:
+			$Label.text = "Cookout Craze - burnt to a crisp!"
+			$Sprite2D.texture = preload("res://Assets/Bosses/Hotdoggier/Stage/Hotdoggier-Stage1.png")
+		4:
 			$Label.text = "Cookie?- Was i too powerful little hero?"
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Confectioneer-win.png")
 		_:
@@ -32,5 +35,7 @@ func _on_retry_pressed():
 			get_tree().change_scene_to_file("res://Areas/area_2.tscn")
 		3:
 			get_tree().change_scene_to_file("res://Areas/area_3.tscn")
+		4:
+			get_tree().change_scene_to_file("res://Areas/area_4.tscn")
 		_:
 			get_tree().change_scene_to_file("res://Areas/tutorial.tscn")

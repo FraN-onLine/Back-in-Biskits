@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://d0h3hallw003x"]
+[gd_scene format=3 uid="uid://d0h4hallw004x"]
 
 [ext_resource type="Script" path="res://Areas/hallway.gd" id="1_hw"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_hw"]
@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://cncmcw36ala46" path="res://Pickup/Cookie Resources/lion_crackers.tres" id="10_hw"]
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_hw"]
 [ext_resource type="Resource" uid="uid://botl7sfmllr60" path="res://Pickup/Cookie Resources/peanut_cookie.tres" id="12_hw"]
-[ext_resource type="Texture2D" uid="uid://cgeangw3q5qap" path="res://Assets/Bosses/Hotdoggier/Stage/Hotdoggier-Stage1.png" id="13_hw"]
+[ext_resource type="Texture2D" uid="uid://ginus4kwkx3n" path="res://Assets/Bosses/Boss Portraits/Confectioneer-win.png" id="13_hw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(1200, 48)
@@ -20,7 +20,7 @@ size = Vector2(1200, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
 size = Vector2(48, 700)
 
-[node name="Hallway3" type="Node2D"]
+[node name="Hallway4" type="Node2D"]
 script = ExtResource("1_hw")
 
 [node name="Background" type="Polygon2D" parent="."]
@@ -61,8 +61,8 @@ position = Vector2(160, 540)
 
 [node name="Teleporter" parent="." instance=ExtResource("4_hw")]
 position = Vector2(960, 520)
-display_title = "COOKOUT CRAZE"
+display_title = "TABLE MANNERS"
 boss_icon = ExtResource("13_hw")
-boss_stage = 3
-next_area_path = "res://Areas/area_3.tscn"
+boss_stage = 4
+next_area_path = "res://Areas/area_4.tscn"
 cookies = Array[ExtResource("5_hw")]([ExtResource("6_hw"), ExtResource("7_hw"), ExtResource("8_hw"), ExtResource("9_hw"), ExtResource("10_hw"), ExtResource("11_hw")])
