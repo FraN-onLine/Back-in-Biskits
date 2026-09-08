@@ -13,6 +13,20 @@ func start_stopwatch():
 	stopwatch_label.text = "00:00.00"
 
 
+# Called by an area when a boss battle begins. Shows "FIGHT!" for 2 seconds
+# with the tree paused (player + enemies frozen), then starts the stopwatch.
+func begin_battle() -> void:
+	await $Banner.show_banner("FIGHT!", 2.0)
+	start_stopwatch()
+
+
+# Called by a boss when it is defeated. Shows the K.O. slam banner for 2
+# seconds. NOTE: does not pause - the player and map keep running so the
+# world feels alive behind the K.O. text.
+func show_ko() -> void:
+	await $Banner.show_ko()
+
+
 func _process(delta: float) -> void:
 	if stopwatch_running:
 		stopwatch_time += delta

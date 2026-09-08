@@ -18,7 +18,8 @@ var is_attacking = false
 var dashing := false
 var dash_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
-const KNOCKBACK_DECAY := 10.0
+var _knockback_time := 0.0
+const KNOCKBACK_DURATION := 0.1   # brief 0.1s push, applied once
 @export var dash_speed := 280.0
 @export var dash_distance := 150
 @onready var smash_area = $SmashArea
@@ -87,11 +88,15 @@ func handle_movement(delta: float) -> void:
 	input_dir.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_dir = input_dir.normalized()
 
-	# Knockback (e.g. shoved by a boss attack) overrides input briefly
-	if knockback_velocity.length() > 0.0:
+	# Knockback (e.g. shoved by a boss attack): a brief 0.1s push that overrides
+	# input once. move_and_slide() keeps it from passing through or sticking to
+	# walls, and control is returned the moment the timer expires.
+	if _knockback_time > 0.0:
+		_knockback_time -= delta
 		velocity = knockback_velocity
 		move_and_slide()
-		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, KNOCKBACK_DECAY * delta)
+		if _knockback_time <= 0.0:
+			velocity = Vector2.ZERO
 	else:
 		velocity = input_dir * speed
 		move_and_slide()
@@ -125,9 +130,11 @@ func handle_movement(delta: float) -> void:
 		smash_shape.position = smash_pos
 
 
-# Shove the player with an impulse (used by boss knockback etc.)
+# Shove the player with an impulse (used by boss knockback etc.).
+# The push is applied once and lasts KNOCKBACK_DURATION.
 func apply_knockback(kb: Vector2) -> void:
 	knockback_velocity = kb
+	_knockback_time = KNOCKBACK_DURATION
 # ---------------- Attacks ----------------
 func perform_attack() -> void: #when mouse clicked read cookie type
 	can_attack = false
@@ -265,9 +272,14 @@ func peanut_attack() -> void:
 
 	match potency:
 		1:
-			_spawn_peanut(global_position, base_dir, 5.0)
+			_spawn_peanut(global_position, base_dir, 7.0)
 		2:
-			_spawn_peanut(global_position, base_dir, 7)
+			_spawn_peanut(global_position, base_dir, 6)
+			_spawn_peanut(global_position, base_dir, 6)
+		3:
+			_spawn_peanut(global_position, base_dir, 5.0)
+			_spawn_peanut(global_position, base_dir, 5.0)
+			_spawn_peanut(global_position, base_dir, 5.0)
 		_:
 			_spawn_peanut(global_position, base_dir, 6.0)
 			_spawn_peanut(global_position, base_dir, 6.0)

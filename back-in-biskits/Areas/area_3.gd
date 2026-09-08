@@ -19,7 +19,9 @@ func _ready() -> void:
 	Global.stage = 3
 	Global.potency_paused = false
 	var ui_node = get_tree().get_first_node_in_group("ui")
-	if ui_node and ui_node.has_method("start_stopwatch"):
+	if ui_node and ui_node.has_method("begin_battle"):
+		ui_node.begin_battle()
+	elif ui_node and ui_node.has_method("start_stopwatch"):
 		ui_node.start_stopwatch()
 
 	# Collect the attack areas tied to each flame animation (StoveAttacks/Attack1..4)

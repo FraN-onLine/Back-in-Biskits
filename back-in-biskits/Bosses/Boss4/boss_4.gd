@@ -176,10 +176,16 @@ func die() -> void:
 	alive = false
 	$CollisionShape2D.disabled = true
 	_record_best_time(4)
+	await _ko_grace()
 	Global.stage = 0
 	Global.potency = 1
 	Global.timer = 0
-	get_tree().change_scene_to_file("res://Screens/Cutscene/Cutscene.tscn")
+	FadeManager.fade_out_then_change_scene("res://Screens/Cutscene/Cutscene.tscn")
+
+func _ko_grace() -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("show_ko"):
+		await ui_node.show_ko()
 
 func _record_best_time(stage: int) -> void:
 	# Guard against the tree being torn down (e.g. a second die() racing a

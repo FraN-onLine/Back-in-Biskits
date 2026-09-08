@@ -21,7 +21,7 @@ var _smash_push_active := false
 @export var attack_damage: int = 1
 @export var enrage_health_ratio: float = 0.5   # 50% HP
 @export var enrage_cooldown_reduction: float = 1.2  # seconds removed below 50% HP
-@export var smash_knockback_strength: float = 240.0
+@export var knockback_strength: float = 240.0
 
 signal boss_died
 
@@ -77,15 +77,15 @@ func _process(_delta: float) -> void:
 	# Safety: damage once per attack even if the body was already overlapping
 	if laser_window and not _laser_hit:
 		if _is_player_overlapping(laser_area):
-			_damage_player()
+			_hit_player(laser_area)
 			_laser_hit = true
 	if smash_window and not _smash_hit:
 		if _is_player_overlapping(smash_area):
-			_damage_player()
+			_hit_player(smash_area)
 			_smash_hit = true
 	if tail_window and not _tail_hit:
 		if _is_player_overlapping(tail_area):
-			_damage_player()
+			_hit_player(tail_area)
 			_tail_hit = true
 
 
@@ -127,38 +127,44 @@ func perform_random_attack() -> void:
 func _on_laser_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not _laser_hit:
 		_laser_hit = true
-		_damage_player()
+		_hit_player(laser_area)
 
 
 func _on_smash_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not _smash_hit:
 		_smash_hit = true
-		_damage_player()
+		_hit_player(smash_area)
 
 
 func _on_tail_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not _tail_hit:
 		_tail_hit = true
-		_damage_player()
+		_hit_player(tail_area)
 
 
 # Keeps the smash zone collidable for a beat after the attack ends and pushes
-# the player clear of it.
+# the player clear of it (once).
 func _smash_pushaway() -> void:
 	if not is_instance_valid(get_tree()):
 		return
 	_smash_push_active = true
 	smash_area.monitoring = true
-	await get_tree().process_frame
-	var p = get_tree().get_first_node_in_group("player")
-	if p and _is_player_overlapping(smash_area):
-		var dir = (p.global_position - smash_area.global_position).normalized()
-		if dir == Vector2.ZERO:
-			dir = Vector2.UP
-		if p.has_method("apply_knockback"):
-			p.apply_knockback(dir * smash_knockback_strength)
-		else:
-			p.global_position += dir * 24.0
+	# Wait physics frames so get_overlapping_bodies() has refreshed after
+	# monitoring was switched on; otherwise the smash hitbox never connects.
+	for i in range(2):
+		await get_tree().physics_frame
+		if not alive or not is_instance_valid(get_tree()):
+			_smash_push_active = false
+			smash_area.monitoring = false
+			return
+		var p = get_tree().get_first_node_in_group("player")
+		if p and _is_player_overlapping(smash_area):
+			var dir = (p.global_position - smash_area.global_position).normalized()
+			if dir == Vector2.ZERO:
+				dir = Vector2.UP
+			if p.has_method("apply_knockback"):
+				p.apply_knockback(dir * knockback_strength)
+			break
 	_smash_push_active = false
 	smash_area.monitoring = false
 
@@ -170,10 +176,18 @@ func _is_player_overlapping(area: Area2D) -> bool:
 	return false
 
 
-func _damage_player() -> void:
+# Damages the player and pushes them away from the attack area that hit them.
+func _hit_player(area: Area2D) -> void:
 	var p = get_tree().get_first_node_in_group("player")
-	if p and p.has_method("take_damage"):
+	if not p:
+		return
+	if p.has_method("take_damage"):
 		p.take_damage(attack_damage)
+	if p.has_method("apply_knockback"):
+		var dir = (p.global_position - area.global_position).normalized()
+		if dir == Vector2.ZERO:
+			dir = Vector2.UP
+		p.apply_knockback(dir * knockback_strength)
 
 
 # ---------------- Damage taken ----------------
@@ -224,11 +238,17 @@ func die() -> void:
 	tail_area.monitoring = false
 	record_best_time(3)
 	emit_signal("boss_died")
+	await _ko_grace()
 	Global.stage = 4
 	Global.potency = 1
 	Global.timer = 0
 	Global.shield = 0
-	get_tree().change_scene_to_file("res://Areas/hallway_4.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/hallway_4.tscn")
+
+func _ko_grace() -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("show_ko"):
+		await ui_node.show_ko()
 
 
 func record_best_time(stage: int) -> void:

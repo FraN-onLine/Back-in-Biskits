@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cacyhfi62qle5" path="res://Assets/UI Elements/skill-box2.png" id="11_npmjx"]
 [ext_resource type="Texture2D" uid="uid://5utr1wtvekoj" path="res://Assets/Cookies/Charge.png" id="12_6q2ik"]
 [ext_resource type="PackedScene" path="res://UI/PauseMenu.tscn" id="13_pause"]
+[ext_resource type="PackedScene" path="res://UI/Banner.tscn" id="14_banner"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -256,5 +257,7 @@ scale = Vector2(1.46875, 1.375)
 texture = ExtResource("12_6q2ik")
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_pause")]
+
+[node name="Banner" parent="." instance=ExtResource("14_banner")]
 
 [editable path="Healthbar"]

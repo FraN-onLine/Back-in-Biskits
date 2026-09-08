@@ -161,12 +161,18 @@ func die() -> void:
 	$AnimatedSprite2D.play("death")
 	_record_best_time(2)
 	await $AnimatedSprite2D.animation_finished
+	await _ko_grace()
 	Global.stage = 3
 	Global.potency = 1
 	Global.timer = 0
 	Global.shield = 0
 	Global.warning_enabled = false
-	get_tree().change_scene_to_file("res://Areas/hallway_3.tscn")
+	FadeManager.fade_out_then_change_scene("res://Areas/hallway_3.tscn")
+
+func _ko_grace() -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("show_ko"):
+		await ui_node.show_ko()
 
 func _record_best_time(stage: int) -> void:
 	# Guard against the tree being torn down (e.g. a second die() racing a

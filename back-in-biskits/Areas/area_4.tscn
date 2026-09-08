@@ -2059,7 +2059,7 @@ position = Vector2(115, 180)
 
 [node name="CookieSpawner" parent="." unique_id=1515074797 instance=ExtResource("6_jfckr")]
 position = Vector2(11, 94)
-possible_cookies = Array[ExtResource("7_b0fbn")]([ExtResource("8_m2w7k"), ExtResource("9_y2aeu"), ExtResource("10_rr5o8"), ExtResource("11_in3ax"), ExtResource("12_g3c8x"), ExtResource("8_m2w7k"), ExtResource("13_o6wra"), ExtResource("14_xxp33"), ExtResource("15_b64h7")])
+possible_cookies = Array[ExtResource("7_b0fbn")]([ExtResource("8_m2w7k"), ExtResource("9_y2aeu"), ExtResource("10_rr5o8"), ExtResource("11_in3ax"), ExtResource("12_g3c8x"), ExtResource("13_o6wra"), ExtResource("14_xxp33"), ExtResource("15_b64h7")])
 spawn_interval = 4.0
 max_active_cookies = 4
 
