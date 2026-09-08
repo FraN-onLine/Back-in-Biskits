@@ -1,8 +1,13 @@
 extends CanvasLayer
 
 # Giant centered banner text ("FIGHT!", "K.O.") shown during battle grace
-# periods. While visible the whole SceneTree is paused, so neither the player
-# nor enemies can move or attack; this node runs in PROCESS_MODE_ALWAYS.
+# periods. While visible the whole SceneTree is paused (for FIGHT!), so
+# neither the player nor enemies can move or attack; this node runs in
+# PROCESS_MODE_ALWAYS.
+
+# Assign your imported audio in the inspector (Banner -> fight_sfx / ko_sfx).
+@export var fight_sfx: AudioStream
+@export var ko_sfx: AudioStream
 
 const FADE_IN_TIME := 0.125  # 50% faster than before (0.25 originally)
 const FADE_OUT_TIME := 0.125 # 50% faster for a quick fluid exit
@@ -10,12 +15,18 @@ const BOB_AMOUNT := 14.0
 const BOB_BOUNCE := 0.6
 
 @onready var label: Label = $Label
+@onready var fight_audio: AudioStreamPlayer = $FightSfx
+@onready var ko_audio: AudioStreamPlayer = $KoSfx
 
 var _bob_tween: Tween
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	label.visible = false
+	if fight_sfx:
+		fight_audio.stream = fight_sfx
+	if ko_sfx:
+		ko_audio.stream = ko_sfx
 
 
 func show_banner(text: String, duration: float = 2.0, pause_game: bool = true) -> void:
@@ -23,6 +34,10 @@ func show_banner(text: String, duration: float = 2.0, pause_game: bool = true) -
 		return
 	if pause_game:
 		get_tree().paused = true
+
+	# Play the FIGHT! announcer audio if one is assigned
+	if fight_audio.stream:
+		fight_audio.play()
 
 	label.text = text
 	label.visible = true
@@ -70,6 +85,10 @@ func show_banner(text: String, duration: float = 2.0, pause_game: bool = true) -
 func show_ko(hold_time: float = 1.2) -> void:
 	if not is_instance_valid(get_tree()):
 		return
+	# Play the K.O. announcer audio if one is assigned
+	if ko_audio.stream:
+		ko_audio.play()
+
 	label.text = "K.O."
 	label.visible = true
 	label.pivot_offset = label.size * 0.5

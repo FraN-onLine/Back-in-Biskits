@@ -13,10 +13,10 @@ func start_stopwatch():
 	stopwatch_label.text = "00:00.00"
 
 
-# Called by an area when a boss battle begins. Shows "FIGHT!" for 2 seconds
+# Called by an area when a boss battle begins. Shows "FIGHT!" for 1.5 seconds
 # with the tree paused (player + enemies frozen), then starts the stopwatch.
 func begin_battle() -> void:
-	await $Banner.show_banner("FIGHT!", 2.0)
+	await $Banner.show_banner("FIGHT!", 1.5)
 	start_stopwatch()
 
 
