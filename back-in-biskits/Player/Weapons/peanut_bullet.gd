@@ -25,11 +25,11 @@ func init(start_pos: Vector2, dir: Vector2, dmg: float, pot: int, player: Node) 
 			outgoing_duration = 0.2
 			return_duration = 0.4
 		2:
-			outgoing_duration = 0.5
-			return_duration = 0.6
+			outgoing_duration = 0.4
+			return_duration = 0.5
 		3:
-			outgoing_duration = 0.7
-			return_duration = 0.8
+			outgoing_duration = 0.6
+			return_duration = 0.7
 	
 	# Rotate sprite so "up" points in travel direction
 	rotation = direction.angle() + (PI/2)

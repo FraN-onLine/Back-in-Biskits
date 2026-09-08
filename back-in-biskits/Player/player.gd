@@ -275,14 +275,25 @@ func peanut_attack() -> void:
 			_spawn_peanut(global_position, base_dir, 7.0)
 		2:
 			_spawn_peanut(global_position, base_dir, 6)
+			await _stagger_peanut()
 			_spawn_peanut(global_position, base_dir, 6)
 		3:
 			_spawn_peanut(global_position, base_dir, 5.0)
+			await _stagger_peanut()
 			_spawn_peanut(global_position, base_dir, 5.0)
+			await _stagger_peanut()
 			_spawn_peanut(global_position, base_dir, 5.0)
 		_:
 			_spawn_peanut(global_position, base_dir, 6.0)
+			await _stagger_peanut()
 			_spawn_peanut(global_position, base_dir, 6.0)
+
+# 0.15s delay between extra peanut shots so multi-shots feel spaced, not
+# fired all at once. Skips the wait if the player died or left the scene.
+func _stagger_peanut() -> void:
+	if not is_instance_valid(get_tree()) or is_queued_for_deletion():
+		return
+	await get_tree().create_timer(0.15).timeout
 
 func _spawn_peanut(pos: Vector2, dir: Vector2, dmg: float) -> void:
 	var b = peanut_bullet.instantiate()
