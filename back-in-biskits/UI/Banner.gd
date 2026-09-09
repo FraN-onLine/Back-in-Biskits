@@ -9,8 +9,8 @@ extends CanvasLayer
 @export var fight_sfx: AudioStream
 @export var ko_sfx: AudioStream
 
-const FADE_IN_TIME := 0.125  # 50% faster than before (0.25 originally)
-const FADE_OUT_TIME := 0.125 # 50% faster for a quick fluid exit
+const FADE_IN_TIME := 0.1   # snappy fade-in
+const FADE_OUT_TIME := 0.1  # snappy fade-out
 const BOB_AMOUNT := 14.0
 const BOB_BOUNCE := 0.6
 

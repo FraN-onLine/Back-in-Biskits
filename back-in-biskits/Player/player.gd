@@ -10,6 +10,13 @@ var PopupScene = preload("res://Pickup/Pickup UI/popup.tscn")
 @export var shockwave_scene: PackedScene
 @export var yoyoatk_scene: PackedScene
 var can_attack: bool = true
+var attack_cooldown_total := 0.0
+var attack_cooldown_start_msec := 0
+
+# Combo: consecutive hits landed without taking damage
+var combo_count := 0
+var combo_timer := 0.0
+const COMBO_WINDOW := 2.0
 var current_attack: String = "void"
 var current_skill_icon
 var cookie_potency = 1
@@ -20,6 +27,12 @@ var dash_velocity := Vector2.ZERO
 var knockback_velocity := Vector2.ZERO
 var _knockback_time := 0.0
 const KNOCKBACK_DURATION := 0.1   # brief 0.1s push, applied once
+
+# Screen shake (trauma-based, directional)
+var shake_trauma := 0.0
+var shake_direction := Vector2.ZERO
+const SHAKE_DECAY := 2.4
+const SHAKE_MAX_OFFSET := 14.0
 @export var dash_speed := 280.0
 @export var dash_distance := 150
 @onready var smash_area = $SmashArea
@@ -48,11 +61,21 @@ signal player_died
 func _ready() -> void:
 	smash_pos = smash_shape.position
 	Global.lives = 5
+	# Hard-safety: never inherit a stuck hit-stop/slow-mo from a previous scene
+	Engine.time_scale = 1.0
 
 
 func _process(delta: float) -> void:
+	_update_camera_shake(delta)
 	if dead or Global.dialog_open: return
 	handle_movement(delta)
+
+	# Combo meter decays when the player goes too long without landing a hit
+	if combo_count > 0:
+		combo_timer -= delta
+		if combo_timer <= 0.0:
+			combo_count = 0
+			combo_timer = 0.0
 
 	if Input.is_action_just_pressed("attack") and can_attack:
 		perform_attack()
@@ -135,9 +158,54 @@ func handle_movement(delta: float) -> void:
 func apply_knockback(kb: Vector2) -> void:
 	knockback_velocity = kb
 	_knockback_time = KNOCKBACK_DURATION
+
+
+# ---------------- Screen shake ----------------
+func shake_camera(amount: float = 0.5, direction: Vector2 = Vector2.ZERO) -> void:
+	shake_trauma = minf(shake_trauma + amount, 1.0)
+	if direction.length() > 0.0:
+		shake_direction = direction.normalized()
+
+
+# Called by enemies whenever the player lands a hit on them.
+func register_hit() -> void:
+	combo_count += 1
+	combo_timer = COMBO_WINDOW
+	# Every 10-hit milestone: heal a bit of the hunger clock + tiny crunch
+	if combo_count >= 10 and combo_count % 10 == 0:
+		Global.timer = maxf(Global.timer - 2.0, 0.0)
+		Global.hitstop(0.03)
+
+
+# Fraction of the attack cooldown still remaining (0..1 window for the HUD).
+func get_attack_cooldown_remaining() -> float:
+	if can_attack or attack_cooldown_total <= 0.0:
+		return 0.0
+	return maxf(attack_cooldown_total - (Time.get_ticks_msec() - attack_cooldown_start_msec) / 1000.0, 0.0)
+
+
+func _update_camera_shake(delta: float) -> void:
+	var cam := get_node_or_null("Camera2D") as Camera2D
+	if not cam:
+		return
+	if shake_trauma <= 0.0:
+		cam.offset = Vector2.ZERO
+		return
+	shake_trauma = maxf(shake_trauma - SHAKE_DECAY * delta, 0.0)
+	var strength := SHAKE_MAX_OFFSET * shake_trauma * shake_trauma
+	if strength <= 0.01:
+		cam.offset = Vector2.ZERO
+		return
+	var jitter := Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+	var dir := shake_direction
+	if dir.length() < 0.01:
+		dir = jitter
+	cam.offset = dir * strength + jitter * strength * 0.45
 # ---------------- Attacks ----------------
 func perform_attack() -> void: #when mouse clicked read cookie type
 	can_attack = false
+	attack_cooldown_total = attack_cooldown
+	attack_cooldown_start_msec = Time.get_ticks_msec()
 #i pupush ko to w comments later btw
 	match current_attack: #depends on what was picked up last
 		"lion_cracker":
@@ -162,7 +230,7 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 
 
 # ---------------- Damage & HP ----------------
-func take_damage(amount: int = 1) -> void:
+func take_damage(amount: int = 1, from_dir: Vector2 = Vector2.ZERO) -> void:
 	if Global.shield >= 1:
 		Global.shield -= 1
 		#make shield more transparent
@@ -170,14 +238,23 @@ func take_damage(amount: int = 1) -> void:
 		await get_tree().create_timer(0.1).timeout
 		$Shield.modulate = Color(1, 1, 1, 1)
 		return
+	# Directional screen-shake kick away from the attacker
+	shake_camera(0.6, from_dir)
 	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
 	await get_tree().create_timer(0.1).timeout
 	$Sprite2D.modulate = Color(1, 1, 1)
 	print("Player took damage! HP = %d" % Global.lives)
 	Global.lives -= amount
+	# Taking a hit breaks the combo
+	combo_count = 0
+	combo_timer = 0.0
 
 
 func die() -> void:
+	# Stash the current run time so the death screen can show it
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("get_stopwatch_time"):
+		Global.last_death_time = ui_node.get_stopwatch_time()
 	print("💀 Player died")
 	emit_signal("player_died")
 	anim.play("dead")

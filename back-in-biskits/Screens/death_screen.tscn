@@ -56,6 +56,18 @@ text = "Placeholder, Placeholder!!!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 262.0
+offset_right = 1167.0
+offset_bottom = 306.0
+theme_override_fonts/font = ExtResource("2_0tnk7")
+theme_override_font_sizes/font_size = 19
+text = "RUN --:--   |   BEST --:--"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(607, 172)
 scale = Vector2(4.87339, 5.16246)

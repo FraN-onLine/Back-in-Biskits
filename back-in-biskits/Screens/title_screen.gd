@@ -15,6 +15,8 @@ extends Control
 func _ready():
 	# Clear any lingering pause state (e.g. returning from the pause menu)
 	get_tree().paused = false
+	# Hard-safety: never leave the previous scene's hit-stop/slow-mo active
+	Engine.time_scale = 1.0
 	# Connect button signals
 	start_button.pressed.connect(_on_start_pressed)
 	instructions_button.pressed.connect(_on_instructions_pressed)

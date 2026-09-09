@@ -90,6 +90,6 @@ func _check_hit() -> void:
 		return
 	for body in area.get_overlapping_bodies():
 		if body.is_in_group("player"):
-			body.take_damage(attack_damage)
+			body.take_damage(attack_damage, (body.global_position - area.global_position).normalized())
 			_hit_done = true
 			return

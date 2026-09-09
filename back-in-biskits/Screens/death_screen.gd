@@ -21,6 +21,11 @@ func _ready():
 			$Label.text = "C-Died? You were not supposed to die"
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/tutorial-win.png")
 
+	# Best time + this run's time
+	var best := Global.get_best_time(Global.stage)
+	var best_text := Global.format_time(best) if best > 0.0 else "--:--"
+	$TimeLabel.text = "RUN  %s   |   BEST  %s" % [Global.format_time(Global.last_death_time), best_text]
+
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://Screens/title_screen.tscn")
 

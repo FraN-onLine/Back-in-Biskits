@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b08k8j5al6y67"]
+[gd_scene format=3 uid="uid://b08k8j5al6y67"]
 
 [ext_resource type="Script" uid="uid://ceg3vd8ihqr4l" path="res://Bosses/Boss2/candy_minion.gd" id="1_uv0fx"]
 [ext_resource type="Texture2D" uid="uid://bio7kympy4tyl" path="res://Assets/Bosses/Cat Boss/received_1412002719865026.png" id="1_vbki4"]
@@ -258,7 +258,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_md2e7")
 }],
-"loop": false,
+"loop": 0,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -293,7 +293,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xrtbi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 10.0
 }, {
@@ -334,7 +334,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wglof")
 }],
-"loop": false,
+"loop": 0,
 "name": &"spawn",
 "speed": 10.0
 }]
@@ -343,29 +343,43 @@ animations = [{
 radius = 7.0
 height = 22.0
 
-[node name="CandyMinion" type="CharacterBody2D" groups=["enemy"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aoe"]
+radius = 40.0
+
+[node name="CandyMinion" type="CharacterBody2D" unique_id=1208555609 groups=["enemy"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_uv0fx")
-attack_interval = 3.5
 damage_popup_scene = ExtResource("2_murla")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964096710]
 position = Vector2(4, -3)
 scale = Vector2(0.0268555, 0.0273437)
 sprite_frames = SubResource("SpriteFrames_ktmgs")
 animation = &"spawn"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1639773829]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_uv0fx")
 
-[node name="spawm" type="AudioStreamPlayer" parent="."]
+[node name="AttackArea" type="Area2D" parent="." unique_id=1778073499]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=518232314]
+shape = SubResource("CircleShape2D_aoe")
+
+[node name="Telegraph" type="Polygon2D" parent="." unique_id=859912772]
+visible = false
+z_index = 3
+color = Color(1, 0.3, 0.3, 0.35)
+polygon = PackedVector2Array(40, 0, 38.04, 12.36, 32.36, 23.51, 23.51, 32.36, 12.36, 38.04, 0, 40, -12.36, 38.04, -23.51, 32.36, -32.36, 23.51, -38.04, 12.36, -40, 0, -38.04, -12.36, -32.36, -23.51, -23.51, -32.36, -12.36, -38.04, 0, -40, 12.36, -38.04, 23.51, -32.36, 32.36, -23.51, 38.04, -12.36)
+
+[node name="spawm" type="AudioStreamPlayer" parent="." unique_id=727983235]
 stream = ExtResource("4_pfujx")
 volume_db = -25.0
 bus = &"SFX"
 
-[node name="atk" type="AudioStreamPlayer" parent="."]
+[node name="atk" type="AudioStreamPlayer" parent="." unique_id=732155512]
 stream = ExtResource("5_3yxb8")
 bus = &"SFX"

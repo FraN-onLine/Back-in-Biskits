@@ -12,6 +12,7 @@ var current_hp: int
 @export var damage_popup_scene: PackedScene
 var radial_used: bool = false
 var dead = false
+var _squashing := false
 
 @export var attack_interval: float = 2.0 # seconds between attacks
 var attack_timer: Timer
@@ -132,6 +133,13 @@ func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
 	healthbar.set_health(current_hp)
+	_register_player_hit()
+	
+	# --- Game feel: hit-stop, squash, directional shake on the landing hit ---
+	Global.hitstop(0.05)
+	_squash()
+	if player and is_instance_valid(player) and player.has_method("shake_camera"):
+		player.shake_camera(0.4, (global_position - player.global_position).normalized())
 	
 	if damage_popup_scene:
 		var popup := damage_popup_scene.instantiate()
@@ -153,6 +161,9 @@ func die() -> void:
 	dead = true
 	_record_best_time(1)
 	emit_signal("boss_died")
+	# Frame-crunch on the finishing blow, then brief slow-mo before K.O.
+	await Global.hitstop(0.12)
+	await Global.kill_slowmo(0.45, 0.18)
 	await $AnimatedSprite2D.animation_finished
 	await _ko_grace()
 	Global.stage = 2
@@ -165,6 +176,27 @@ func _ko_grace() -> void:
 	var ui_node = get_tree().get_first_node_in_group("ui")
 	if ui_node and ui_node.has_method("show_ko"):
 		await ui_node.show_ko()
+
+# Squash-and-snap the sprite so hits visibly land.
+func _squash() -> void:
+	if _squashing:
+		return
+	_squashing = true
+	var sprite: Node2D = $AnimatedSprite2D
+	var base := sprite.scale
+	sprite.scale = base * Vector2(1.1, 0.9)
+	await get_tree().create_timer(0.05).timeout
+	if is_instance_valid(sprite):
+		sprite.scale = base * Vector2(1.05, 0.95)
+		await get_tree().create_timer(0.07).timeout
+	if is_instance_valid(sprite):
+		sprite.scale = base
+	_squashing = false
+
+func _register_player_hit() -> void:
+	var p = get_tree().get_first_node_in_group("player")
+	if p and p.has_method("register_hit"):
+		p.register_hit()
 
 func _record_best_time(stage: int) -> void:
 	# Guard against the tree being torn down (e.g. a second die() racing a

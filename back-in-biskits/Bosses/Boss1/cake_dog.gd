@@ -65,7 +65,9 @@ func start_charge() -> void:
 func take_damage(amount: int) -> void:
 	if not alive:
 		return
+	Global.hitstop(0.04)
 	hp -= amount
+	_register_player_hit()
 
 	if damage_popup_scene:
 		var popup := damage_popup_scene.instantiate()
@@ -82,6 +84,11 @@ func take_damage(amount: int) -> void:
 
 	if hp <= 0:
 		die()
+
+func _register_player_hit() -> void:
+	var p = get_tree().get_first_node_in_group("player")
+	if p and p.has_method("register_hit"):
+		p.register_hit()
 
 
 func die() -> void:

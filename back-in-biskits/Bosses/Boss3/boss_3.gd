@@ -17,6 +17,7 @@ var _smash_hit := false
 var _tail_hit := false
 var _enraged := false
 var _smash_push_active := false
+var _squashing := false
 
 @export var attack_damage: int = 1
 @export var enrage_health_ratio: float = 0.5   # 50% HP
@@ -131,7 +132,11 @@ func _on_laser_area_body_entered(body: Node2D) -> void:
 
 
 func _on_smash_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") and not _smash_hit:
+	# Only deal damage during the ACTUAL smash window (frames 8-10). When the
+	# pushaway re-enables monitoring after the animation, this must only push
+	# (handled by _smash_pushaway) and NEVER tick again - otherwise the player
+	# takes phantom damage after the smash already ended.
+	if body.is_in_group("player") and not _smash_push_active and not _smash_hit:
 		_smash_hit = true
 		_hit_player(smash_area)
 
@@ -181,13 +186,13 @@ func _hit_player(area: Area2D) -> void:
 	var p = get_tree().get_first_node_in_group("player")
 	if not p:
 		return
+	var away_dir = (p.global_position - area.global_position).normalized()
+	if away_dir == Vector2.ZERO:
+		away_dir = Vector2.UP
 	if p.has_method("take_damage"):
-		p.take_damage(attack_damage)
+		p.take_damage(attack_damage, away_dir)
 	if p.has_method("apply_knockback"):
-		var dir = (p.global_position - area.global_position).normalized()
-		if dir == Vector2.ZERO:
-			dir = Vector2.UP
-		p.apply_knockback(dir * knockback_strength)
+		p.apply_knockback(away_dir * knockback_strength)
 
 
 # ---------------- Damage taken ----------------
@@ -200,6 +205,13 @@ func take_damage(amount: int = 1) -> void:
 	current_hp -= amount
 	current_hp = max(current_hp, 0)
 	healthbar.set_health(current_hp)
+	_register_player_hit()
+
+	# --- Game feel: hit-stop, squash, directional shake on the landing hit ---
+	Global.hitstop(0.05)
+	_squash()
+	if player and is_instance_valid(player) and player.has_method("shake_camera"):
+		player.shake_camera(0.4, (global_position - player.global_position).normalized())
 
 	# Enrage at 50% HP: faster attacks (cooldown reduced by 1.2s, min 1.0s)
 	if not _enraged and current_hp <= int(max_hp * enrage_health_ratio):
@@ -238,6 +250,9 @@ func die() -> void:
 	tail_area.monitoring = false
 	record_best_time(3)
 	emit_signal("boss_died")
+	# Frame-crunch on the finishing blow, then brief slow-mo before K.O.
+	await Global.hitstop(0.12)
+	await Global.kill_slowmo(0.45, 0.18)
 	await _ko_grace()
 	Global.stage = 4
 	Global.potency = 1
@@ -249,6 +264,27 @@ func _ko_grace() -> void:
 	var ui_node = get_tree().get_first_node_in_group("ui")
 	if ui_node and ui_node.has_method("show_ko"):
 		await ui_node.show_ko()
+
+# Squash-and-snap the sprite so hits visibly land.
+func _squash() -> void:
+	if _squashing:
+		return
+	_squashing = true
+	var sprite: Node2D = anim_sprite
+	var base := sprite.scale
+	sprite.scale = base * Vector2(1.1, 0.9)
+	await get_tree().create_timer(0.05).timeout
+	if is_instance_valid(sprite):
+		sprite.scale = base * Vector2(1.05, 0.95)
+		await get_tree().create_timer(0.07).timeout
+	if is_instance_valid(sprite):
+		sprite.scale = base
+	_squashing = false
+
+func _register_player_hit() -> void:
+	var p = get_tree().get_first_node_in_group("player")
+	if p and p.has_method("register_hit"):
+		p.register_hit()
 
 
 func record_best_time(stage: int) -> void:

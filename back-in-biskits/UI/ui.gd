@@ -74,6 +74,33 @@ func _process(delta: float) -> void:
 		$WarningIcon.visible = false
 		
 	update_skill_icon()
+	_update_cooldown_ring()
+	_update_combo()
+
+func _update_cooldown_ring() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if not player or not player.has_method("get_attack_cooldown_remaining"):
+		$CooldownSweep.visible = false
+		return
+	var remaining := player.get_attack_cooldown_remaining()
+	if remaining <= 0.0:
+		$CooldownSweep.visible = false
+	else:
+		$CooldownSweep.visible = true
+		$CooldownSweep.max_value = player.attack_cooldown_total
+		$CooldownSweep.value = remaining
+
+func _update_combo() -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if not player or player.combo_count < 2:
+		$ComboLabel.visible = false
+	else:
+		$ComboLabel.visible = true
+		$ComboLabel.text = "COMBO x%d" % player.combo_count
+		if player.combo_count >= 10:
+			$ComboLabel.theme_override_colors/font_color = Color(1, 0.6, 0.1, 1)
+		else:
+			$ComboLabel.theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
 
 func stop_stopwatch():
 	stopwatch_running = false
