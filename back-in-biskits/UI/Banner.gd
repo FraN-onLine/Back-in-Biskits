@@ -82,14 +82,20 @@ func show_banner(text: String, duration: float = 2.0, pause_game: bool = true) -
 
 # K.O. banner: falls in from above like a slam, smashes into place, then fades.
 # Deliberately does NOT pause the tree - the player/map keep running.
-func show_ko(hold_time: float = 1.2) -> void:
+# win_time_text (optional) is a second line beneath K.O. showing the clear time.
+func show_ko(win_time_text: String = "", hold_time: float = 1.2) -> void:
 	if not is_instance_valid(get_tree()):
 		return
 	# Play the K.O. announcer audio if one is assigned
 	if ko_audio.stream:
 		ko_audio.play()
 
-	label.text = "K.O."
+	if win_time_text == "":
+		label.text = "K.O."
+	else:
+		label.text = "K.O.\nTIME  %s" % win_time_text
+		# Slightly smaller so the two lines fit cleanly
+		label.add_theme_font_size_override("font_size", 110)
 	label.visible = true
 	label.pivot_offset = label.size * 0.5
 	label.modulate.a = 0.0

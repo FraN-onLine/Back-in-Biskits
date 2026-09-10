@@ -249,6 +249,7 @@ func die() -> void:
 	smash_area.monitoring = false
 	tail_area.monitoring = false
 	record_best_time(3)
+	_freeze_stopwatch()
 	emit_signal("boss_died")
 	# Frame-crunch on the finishing blow, then brief slow-mo before K.O.
 	await Global.hitstop(0.12)
@@ -259,6 +260,13 @@ func die() -> void:
 	Global.timer = 0
 	Global.shield = 0
 	FadeManager.fade_out_then_change_scene("res://Areas/hallway_4.tscn")
+
+func _freeze_stopwatch() -> void:
+	var ui_node = get_tree().get_first_node_in_group("ui")
+	if ui_node and ui_node.has_method("get_stopwatch_time"):
+		Global.last_fight_time = ui_node.get_stopwatch_time()
+	if ui_node and ui_node.has_method("stop_stopwatch"):
+		ui_node.stop_stopwatch()
 
 func _ko_grace() -> void:
 	var ui_node = get_tree().get_first_node_in_group("ui")

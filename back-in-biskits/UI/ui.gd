@@ -6,16 +6,32 @@ var stopwatch_running := false
 
 func _ready():
 	add_to_group("ui")
+	reset_stopwatch()
+	# Reset best-time lookup to what's persisted on disk
+	load_best_times()
 
 func start_stopwatch():
 	stopwatch_time = 0.0
 	stopwatch_running = true
+	Global.last_fight_time = 0.0  # new fight starts; clear previous win time
 	stopwatch_label.text = "00:00.00"
+
+func reset_stopwatch():
+	stopwatch_time = 0.0
+	stopwatch_running = false
+	stopwatch_label.text = "00:00.00"
+
+# Freeze the timer at the given time (used to keep a win time visible).
+func display_stopwatch(time: float) -> void:
+	stopwatch_time = time
+	stopwatch_running = false
+	stopwatch_label.text = format_time(time)
 
 
 # Called by an area when a boss battle begins. Shows "FIGHT!" for 1.5 seconds
 # with the tree paused (player + enemies frozen), then starts the stopwatch.
 func begin_battle() -> void:
+	reset_stopwatch()
 	await $Banner.show_banner("FIGHT!", 1.5)
 	start_stopwatch()
 
@@ -24,12 +40,15 @@ func begin_battle() -> void:
 # seconds. NOTE: does not pause - the player and map keep running so the
 # world feels alive behind the K.O. text.
 func show_ko() -> void:
-	await $Banner.show_ko()
+	await $Banner.show_ko(Global.format_time(Global.last_fight_time))
 
 
 func _process(delta: float) -> void:
 	if stopwatch_running:
-		stopwatch_time += delta
+		# Accumulate in REAL time: delta is scaled by Engine.time_scale, so
+		# divide it back out so hit-stop/slow-mo never corrupt the run timer.
+		var ts := maxf(Engine.time_scale, 0.001)
+		stopwatch_time += delta / ts
 		stopwatch_label.text = format_time(stopwatch_time)
 
 	var boss = get_tree().get_first_node_in_group("boss")

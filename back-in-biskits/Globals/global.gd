@@ -9,6 +9,7 @@ var warning_enabled = false
 var dialog_open = false       # true while the battle popup is up (player locked)
 var potency_paused = false    # true in hallways (no potency accumulation)
 var last_death_time := 0.0    # stopwatch time of the run the player just died on
+var last_fight_time := 0.0    # stopwatch time of the last won fight
 
 # Best times (per boss stage)
 const BEST_TIMES_PATH = "user://best_times.json"
