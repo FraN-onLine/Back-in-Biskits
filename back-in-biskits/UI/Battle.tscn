@@ -51,21 +51,21 @@ autowrap_mode = 3
 
 [node name="Time" type="Label" parent="." unique_id=1824794792]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 281.0
-offset_right = 730.0
-offset_bottom = 320.0
+offset_left = 454.0
+offset_top = 275.0
+offset_right = 720.0
+offset_bottom = 314.0
 theme_override_fonts/font = ExtResource("3_btl")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Best time: --:--"
 horizontal_alignment = 1
 
 [node name="BossIcon" type="TextureRect" parent="." unique_id=690683790]
 layout_mode = 0
-offset_left = 528.0
-offset_top = 94.0
-offset_right = 652.0
-offset_bottom = 218.0
+offset_left = 534.0
+offset_top = 111.0
+offset_right = 647.0
+offset_bottom = 219.0
 texture = ExtResource("6_btl")
 expand_mode = 1
 
@@ -121,13 +121,16 @@ offset_top = 266.0
 offset_right = 738.0
 offset_bottom = 566.0
 texture_normal = ExtResource("4_btl")
+metadata/_edit_lock_ = true
 
 [node name="BackButton" type="Button" parent="." unique_id=165024669]
 layout_mode = 0
-offset_left = 560.0
-offset_top = 52.0
-offset_right = 622.0
-offset_bottom = 84.0
+offset_left = 396.0
+offset_top = 31.0
+offset_right = 458.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.48936075, 0.29138243, 0.051929854, 1)
 theme_override_fonts/font = ExtResource("3_btl")
-theme_override_font_sizes/font_size = 18
-text = "BACK"
+theme_override_font_sizes/font_size = 48
+text = "X"
+flat = true

@@ -12,7 +12,7 @@ func _ready():
 			$Label.text = "Crumbled and Cooked, such low caliber..."
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Candy-win.png")
 		3:
-			$Label.text = "Cookout Craze - burnt to a crisp!"
+			$Label.text = "Crispy, "
 			$Sprite2D.texture = preload("res://Assets/Bosses/Boss Portraits/Hotdoggier-win.png")
 		4:
 			$Label.text = "Cookie?- Was i too powerful little hero?"

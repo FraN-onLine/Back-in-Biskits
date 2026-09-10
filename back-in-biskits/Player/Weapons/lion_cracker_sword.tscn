@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdqxh7c5bw6d2"]
+[gd_scene format=3 uid="uid://bdqxh7c5bw6d2"]
 
 [ext_resource type="Texture2D" uid="uid://cplcdpcmasd5f" path="res://Assets/Player/Sword Attack.png" id="2_wg27y"]
 
@@ -78,7 +78,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xe5o5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 8.0
 }]
@@ -87,12 +87,12 @@ animations = [{
 radius = 28.0
 height = 56.0
 
-[node name="LionCrackerSword" type="Area2D"]
+[node name="LionCrackerSword" type="Area2D" unique_id=1656131629]
 script = SubResource("GDScript_7g88t")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=145366496]
 sprite_frames = SubResource("SpriteFrames_nx36k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1857658229]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_ng378")

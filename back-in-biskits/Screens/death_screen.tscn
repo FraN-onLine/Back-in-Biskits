@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbycmc1usq8g"]
+[gd_scene format=3 uid="uid://dbycmc1usq8g"]
 
 [ext_resource type="Script" uid="uid://bh1ovk1x2hfmd" path="res://Screens/death_screen.gd" id="1_jcaqs"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_0tnk7"]
 [ext_resource type="AudioStream" uid="uid://c5w5stxodaqjg" path="res://Assets/Sounds/death.wav" id="3_4v2tk"]
 [ext_resource type="Texture2D" uid="uid://hupnkjyt8w0u" path="res://Assets/Bosses/Boss Portraits/Candy-win.png" id="3_8vqtu"]
 
-[node name="death_screen" type="Control"]
+[node name="death_screen" type="Control" unique_id=591154918]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jcaqs")
 
-[node name="TextureRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="ColorRect" parent="." unique_id=1691837335]
 z_index = -1
 layout_mode = 0
 offset_right = 1186.0
@@ -27,24 +27,24 @@ mouse_filter = 2
 color = Color(0.680275, 0.53353, 0.452245, 1)
 metadata/_edit_lock_ = true
 
-[node name="Menu" type="Button" parent="."]
+[node name="Menu" type="Button" parent="." unique_id=637471752]
 layout_mode = 0
-offset_left = 213.0
-offset_top = 407.0
-offset_right = 468.0
-offset_bottom = 495.0
+offset_left = 285.0
+offset_top = 453.0
+offset_right = 540.0
+offset_bottom = 541.0
 text = "Main Menu"
 
-[node name="Retry" type="Button" parent="."]
+[node name="Retry" type="Button" parent="." unique_id=922236920]
 layout_mode = 0
-offset_left = 705.0
-offset_top = 407.0
-offset_right = 960.0
-offset_bottom = 493.0
+offset_left = 662.0
+offset_top = 453.0
+offset_right = 917.0
+offset_bottom = 539.0
 text = "Retry
 "
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1680551005]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 322.0
@@ -56,24 +56,25 @@ text = "Placeholder, Placeholder!!!!!!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeLabel" type="Label" parent="."]
+[node name="TimeLabel" type="Label" parent="." unique_id=1196393354]
 layout_mode = 0
-offset_left = 62.0
-offset_top = 262.0
-offset_right = 1167.0
-offset_bottom = 306.0
+offset_left = 52.0
+offset_top = 388.0
+offset_right = 1157.0
+offset_bottom = 432.0
 theme_override_fonts/font = ExtResource("2_0tnk7")
 theme_override_font_sizes/font_size = 19
 text = "RUN --:--   |   BEST --:--"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=570436770]
 position = Vector2(607, 172)
 scale = Vector2(4.87339, 5.16246)
 texture = ExtResource("3_8vqtu")
+metadata/_edit_lock_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=578406638]
 stream = ExtResource("3_4v2tk")
 volume_db = -20.0
 autoplay = true

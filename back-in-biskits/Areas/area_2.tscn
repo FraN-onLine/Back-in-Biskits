@@ -17,7 +17,7 @@
 [ext_resource type="Resource" uid="uid://b0p6lil6cwypp" path="res://Pickup/Cookie Resources/pistachio_cookie.tres" id="12_fr8km"]
 [ext_resource type="Resource" uid="uid://c5yseidyyn7oy" path="res://Pickup/Cookie Resources/biscoff_cookie.tres" id="13_xjqkg"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hiici"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xjqkg"]
 texture = ExtResource("1_4ng5c")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -53,9 +53,9 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 3
 physics_layer_0/collision_mask = 3
-sources/0 = SubResource("TileSetAtlasSource_hiici")
+sources/0 = SubResource("TileSetAtlasSource_xjqkg")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwo6g"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6y5rs"]
 texture = ExtResource("9_xy2jk")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -72,7 +72,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_gbqj3"]
 tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_jwo6g")
+sources/0 = SubResource("TileSetAtlasSource_6y5rs")
 
 [node name="Area2" type="Node2D" unique_id=1367241599]
 script = ExtResource("1_hiici")

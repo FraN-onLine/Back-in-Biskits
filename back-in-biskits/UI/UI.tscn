@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://04v8eag7ct24" path="res://Assets/UI Elements/mc-icon-box.png" id="9_qhxh2"]
 [ext_resource type="Texture2D" uid="uid://dc7e1a0jhe2cq" path="res://Assets/UI Elements/mc-icon.png" id="10_017wa"]
 [ext_resource type="Texture2D" uid="uid://cacyhfi62qle5" path="res://Assets/UI Elements/skill-box2.png" id="11_npmjx"]
-[ext_resource type="Texture2D" uid="uid://5utr1wtvekoj" path="res://Assets/Cookies/Charge.png" id="12_6q2ik"]
-[ext_resource type="PackedScene" path="res://UI/PauseMenu.tscn" id="13_pause"]
-[ext_resource type="PackedScene" path="res://UI/Banner.tscn" id="14_banner"]
+[ext_resource type="Texture2D" uid="uid://nvkbkwjeqrkr" path="res://Assets/UI Elements/clock.png" id="12_npmjx"]
+[ext_resource type="PackedScene" uid="uid://5s5cq2c8c40s" path="res://UI/PauseMenu.tscn" id="13_pause"]
+[ext_resource type="PackedScene" uid="uid://d1banner0001" path="res://UI/Banner.tscn" id="14_banner"]
 
 [sub_resource type="Animation" id="Animation_q0uhn"]
 length = 0.001
@@ -254,38 +254,35 @@ texture = ExtResource("11_npmjx")
 z_index = 1
 position = Vector2(110.5, 45)
 scale = Vector2(1.46875, 1.375)
-texture = ExtResource("12_6q2ik")
 
-[node name="CooldownSweep" type="TextureProgressBar" parent="."]
-visible = false
+[node name="CooldownSweep" type="TextureProgressBar" parent="." unique_id=2003929747]
+modulate = Color(1, 1, 1, 0.47843137)
 z_index = 2
-position = Vector2(110.5, 45)
+offset_left = 112.00001
+offset_top = 42.0
+offset_right = 144.0
+offset_bottom = 74.0
 scale = Vector2(1.46875, 1.375)
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("12_6q2ik")
-texture_progress = ExtResource("12_6q2ik")
-fill_mode = 4
-value = 0.0
 max_value = 1.0
-modulate = Color(0.08, 0.08, 0.08, 0.75)
+step = 0.01
+fill_mode = 4
+texture_progress = ExtResource("12_npmjx")
 
-[node name="ComboLabel" type="Label" parent="."]
-visible = false
+[node name="ComboLabel" type="Label" parent="." unique_id=360532891]
 z_index = 3
-offset_left = 62.0
-offset_top = 78.0
-offset_right = 162.0
-offset_bottom = 104.0
+offset_left = 15.0
+offset_top = 99.0
+offset_right = 125.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
 theme_override_fonts/font = ExtResource("3_q0uhn")
 theme_override_font_sizes/font_size = 16
-theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
 text = "COMBO x0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PauseMenu" parent="." instance=ExtResource("13_pause")]
+[node name="PauseMenu" parent="." unique_id=1308490017 instance=ExtResource("13_pause")]
 
-[node name="Banner" parent="." instance=ExtResource("14_banner")]
+[node name="Banner" parent="." unique_id=283721967 instance=ExtResource("14_banner")]
 
 [editable path="Healthbar"]

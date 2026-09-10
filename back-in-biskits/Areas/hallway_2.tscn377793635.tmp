@@ -117,6 +117,9 @@ position = Vector2(1152, 324)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1414479140]
 shape = SubResource("RectangleShape2D_wall")
 
+[node name="Player" parent="." unique_id=539566914 instance=ExtResource("2_hw")]
+position = Vector2(160, 540)
+
 [node name="UI" parent="." unique_id=1401294316 instance=ExtResource("3_hw")]
 
 [node name="Teleporter" parent="." unique_id=693269645 instance=ExtResource("4_hw")]
@@ -126,9 +129,6 @@ boss_icon = ExtResource("13_hw")
 cookies = Array[ExtResource("5_hw")]([ExtResource("6_hw"), ExtResource("12_hw"), ExtResource("8_hw"), ExtResource("9_hw"), ExtResource("11_tt8fm")])
 boss_stage = 2
 next_area_path = "res://Areas/area_2.tscn"
-
-[node name="Player" parent="." unique_id=539566914 instance=ExtResource("2_hw")]
-position = Vector2(160, 540)
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=310655151]
 tile_map_data = PackedByteArray("AAD9/xAAAAAAAAAAAAAIAA0AAAAAAAAAAAALAA8AAAAAAAAAAAD8/wsAAAAAAAAAAAD+/wsAAAABAAAAAAAHABUAAAABAAAAAAAIAAgAAAABAAAAAAD8/wIAAAABAAAAAAAIAAAAAAABAAAAAAAMAAQAAAABAAAAAAD5/wgAAAABAAAAAAD+/wYAAAAAAAAAAAD6/wMAAAAAAAAAAAAFAAQAAAAAAAAAAAALAAkAAAAAAAAAAAD7/wgAAAACAAAAAAD+/wIAAAACAAAAAAAKAAsAAAACAAAAAAAFAAgAAAACAAAAAAD5/xEAAAACAAAAAAD+/w4AAAACAAAAAAAAABUAAAACAAAAAAD7/xcAAAACAAAAAAD9/wAAAAACAAAAAAAEAPz/AAACAAAAAAAGAP//AAACAAAAAAALAP7/AAACAAAAAAD7////AAAAAAAAAAD9//3/AAAAAAAAAAAHAAIAAAABAAAAAAAJAAYAAAAAAAAAAAD7/wQAAAACAAAAAAAIAAMAAAAAAAAAAAANAAcAAAAAAAAAAAD0/wYAAAACAAAAAAD2/w0AAAABAAAAAAD7/w4AAAACAAAAAAD3/woAAAAAAAAAAAAQAAwAAAAAAAAAAAAOAA8AAAAAAAAAAAD4/wAAAAABAAAAAAALABQAAAABAAAAAAD7/xQAAAAAAAAAAAACABAAAAACAAAAAAADABIAAAABAAAAAAAIABMAAAAAAAAAAAALABEAAAACAAAAAAA=")
