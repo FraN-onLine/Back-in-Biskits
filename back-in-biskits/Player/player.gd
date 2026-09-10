@@ -231,18 +231,24 @@ func perform_attack() -> void: #when mouse clicked read cookie type
 
 # ---------------- Damage & HP ----------------
 func take_damage(amount: int = 1, from_dir: Vector2 = Vector2.ZERO) -> void:
+	if dead:
+		return
 	if Global.shield >= 1:
 		Global.shield -= 1
 		#make shield more transparent
 		$Shield.modulate = Color(1, 1, 1, 0.3)
 		await get_tree().create_timer(0.1).timeout
-		$Shield.modulate = Color(1, 1, 1, 1)
+		if is_instance_valid(self):
+			$Shield.modulate = Color(1, 1, 1, 1)
 		return
 	# Directional screen-shake kick away from the attacker
 	shake_camera(0.6, from_dir)
 	$Sprite2D.modulate = Color(1, 0.5, 0.5)  # flash red
 	await get_tree().create_timer(0.1).timeout
-	$Sprite2D.modulate = Color(1, 1, 1)
+	if is_instance_valid(self):
+		$Sprite2D.modulate = Color(1, 1, 1)
+	if dead:
+		return
 	print("Player took damage! HP = %d" % Global.lives)
 	Global.lives -= amount
 	# Taking a hit breaks the combo
@@ -251,6 +257,9 @@ func take_damage(amount: int = 1, from_dir: Vector2 = Vector2.ZERO) -> void:
 
 
 func die() -> void:
+	if dead:
+		return
+	dead = true
 	# Stash the current run time so the death screen can show it
 	var ui_node = get_tree().get_first_node_in_group("ui")
 	if ui_node and ui_node.has_method("get_stopwatch_time"):
@@ -258,13 +267,18 @@ func die() -> void:
 	print("💀 Player died")
 	emit_signal("player_died")
 	anim.play("dead")
-	dead = true
 	$AnimatedSprite2D.visible = false
-	await anim.animation_finished
+	# The "dead" animation ends with null-texture frames, which Godot won't
+	# advance past, so animation_finished can hang forever. Use a fixed,
+	# guaranteed timer instead of awaiting the animation.
+	await get_tree().create_timer(0.6).timeout
+	if not is_instance_valid(self):
+		return
 	$Sprite2D.visible = false
-	#wait 0.5 sec then go to title screen
+	# wait 0.5 sec then go to the death screen
 	await get_tree().create_timer(0.5).timeout
-	get_tree().change_scene_to_file("res://Screens/death_screen.tscn")
+	if is_instance_valid(get_tree()):
+		get_tree().change_scene_to_file("res://Screens/death_screen.tscn")
 
 
 # -------------- Various Attacks ----------------
