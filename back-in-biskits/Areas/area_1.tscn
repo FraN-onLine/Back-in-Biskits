@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_v2evy"]
 [ext_resource type="Texture2D" uid="uid://dy81k0oxeyxa6" path="res://Assets/Dessert Map/Dessert-Tiles.png" id="5_e5usc"]
 [ext_resource type="PackedScene" uid="uid://csckbsgbye3fq" path="res://Pickup/Cookie Spawner/cookie_spawner.tscn" id="6_01mxt"]
-[ext_resource type="PackedScene" uid="uid://bsfoflwra3rgn" path="res://Bosses/Boss1/cake_dog.tscn" id="7_2j3ld"]
 [ext_resource type="PackedScene" uid="uid://cucwq4ajkous0" path="res://Bosses/Boss1/boss_1.tscn" id="7_8hgsk"]
 [ext_resource type="Script" uid="uid://dq108u8j1agm8" path="res://Pickup/Cookie Resources/cookieresource.gd" id="7_t85wl"]
 [ext_resource type="Resource" uid="uid://cnh3iholrbh03" path="res://Pickup/Cookie Resources/cookie_cat.tres" id="10_jhh8q"]
@@ -123,12 +122,6 @@ tile_set = SubResource("TileSet_8hgsk")
 position = Vector2(115, 180)
 
 [node name="UI" parent="." unique_id=776433428 instance=ExtResource("3_v2evy")]
-
-[node name="Cake Dog" parent="." unique_id=180105307 instance=ExtResource("7_2j3ld")]
-position = Vector2(-77, -16)
-
-[node name="Cake Dog2" parent="." unique_id=938328304 instance=ExtResource("7_2j3ld")]
-position = Vector2(302, 236)
 
 [node name="CookieSpawner" parent="." unique_id=1594577870 instance=ExtResource("6_01mxt")]
 position = Vector2(11, 94)
