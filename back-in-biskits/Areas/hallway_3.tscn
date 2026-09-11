@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://rue2so7fmdcf"]
 
 [ext_resource type="Script" uid="uid://cn2u0na6mgw2u" path="res://Areas/hallway.gd" id="1_hw"]
+[ext_resource type="Texture2D" uid="uid://bve0iatejyshg" path="res://Assets/Hallways/Area3Hallway.png" id="2_0airw"]
 [ext_resource type="PackedScene" uid="uid://bk3vlngnal1r6" path="res://Player/player.tscn" id="2_hw"]
 [ext_resource type="PackedScene" uid="uid://ckkrott6tmvs3" path="res://UI/UI.tscn" id="3_hw"]
 [ext_resource type="PackedScene" uid="uid://cyusdhemecb2i" path="res://Areas/teleporter.tscn" id="4_hw"]
@@ -10,51 +11,88 @@
 [ext_resource type="Resource" uid="uid://c0qb4g5k7n0d0" path="res://Pickup/Cookie Resources/cookie_bag.tres" id="9_0airw"]
 [ext_resource type="Resource" uid="uid://dncvatqcramao" path="res://Pickup/Cookie Resources/macaroon.tres" id="11_hw"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
-size = Vector2(1200, 48)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4u6s"]
+size = Vector2(296.25, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wall"]
-size = Vector2(48, 700)
+[sub_resource type="CircleShape2D" id="CircleShape2D_v04yq"]
+radius = 21.189621
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ytke"]
+size = Vector2(73, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0airw"]
+size = Vector2(149.8079, 20)
 
 [node name="Hallway3" type="Node2D" unique_id=97161615]
 script = ExtResource("1_hw")
 
 [node name="Background" type="Polygon2D" parent="." unique_id=583866997]
-position = Vector2(576, 324)
+position = Vector2(52, 120)
 color = Color(0.13, 0.19, 0.24, 1)
 polygon = PackedVector2Array(-576, -324, 576, -324, 576, 324, -576, 324)
 
-[node name="Floor" type="StaticBody2D" parent="." unique_id=1164401039]
-position = Vector2(576, 600)
-
-[node name="FloorVisual" type="Polygon2D" parent="Floor" unique_id=1895900421]
-color = Color(0.68, 0.52, 0.36, 1)
-polygon = PackedVector2Array(-600, -24, 600, -24, 600, 24, -600, 24)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=319468109]
-shape = SubResource("RectangleShape2D_floor")
-
-[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1034340369]
-position = Vector2(0, 324)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=229045569]
-shape = SubResource("RectangleShape2D_wall")
-
-[node name="RightWall" type="StaticBody2D" parent="." unique_id=1595136487]
-position = Vector2(1152, 324)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1292497931]
-shape = SubResource("RectangleShape2D_wall")
+[node name="Area3Hallway" type="Sprite2D" parent="." unique_id=1965682702]
+position = Vector2(-67, 69)
+texture = ExtResource("2_0airw")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1891306730 instance=ExtResource("2_hw")]
-position = Vector2(160, 540)
+position = Vector2(-127, 109)
 
 [node name="UI" parent="." unique_id=2082384711 instance=ExtResource("3_hw")]
 
 [node name="Teleporter" parent="." unique_id=1601129564 instance=ExtResource("4_hw")]
-position = Vector2(960, 520)
+position = Vector2(22, 115)
 display_title = "COOKOUT CRAZE"
 boss_icon = ExtResource("5_a4u6s")
 cookies = Array[ExtResource("5_hw")]([ExtResource("6_hw"), ExtResource("11_hw"), ExtResource("9_0airw")])
 boss_stage = 3
 next_area_path = "res://Areas/area_3.tscn"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1574972724]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1119956067 groups=["walls"]]
+position = Vector2(-72.125, 201)
+shape = SubResource("RectangleShape2D_a4u6s")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D" unique_id=144565833 groups=["walls"]]
+position = Vector2(-143, 48)
+shape = SubResource("CircleShape2D_v04yq")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D" unique_id=1954140907 groups=["walls"]]
+position = Vector2(0.5, 32.5)
+shape = SubResource("RectangleShape2D_5ytke")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=1984955874 groups=["walls"]]
+position = Vector2(63.999992, 118)
+rotation = 1.558704
+shape = SubResource("RectangleShape2D_a4u6s")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D" unique_id=1766966630 groups=["walls"]]
+position = Vector2(-201, 106)
+rotation = 1.5609943
+shape = SubResource("RectangleShape2D_a4u6s")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=358880940 groups=["walls"]]
+position = Vector2(-81, 4)
+shape = SubResource("RectangleShape2D_a4u6s")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=2144417861 groups=["walls"]]
+position = Vector2(55, 16.999998)
+rotation = -2.2617543
+shape = SubResource("RectangleShape2D_0airw")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=736245528 groups=["walls"]]
+position = Vector2(-194, 17.999994)
+rotation = -0.97711205
+shape = SubResource("RectangleShape2D_0airw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1698726483 groups=["walls"]]
+position = Vector2(-207, 175.99998)
+rotation = 0.7894259
+shape = SubResource("RectangleShape2D_0airw")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1290314900 groups=["walls"]]
+position = Vector2(72.000015, 167.00002)
+rotation = 2.2864177
+shape = SubResource("RectangleShape2D_0airw")
