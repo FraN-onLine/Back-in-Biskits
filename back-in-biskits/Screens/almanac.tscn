@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://daa1giwfo1fdx" path="res://Screens/almanac.gd" id="1_al"]
 [ext_resource type="FontFile" uid="uid://bgrgca3qc6dxo" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="2_al"]
 [ext_resource type="FontFile" uid="uid://c087o32n144xo" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_al"]
+[ext_resource type="Texture2D" uid="uid://cacyhfi62qle5" path="res://Assets/UI Elements/skill-box2.png" id="4_5u8nw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ckho"]
+texture = ExtResource("4_5u8nw")
 
 [node name="AlmanacPanel" type="Panel" unique_id=1142312377]
 anchors_preset = 8
@@ -40,20 +44,22 @@ text = "Back"
 
 [node name="SpriteFrame" type="Panel" parent="." unique_id=1049828620]
 layout_mode = 0
-offset_left = 628.0
-offset_top = 63.0
-offset_right = 828.0
-offset_bottom = 263.0
+offset_left = 614.0
+offset_top = 40.0
+offset_right = 857.0
+offset_bottom = 281.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_0ckho")
+metadata/_edit_lock_ = true
 
 [node name="CookieSprite" type="TextureRect" parent="SpriteFrame" unique_id=13492628]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = -12.0
+offset_left = 43.0
+offset_top = 42.0
+offset_right = -48.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1

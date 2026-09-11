@@ -13,5 +13,5 @@ icon_texture = ExtResource("2_du4f5")
 min_potency = 2
 pickup_message = "Hammer Strike"
 attack_cooldown = 0.8
-description = "Slam the ground with a hammer and release a shockwave along the floor. It grows stronger the more lives you have lost. Requires at least 2 potency."
+description = "Slows down and slams the ground with a hammer and release a shockwave along the floor. Which deals the most damage out of all cookies. Requires at least 2 potency."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

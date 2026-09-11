@@ -87,12 +87,11 @@ func _refresh_best_times():
 func show_instructions():
 	var dialog = AcceptDialog.new()
 	dialog.title = "Instructions"
-	dialog.dialog_text = "Lion Cracker - a melee ranged weapon
-						Graham - a long ranged projectile weapon
-						Macaroon - a mid ranged omni directional weapon
-						Cookie Cat - a shield that can block 1 point of damage
-						Pistachio - a melee ranged AoE weapon
-						Oreo - a movement type weapon that let's you dash through enemies"
+	dialog.dialog_text = "You crave for cookies, Pick them up for Powers
+						Use AWSD to move and Right Click to Attack
+						Press F to interact with Portals and certain mechanics
+						Press Esc to Pause the game
+						Attacks are Aimed your cursor's direction, position it wisely"
 	add_child(dialog)
 	dialog.popup_centered()
 

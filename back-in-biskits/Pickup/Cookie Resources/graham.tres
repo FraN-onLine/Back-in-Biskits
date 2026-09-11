@@ -13,5 +13,5 @@ icon_texture = ExtResource("2_ngnj8")
 min_potency = 0
 pickup_message = "Graham Shoot"
 attack_cooldown = 1.0
-description = "Launch a graham cracker at your cursor. Each potency level adds an extra cracker fired in a spreading pattern, shredding anything in the arc."
+description = "Launch a graham cracker at your cursor. Each potency level adds increased damage and an extra cracker fired in a spreading pattern, shredding anything in the arc."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

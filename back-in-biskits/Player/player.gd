@@ -292,7 +292,6 @@ func smash() -> void:
 	is_attacking = true
 	orb.play("disappear")
 	speed = 140 #slow
-	#hammer_sound.play()
 
 	#6,7,8 damage per potency multiplied by Global.lives, so (6-30), (7-35), (8-40) each attack also has a 25% chance to reduce global potency by 1
 	var base_damage := 6

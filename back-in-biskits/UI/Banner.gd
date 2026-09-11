@@ -32,6 +32,8 @@ func _ready() -> void:
 func show_banner(text: String, duration: float = 2.0, pause_game: bool = true) -> void:
 	if not is_instance_valid(get_tree()):
 		return
+	# Restore the full banner size in case a K.O. TIME line shrank it
+	label.add_theme_font_size_override("font_size", 180)
 	if pause_game:
 		get_tree().paused = true
 
@@ -92,6 +94,8 @@ func show_ko(win_time_text: String = "", hold_time: float = 1.2) -> void:
 
 	if win_time_text == "":
 		label.text = "K.O."
+		# Restore the regular banner size (a previous TIME line may have reduced it)
+		label.add_theme_font_size_override("font_size", 180)
 	else:
 		label.text = "K.O.\nTIME  %s" % win_time_text
 		# Slightly smaller so the two lines fit cleanly

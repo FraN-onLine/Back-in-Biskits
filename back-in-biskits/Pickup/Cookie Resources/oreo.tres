@@ -13,5 +13,5 @@ icon_texture = ExtResource("2_d0otd")
 min_potency = 2
 pickup_message = "Bull Charge"
 attack_cooldown = 1.2
-description = "Charges toward your cursor at blazing speed, plowing through anything in the way and leaving a damaging shockwave behind. Requires at least 2 potency."
+description = "Charges toward your cursor at blazing speed, plowing through anything in the way and leaving a large damaging shockwave behind. Requires at least 2 potency."
 metadata/_custom_type_script = "uid://dq108u8j1agm8"

@@ -7,8 +7,6 @@ var stopwatch_running := false
 func _ready():
 	add_to_group("ui")
 	reset_stopwatch()
-	# Reset best-time lookup to what's persisted on disk
-#	load_best_times()
 
 func start_stopwatch():
 	stopwatch_time = 0.0
